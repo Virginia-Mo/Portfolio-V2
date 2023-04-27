@@ -1,0 +1,784 @@
+function setWorld(worldState) {
+    function makeTile(type) {
+        return [
+            sprite('tile'),
+            {type}
+        ]
+    }
+    function makeBigTile(type) {
+        return [
+            sprite('bigobject'),
+            {type}
+        ]
+    }
+    function makeSmallTile(type) {
+        return [
+            sprite('smalltiles'),
+            {type}
+        ]
+    }
+
+const map = [
+        addLevel([
+            '                                                         ',
+            '                                                         ',
+            '            0111111111111111111111111111111111111111112  ',
+            '            3bbbbbbbbbbbbbbbbbbbbbbbbfggggggggggghbbbb4  ',
+            '            3bbbbbbbbbbbbbbbbbbbbbbbbibbbbbbbbbbbkbbbb4  ',
+            '            3bbbbfgggggggggggghbbbbbbibbbbbbbbbbbkbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbibbbbbbbbbbbkbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbibbbbbbbbbbbkbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbibbbbbbbbbbbkbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbibbbbeebbbbbkbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbblmmmmeemmmmmnbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbboppppeepppppqbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbbbbbIeeJbbbbbbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbbbbbEeeDbbbbbbbbb4  ',
+            '            3bbbbibbbbbbbbbbbbkbbbbbbbbbbEeeDbbbbbbbbb4  ',
+            '            3bbbblmmmmmmmmmmmmnbbbbbbbbbbEeeDbbbbbbbbb4  ',
+            '            3bbbbopppppeepppppqbbbbbbbbbbEeeDbbbbbbbbb4  ',
+            '            3bbbbbbbbbIeeJbbbbbbbbbbbbbbbEeeDbbbbbbbbb4  ',
+            '            3bbbbbbbbbEeeFGGGGGGGGGGGGGGGHeeDbbbbbbbbb4  ',
+            '            566666666dEeeeeeeeeeeeeeeeeeeeeeDbbbbbbbbb4  ',
+            '            8999999993EeeeeeeeeeeeeeeeeeeeeeDbbbbbbbbb4  ',
+            '                     3KBBBBBBBBBBCeeABBBCeeeDbbbbbbbbb4  ',
+            ' 011111111111111111123c666dbbbbbbEeeDIbbEeeeDbbbbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbb4349993bbbbbbEeeDbIGHeeeDbbbbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbb434   3bbbbbbEeeDbEeeeeeFGGJbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbb434   3bbbbbbEeeDbEeeeeeeeeDbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbb434   3bGGGGGHeeDbEeeeeeeeeDbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbbbb4   3beeeeeeeeDbEeeeeeeeeDbbbbbb4  ',
+            ' 3bbbbbbbbbbbbbbbbbbbb4   3eeeeeeABBLbKBBBBBBBBLbbbbbb4  ',
+            ' 3bbbbbbbbIGGGGGGGGJbb4   3KBBBBBLbbbbbbbbbbbbc66666667  ',
+            ' 3bbbbbbbbEeeeeeeeeDbb4   3bbbbbbbbbbbbbbbbbbb49999999a  ',
+            ' 3bbbbbbbbEeeeeeeeeDbb4   3bbbbbbbbbbbbbbbbbbb4          ',
+            ' 3bbbbbbbbEeeeABBBBLBb4   3bbbbbbbbbbbbbbbbbbb4          ',
+            ' 3bbbbbbbbEeeeDbbbbNbb4   566666666666666666667          ',
+            ' 3bbbbbbbbEbeeDbbbbbbb4   89999999999999999999a          ',
+            ' 3bbbbbbbbKBBBbbbbbbbb4                                  ',
+            ' 5666666666666666666667                                  ',
+            ' 899999999999999999999a                                  ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeTile('mountain-water1'),
+                '1': () => makeTile('mountain-water2'),
+                '2': () => makeTile('mountain-water3'),
+                '3': () => makeTile('mountain-water4'),
+                '4': () => makeTile('mountain-water5'),
+                '5': () => makeTile('mountain-water6'),
+                '6': () => makeTile('mountain-water7'),
+                '7': () => makeTile('mountain-water8'),
+                '8': () => makeTile('mountain-water9'),
+                '9': () => makeTile('mountain-water10'),
+                'a': () => makeTile('mountain-water11'),
+                'b': () => makeTile('grass'),
+                'c': () => makeTile('corner-mountain1'),
+                'd': () => makeTile('corner-mountain2'),
+                'e': () => makeTile('ground'),
+                'f': () => makeTile('mountain1'),
+                'g': () => makeTile('mountain2'),
+                'h': () => makeTile('mountain3'),
+                'i': () => makeTile('mountain4'),
+                'j': () => makeTile('mountain5'),
+                'k': () => makeTile('mountain6'),
+                'l': () => makeTile('mountain7'),
+                'm': () => makeTile('mountain8'),
+                'n': () => makeTile('mountain9'),
+                'o': () => makeTile('mountain10'),
+                'p': () => makeTile('mountain11'),
+                'q': () => makeTile('mountain12'),
+                'A': () => makeTile('grass-out1'),
+                'B': () => makeTile('grass-out2'),
+                'C': () => makeTile('grass-out3'),
+                'D': () => makeTile('grass-out4'),
+                'E': () => makeTile('grass-out5'),
+                'F': () => makeTile('grass-out6'),
+                'G': () => makeTile('grass-out7'),
+                'H': () => makeTile('grass-out8'),
+                'I': () => makeTile('corner-left'),
+                'J': () => makeTile('corner-right'),
+                'K': () => makeTile('corner-bottomL'),
+                'L': () => makeTile('corner-bottomR'),
+            }
+        }),
+        addLevel([
+            '                                                         ',
+            '                                                         ',
+            '             123             jkl                         ',
+            '             456             mno jkl                abc  ',
+            '             789             pqr mno          jkl   def  ',
+            '             abc  123      123   pqr          mno   ghi  ',
+            '             def  456      456                pqr        ',
+            '             ghi  789      789                           ',
+            '                                                         ',
+            '                                          st             ',
+            '                                          uv             ',
+            '                                          wx             ',
+            '                                          yz      jkl    ',
+            '                                                  mno    ',
+            '            123        st                         pqr123 ',
+            '            456        uv                            456 ',
+            '            789123     wx                            789 ',
+            '               456     yz                                ',
+            '               789                                       ',
+            '                                                         ',
+            '                                                         ',
+            ' abc                                                     ',
+            ' def                                                     ',
+            ' ghi                                                     ',
+            '                                                         ',
+            '                                                   123   ',
+            '                      HIJKLM                       456   ',
+            '                      NOPQRS                       789   ',
+            '                      TUVWXY                             ',
+            '                                   BC                    ',
+            '                                   DE      jkl           ',
+            '                    jkl            FG      mno           ',
+            '                    mno                    pqr           ',
+            '  BC                pqr                                  ',
+            '  DE                abc                                  ',
+            '  FG                def                                  ',
+            '                    ghi                                  ',
+            '                                                         ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeBigTile(''),
+                '1': () => makeBigTile('pinktree1'),
+                '2': () => makeBigTile('pinktree2'),
+                '3': () => makeBigTile('pinktree3'),
+                '4': () => makeBigTile('pinktree4'),
+                '5': () => makeBigTile('pinktree5'),
+                '6': () => makeBigTile('pinktree6'),
+                '7': () => makeBigTile('pinktree7'),
+                '8': () => makeBigTile('pinktree8'),
+                '9': () => makeBigTile('pinktree9'),
+                'a': () => makeBigTile('orangetree1'),
+                'b': () => makeBigTile('orangetree2'),
+                'c': () => makeBigTile('orangetree3'),
+                'd': () => makeBigTile('orangetree4'),
+                'e': () => makeBigTile('orangetree5'),
+                'f': () => makeBigTile('orangetree6'),
+                'g': () => makeBigTile('orangetree7'),
+                'h': () => makeBigTile('orangetree8'),
+                'i': () => makeBigTile('orangetree9'),
+                'j': () => makeBigTile('greentree1'),
+                'k': () => makeBigTile('greentree2'),
+                'l': () => makeBigTile('greentree3'),
+                'm': () => makeBigTile('greentree4'),
+                'n': () => makeBigTile('greentree5'),
+                'o': () => makeBigTile('greentree6'),
+                'p': () => makeBigTile('greentree7'),
+                'q': () => makeBigTile('greentree8'),
+                'r': () => makeBigTile('greentree9'),
+                's': () => makeBigTile('stairs1'),
+                't': () => makeBigTile('stairs2'),
+                'u': () => makeBigTile('stairs3'),
+                'v': () => makeBigTile('stairs4'),
+                'w': () => makeBigTile('stairs5'),
+                'x': () => makeBigTile('stairs6'),
+                'y': () => makeBigTile('stairs7'),
+                'z': () => makeBigTile('stairs8'),
+                'B': () => makeBigTile('tank1'),
+                'C': () => makeBigTile('tank2'),
+                'D': () => makeBigTile('tank3'),
+                'E': () => makeBigTile('tank4'),
+                'F': () => makeBigTile('tank5'),
+                'G': () => makeBigTile('tank6'),
+                'H': () => makeBigTile('bridge1'),
+                'I': () => makeBigTile('bridge2'),
+                'J': () => makeBigTile('bridge3'),
+                'K': () => makeBigTile('bridge4'),
+                'L': () => makeBigTile('bridge5'),
+                'M': () => makeBigTile('bridge6'),
+                'N': () => makeBigTile('bridge7'),
+                'O': () => makeBigTile('bridge8'),
+                'P': () => makeBigTile('bridge9'),
+                'Q': () => makeBigTile('bridge10'),
+                'R': () => makeBigTile('bridge11'),
+                'S': () => makeBigTile('bridge12'),
+                'T': () => makeBigTile('bridge13'),
+                'U': () => makeBigTile('bridge14'),
+                'V': () => makeBigTile('bridge15'),
+                'W': () => makeBigTile('bridge16'),
+                'X': () => makeBigTile('bridge17'),
+                'Y': () => makeBigTile('bridge18'),
+            }
+        }),
+        addLevel([
+            '                                                         ',
+            '                                         0123            ',
+            '                                         45678           ',
+            '                                         9abcd           ',
+            '                                         efghi           ',
+            '                                         jklmn           ',
+            '                                         xopqr           ',
+            '                                         stuvw           ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '     0123                                                ',
+            '     45678                                               ',
+            '     9abcd                                               ',
+            '     efghi                                               ',
+            '     jklmn                                               ',
+            '     xopqr                                               ',
+            '     stuvw                                               ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeBigTile('bluehouse1'),
+                '1': () => makeBigTile('bluehouse2'),
+                '2': () => makeBigTile('bluehouse3'),
+                '3': () => makeBigTile('bluehouse4'),
+                '4': () => makeBigTile('bluehouse5'),
+                '5': () => makeBigTile('bluehouse6'),
+                '6': () => makeBigTile('bluehouse7'),
+                '7': () => makeBigTile('bluehouse8'),
+                '8': () => makeBigTile('bluehouse9'),
+                '9': () => makeBigTile('bluehouse10'),
+                'a': () => makeBigTile('bluehouse11'),
+                'b': () => makeBigTile('bluehouse12'),
+                'c': () => makeBigTile('bluehouse13'),
+                'd': () => makeBigTile('bluehouse14'),
+                'e': () => makeBigTile('bluehouse15'),
+                'f': () => makeBigTile('bluehouse16'),
+                'g': () => makeBigTile('bluehouse17'),
+                'h': () => makeBigTile('bluehouse18'),
+                'i': () => makeBigTile('bluehouse19'),
+                'j': () => makeBigTile('bluehouse20'),
+                'k': () => makeBigTile('bluehouse21'),
+                'l': () => makeBigTile('bluehouse22'),
+                'm': () => makeBigTile('bluehouse23'),
+                'n': () => makeBigTile('bluehouse24'),
+                'o': () => makeBigTile('bluehouse26'),
+                'p': () => makeBigTile('bluehouse27'),
+                'q': () => makeBigTile('bluehouse28'),
+                'r': () => makeBigTile('bluehouse29'),
+                's': () => makeBigTile('bluehouse30'),
+                't': () => makeBigTile('bluehouse31'),
+                'u': () => makeBigTile('bluehouse32'),
+                'v': () => makeBigTile('bluehouse33'),
+                'w': () => makeBigTile('bluehouse34'),
+                'x': () => makeBigTile('bluehouse25'),
+            }
+        }),
+        addLevel([
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                             012         ',
+            '                                            34567        ',
+            '                                            89abcdef     ',
+            '                                            ghijklmn     ',
+            '                                            opqrstuv     ',
+            '                                            wGHIxyzA     ',
+            '           012                              BCDEF        ',
+            '          34567                                          ',
+            '          89abcdef                                       ',
+            '          ghijklmn                                       ',
+            '          opqrstuv                                       ',
+            '          wGHIxyzA                                       ',
+            '          BCDEF                                          ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ', 
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeBigTile('orangehouse1'),
+                '1': () => makeBigTile('orangehouse2'),
+                '2': () => makeBigTile('orangehouse3'),
+                '3': () => makeBigTile('orangehouse4'),
+                '4': () => makeBigTile('orangehouse5'),
+                '5': () => makeBigTile('orangehouse6'),
+                '6': () => makeBigTile('orangehouse7'),
+                '7': () => makeBigTile('orangehouse8'),
+                '8': () => makeBigTile('orangehouse9'),
+                '9': () => makeBigTile('orangehouse10'),
+                'a': () => makeBigTile('orangehouse11'),
+                'b': () => makeBigTile('orangehouse12'),
+                'c': () => makeBigTile('orangehouse13'),
+                'd': () => makeBigTile('orangehouse14'),
+                'e': () => makeBigTile('orangehouse15'),
+                'f': () => makeBigTile('orangehouse16'),
+                'g': () => makeBigTile('orangehouse17'),
+                'h': () => makeBigTile('orangehouse18'),
+                'i': () => makeBigTile('orangehouse19'),
+                'j': () => makeBigTile('orangehouse20'),
+                'k': () => makeBigTile('orangehouse21'),
+                'l': () => makeBigTile('orangehouse22'),
+                'm': () => makeBigTile('orangehouse23'),
+                'n': () => makeBigTile('orangehouse24'),
+                'o': () => makeBigTile('orangehouse25'),
+                'p': () => makeBigTile('orangehouse26'),
+                'q': () => makeBigTile('orangehouse27'),
+                'r': () => makeBigTile('orangehouse28'),
+                's': () => makeBigTile('orangehouse29'),
+                't': () => makeBigTile('orangehouse30'),
+                'u': () => makeBigTile('orangehouse31'),
+                'v': () => makeBigTile('orangehouse32'),
+                'w': () => makeBigTile('orangehouse33'),
+                'x': () => makeBigTile('orangehouse34'),
+                'y': () => makeBigTile('orangehouse35'),
+                'z': () => makeBigTile('orangehouse36'),
+                'A': () => makeBigTile('orangehouse37'),
+                'B': () => makeBigTile('orangehouse38'),
+                'C': () => makeBigTile('orangehouse39'),
+                'D': () => makeBigTile('orangehouse40'),
+                'E': () => makeBigTile('orangehouse41'),
+                'F': () => makeBigTile('orangehouse42'),
+                'G': () => makeBigTile('orangehouse43'),
+                'H': () => makeBigTile('orangehouse44'),
+                'I': () => makeBigTile('orangehouse45'),
+            }
+        }),
+        addLevel([
+            '                                                         ',       
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                       01                                ',
+            '                      2345                               ',
+            '                    6789abcd                             ',
+            '                    efghijkl                             ',
+            '                    mnopqrst                             ',
+            '                    uvwxyzAB                             ',
+            '                    CDEFGHIJ                             ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+            '                                                         ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeBigTile('church1'),
+                '1': () => makeBigTile('church2'),
+                '2': () => makeBigTile('church3'),
+                '3': () => makeBigTile('church4'),
+                '4': () => makeBigTile('church5'),
+                '5': () => makeBigTile('church6'),
+                '6': () => makeBigTile('church7'),
+                '7': () => makeBigTile('church8'),
+                '8': () => makeBigTile('church9'),
+                '9': () => makeBigTile('church10'),
+                'a': () => makeBigTile('church11'),
+                'b': () => makeBigTile('church12'),
+                'c': () => makeBigTile('church13'),
+                'd': () => makeBigTile('church14'),
+                'e': () => makeBigTile('church15'),
+                'f': () => makeBigTile('church16'),
+                'g': () => makeBigTile('church17'),
+                'h': () => makeBigTile('church18'),
+                'i': () => makeBigTile('church19'),
+                'j': () => makeBigTile('church20'),
+                'k': () => makeBigTile('church21'),
+                'l': () => makeBigTile('church22'),
+                'm': () => makeBigTile('church23'),
+                'n': () => makeBigTile('church24'),
+                'o': () => makeBigTile('church25'),
+                'p': () => makeBigTile('church26'),
+                'q': () => makeBigTile('church27'),
+                'r': () => makeBigTile('church28'),
+                's': () => makeBigTile('church29'),
+                't': () => makeBigTile('church30'),
+                'u': () => makeBigTile('church31'),
+                'v': () => makeBigTile('church32'),
+                'w': () => makeBigTile('church33'),
+                'x': () => makeBigTile('church34'),
+                'y': () => makeBigTile('church35'),
+                'z': () => makeBigTile('church36'),
+                'A': () => makeBigTile('church37'),
+                'B': () => makeBigTile('church38'),
+                'C': () => makeBigTile('church39'),
+                'D': () => makeBigTile('church40'),
+                'E': () => makeBigTile('church41'),
+                'F': () => makeBigTile('church42'),
+                'G': () => makeBigTile('church43'),
+                'H': () => makeBigTile('church44'),
+                'I': () => makeBigTile('church45'),
+                'J': () => makeBigTile('church46'),
+            }
+        }),
+        addLevel([
+            '                                                         ',
+            '                                                         ',
+            '                   eeeeeeeee                             ',
+            '                ccccccccccccc                            ',
+            '                4444444444444         0                  ',
+            '                gggggggggggg           2                 ',
+            '                     4    4     144   444                ',
+            '                4              4   1   c0     434   44   ',
+            '                4              42324    c4   24 1  c44   ',
+            '             cc44 24        20  3234   444   34    4c4   ',
+            '             cc4  4         43  23244                    ',
+            '             444  23        32  4  4                     ',                                         
+            '             cc4  4444     024 43 4 2cccc     3 44       ',
+            '             cc4  323      444 42 4 4  33    2  44       ',                                      
+            '                1 d44d4  4d44d 43   2   2 86 3           ',
+            '                                  44  443  7 2  444      ',
+            '                                1444 4442  8      44     ',
+            '             4     44    ccccccccccccccc1 56      444    ',
+            '              4        56                           40   ',
+            '                       75       7   6  856               ',
+            '                        856  678  5 86   756             ',
+            '              9        eee                 7             ',
+            '    eeeeeee                cccccc    ccc 6 5      4442   ',
+            '      4423        44        4444  68     5   3    44     ',
+            '   444  1          2     b   4444 7    567      44 44    ',
+            '    34442          3        44440  5 c 6        424      ',
+            '     24 3                         67 4 6   5867 343      ',
+            '    444 2                   56     5 2   86  55  44      ',
+            '  4444         20ccc        7  86e    e                  ',
+            '  1 4                             3  234443223           ',
+            '   44      756    6         cccc0 2  34 4                ',
+            '    2         865           44    2  344         b       ',
+            '  41       5 8                   dddddd4                 ',
+            '            56   ccc                                     ',
+            '     4  44 6     c                                       ',
+            '      dddddddddd c                                  a    ',
+            '                                                         ',
+            '                                                         ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => makeSmallTile('rock'),
+                '1': () => makeSmallTile('rock2'),
+                '2': () => makeSmallTile('yellowF'),
+                '3': () => makeSmallTile('blueF'),
+                '4': () => makeSmallTile('grassy'),
+                '5': () => makeSmallTile('mudRock'),
+                '6': () => makeSmallTile('mudRock1'),
+                '7': () => makeSmallTile('mudRock2'),
+                '8': () => makeSmallTile('mudRock3'),
+                '9': () => makeSmallTile('waterRock1'),
+                'a': () => makeSmallTile('waterRock2'),
+                'b': () => makeSmallTile('waterRock3'),
+                'c': () => makeSmallTile('doubleF'),
+                'd': () => makeSmallTile('fence'),
+                'e': () => makeSmallTile('smallfence'),
+            }
+        }),
+         addLevel([
+            '                                                         ',
+            '                                                         ',
+            '            0000000000000000000000000000000000000000000  ',
+            '            0                        0000000000000    0  ',
+            '            0                        0   000000000    0  ',
+            '            0    000000000000000     0   000000000    0  ',
+            '            0    000000000000000     0  000 0    0    0  ',
+            '            0    0  000000000  0     0           0    0  ',
+            '            0    0  000000000  0     0          00    0  ',
+            '            0    0  000000000 0      0           0    0  ',
+            '            0    0   00000    0      00000  000000    0  ',
+            '            0    0            0      o                0  ',
+            '            0    0            0          0  0         0  ',
+            '            0    0            0          0  0         0  ',
+            '            0    00  0    0  00          0  0         0  ',
+            '            0    000000  000000          0  0         0  ',
+            '            0    o                      0  e0         0  ',
+            '            0         0  00000000000000000  0         0  ',
+            '            0         0                     0       000  ',
+            '                     00                     00000000  0  ',
+            '                     00                     00000000  0  ',
+            '                     0000                   00 0      0  ',
+            ' 000000000000000000000000000000000  00 0              0  ',
+            ' 0       0000000    000   0      0  0 000             0  ',
+            ' 0      0000000000  000   0      0  0                 0  ',
+            ' 0       000000000  000   00000000  0              0000  ',
+            ' 0       000000000                                 0000  ',
+            ' 0         0 0  0                                  0000  ',
+            ' 0   0000                             0               0  ',
+            ' 00  00000            0000                    c00000000  ',
+            ' 0   00000            0   0000000  00      000000000000  ',
+            ' 0   00000            0   0     0  00      0000          ',
+            ' 0   00 00          000   0      000000    0000          ',
+            ' 0 0                000   000000000000000000000          ',
+            ' 000                000   000000000000000000000          ',
+            ' 000  0        0    000                                  ',
+            ' 0006600000000000660000                                  ',
+            ' 0000000000000000000000                                  ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => [
+                    area({shape: new Rect(vec2(0), 16, 16)}),
+                    body({isStatic: true})
+                ],
+            }
+        })
+    
+]
+    for (const layer of map) {
+        layer.use(scale(2.5))
+        for (const tile of layer.children) {
+            if (tile.type) {
+                tile.play(tile.type)
+            }
+        }
+    }
+
+
+// add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,400), scale(2.5), 'cat'])
+
+// const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(400,300), scale(2.5), 'spider'])
+// spiderMon.play('spider')
+// spiderMon.flipX = true
+
+// const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(2.5), 'centipede'])
+// centipedeMon.play('centipede')
+
+// const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(300, 270), scale(2.5), 'grass'])
+// grassMon.play('grass')
+
+add([ sprite('npc'), scale(2.5), pos(950,480), area(), body({isStatic: true}), 'npc'])
+
+
+const player = add([
+    sprite('player-down'),
+    pos(990,1150),
+    scale(2.5),
+    area(),
+    body(),
+    {
+        currentSprite: 'player-down',
+        speed: 300,
+        isInDialogue: false,
+    }
+])
+
+let tick = 0
+onUpdate(() => {
+    camPos(player.pos)
+    // tick++
+    // if ((isKeyDown('down') || isKeyDown('up')) 
+    // && tick % 20 === 0 
+    // && !player.isInDialogue) {
+    //     player.flipX = !player.flipX
+    // }
+})
+
+function setSprite(player, spriteName){
+    if (player.currentSprite !== spriteName){
+        player.use(sprite(spriteName))
+        player.currentSprite = spriteName
+    }
+}
+
+// onKeyDown('down', () => {
+//     if (player.isInDialogue) {
+//         return
+//     }
+//     setSprite(player, 'player-down')
+//     player.move(player.speed,0)
+// })
+
+// onKeyDown('up', () => {
+//     if (player.isInDialogue) {
+//         return
+//     }
+//     setSprite(player, 'player-up')
+//     player.move(0, -player.speed)
+// })
+onKeyDown('down', () => {
+    if (player.isInDialogue){ 
+        return
+    }
+    if (player.curAnim() !== 'godown'){
+        setSprite(player, 'player-down')
+        player.play('godown')
+    }
+    player.move(0,player.speed)
+})
+onKeyDown('up', () => {
+    if (player.isInDialogue){ 
+        return
+    }
+    if (player.curAnim() !== 'goup'){
+        setSprite(player, 'player-up')
+        player.play('goup')
+    }
+    player.move(0,-player.speed)
+})
+
+onKeyDown('left', () => {
+    if (player.isInDialogue){ 
+        return
+    }
+    player.flipX = false
+    if (player.curAnim() !== 'walk'){
+        setSprite(player, 'player-side')
+        player.play('walk')
+    }
+    player.move(-player.speed, 0)
+})
+onKeyDown('right', () => {
+    if (player.isInDialogue){ 
+        return
+    }
+    player.flipX = true
+    if (player.curAnim() !== 'walk'){
+        setSprite(player, 'player-side')
+        player.play('walk')
+    }
+    player.move(player.speed, 0)
+})
+
+onKeyRelease('left', () => {
+    player.stop()
+})
+onKeyRelease('right', () => {
+    player.stop()
+})
+onKeyRelease('up', () => {
+    player.stop()
+})
+onKeyRelease('down', () => {
+    player.stop()
+})
+
+
+if (!worldState){
+    worldState = {
+        playerPos : player.pos,
+        faintedMons : []
+    }
+}
+
+player.pos = vec2(worldState.playerPos)
+for (const faintedMons of worldState.faintedMons){
+   destroy(get(faintedMons)[0])
+}
+
+// player.onCollide('npc', () => {
+//     player.isInDialogue = true
+//     const dialogueBoxFixedContainer = add([fixed()])
+//     const dialogueBox = dialogueBoxFixedContainer.add([
+//         rect(1000, 200),
+//         outline(5),
+//         pos(150,500),
+//         fixed()
+//     ])
+//     const dialogue = "Defeat all monsters on this island and you'll become the champion !"
+//     const content = dialogueBox.add([
+//         text('',
+//         {
+//             $size : 42,
+//             width: 900,
+//             lineSpacing: 15,
+//         }),
+//         color(10,10,10),
+//         pos(40,30),
+//         fixed()
+//     ])
+
+//     if (worldState.faintedMons < 4){
+//         content.text = dialogue
+//     } else {
+//         content.text = "You did it! You're the champion!"
+//     }
+
+//     onUpdate(() => {
+//         if (isKeyDown('space')){
+//            destroy(dialogueBox)
+//             player.isInDialogue = false
+//         }
+//         // if (isKeyDown('enter')){
+//         //     window.open('https://www.codexworld.com', '_blank');
+//         // }
+//     })
+// })
+
+// function flashScreen() {
+//     const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
+//     tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
+// }
+// function onCollideWithPlayer(enemyName, player, worldState){
+//     player.onCollide(enemyName,() => {
+//         flashScreen()
+//         setTimeout(() => {
+//             worldState.playerPos = player.pos 
+//             worldState.enemyName = enemyName
+//             go('battle', worldState)
+//         }, 1000)
+//     })
+// }
+
+// onCollideWithPlayer('cat', player, worldState)
+// onCollideWithPlayer('spider', player, worldState)
+// onCollideWithPlayer('centipede', player, worldState)
+// onCollideWithPlayer('grass', player, worldState)
+
+
+}
