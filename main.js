@@ -1,15 +1,17 @@
 kaboom({
     width: 1280,
     height: 720,
-    stretch: true,
 })
 
 setBackground(Color.fromHex("#065694"))
 
 loadAssets()
+loadAssets2()
 
 scene('world', (worldState) => setWorld(worldState))
-scene('battle', (worldState) => setBattle(worldState))
+scene('myhouse', (worldState) => setMyHouse(worldState))
+scene('skills', (worldState) => setSkills(worldState))
+scene('school', (worldState) => setSchool(worldState))
 
 go('world')
 

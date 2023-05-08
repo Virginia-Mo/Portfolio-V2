@@ -2,27 +2,22 @@ function loadAssets(){
     loadSpriteAtlas('/assets/spr_alex.png', {
         'player-down': {x: 0, y: 8, width: 64, height: 32, sliceX : 4, sliceY:1, 
             anims: {
-            'godown': {from: 0, to: 1, speed:5}}
+            'godown': {from: 0, to: 1, speed:6}}
         },
         'player-up': {x: 0, y:104, width: 64, height: 32, sliceX : 4, sliceY:1, 
             anims: {
-            'goup': {from: 0, to: 1, speed:5}}
+            'goup': {from: 0, to: 1, speed:6}}
         },
         'player-side': {x: 0, y:32, width: 32, height: 32, sliceX : 2, sliceY:1, 
             anims: {
-            'walk': {from: 0, to: 1, speed:5}}
+            'walk': {from: 0, to: 1, speed:6}}
         },
-        // 'npc':{x: 32, y: 98, width: 16, height: 16},
-        // 'cat-mon':{x : 0, y: 16, width: 32, height: 32},
-        // 'spider-mon':{x: 32, y: 16, width: 32, height: 32},
-        // 'centipede-mon':{x: 64, y: 16, width: 32, height: 32},
-        // 'grass-mon':{x: 96, y: 16, width: 32, height: 32},
-        // 'mushroom-mon':{x: 32, y: 49, width: 32, height: 32},
-        // 'mini-mons':{ x: 0, y: 0, width: 128, height: 14, sliceX: 8, sliceY: 1,
-        //     anims: { 'spider': 1, 'centipede': 2, 'grass': 3} }
     })
     loadSpriteAtlas('/assets/spr_anna.png', {
         'npc':{x: 0, y: 9, width: 16, height: 18},
+    })
+    loadSpriteAtlas('/assets/churchday.png', {
+        'church42':{x: 48, y: 80, width: 16, height: 16},
     })
     loadSprite('battle-background', '/assets/battleBackground.png')
     loadSpriteAtlas('/assets/tileset_village.png',{

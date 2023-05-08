@@ -540,7 +540,7 @@ const map = [
             '            0    0  000000000  0     0           0    0  ',
             '            0    0  000000000  0     0          00    0  ',
             '            0    0  000000000 0      0           0    0  ',
-            '            0    0   00000    0      00000  000000    0  ',
+            '            0    0    0000    0      00000  000000    0  ',
             '            0    0            0      o                0  ',
             '            0    0            0          0  0         0  ',
             '            0    0            0          0  0         0  ',
@@ -588,45 +588,24 @@ const map = [
             }
         }
     }
-
-
-// add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,400), scale(2.5), 'cat'])
-
-// const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(400,300), scale(2.5), 'spider'])
-// spiderMon.play('spider')
-// spiderMon.flipX = true
-
-// const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(2.5), 'centipede'])
-// centipedeMon.play('centipede')
-
-// const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(300, 270), scale(2.5), 'grass'])
-// grassMon.play('grass')
-
-add([ sprite('npc'), scale(2.5), pos(950,480), area(), body({isStatic: true}), 'npc'])
-
+add([ sprite('npc'), scale(2.5), pos(1030,480), area(), body({isStatic: true}), 'npc'])
+add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
 
 const player = add([
     sprite('player-down'),
-    pos(990,1150),
     scale(2.5),
+    pos(950,500),
     area(),
     body(),
     {
         currentSprite: 'player-down',
-        speed: 300,
+        speed: 400,
         isInDialogue: false,
     }
 ])
 
-let tick = 0
 onUpdate(() => {
     camPos(player.pos)
-    // tick++
-    // if ((isKeyDown('down') || isKeyDown('up')) 
-    // && tick % 20 === 0 
-    // && !player.isInDialogue) {
-    //     player.flipX = !player.flipX
-    // }
 })
 
 function setSprite(player, spriteName){
@@ -636,21 +615,6 @@ function setSprite(player, spriteName){
     }
 }
 
-// onKeyDown('down', () => {
-//     if (player.isInDialogue) {
-//         return
-//     }
-//     setSprite(player, 'player-down')
-//     player.move(player.speed,0)
-// })
-
-// onKeyDown('up', () => {
-//     if (player.isInDialogue) {
-//         return
-//     }
-//     setSprite(player, 'player-up')
-//     player.move(0, -player.speed)
-// })
 onKeyDown('down', () => {
     if (player.isInDialogue){ 
         return
@@ -716,69 +680,98 @@ if (!worldState){
     }
 }
 
-player.pos = vec2(worldState.playerPos)
-for (const faintedMons of worldState.faintedMons){
-   destroy(get(faintedMons)[0])
+
+
+player.onCollide('npc', () => {
+    player.isInDialogue = true
+    let dialogs = [
+        [ "Bonjour! Bienvenue sur mon Portfolio!" ],
+        [ "Je suis Virginia Mo, developpeuse web." ],
+        [ "Voici mon petit monde dans lequel chaque maison represente une partie de mon portfolio." ],
+        [ "N'hesitez pas a vous promener et admirez le paysage :) !" ],
+        [ "PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit! Bon voyage~" ],
+    ]
+    
+    let curDialog = 0
+    let back = 0
+    back ++
+    const dialogueBoxFixedContainer = add([fixed()])
+    const dialogueBox = dialogueBoxFixedContainer.add([
+        rect(1000, 200, { radius: 32 }),
+        outline(5),
+        pos(150,500),
+        fixed()
+    ])
+
+    const content = dialogueBox.add([
+        text('',
+        {
+            size : 42,
+            width: 900,
+            lineSpacing: 15,
+        }),
+        color(10,10,10),
+        pos(40,30),
+        fixed()
+    ])
+// if (back === 1){
+//             content.text = dialogs
+//         } else if (back === 2) {
+//             dialogs = ["N'hésitez pas à me contacter si vous avez des questions!"]
+//             content.text = dialogs
+//         } else {
+//             dialogs = ["Merci d'avoir visité mon portfolio!"]
+//             content.text = dialogs
+//         }
+
+    onKeyPress("space", () => {
+        curDialog = (curDialog + 1) % dialogs.length
+        updateDialog()
+             console.log(curDialog)
+                if (curDialog ===0 ){
+            destroy(dialogueBox)
+            player.isInDialogue = false
+        }
+    })
+    onKeyPress("escape", () => {
+        destroy(dialogueBox)
+        player.isInDialogue = false
+    })
+    function updateDialog() {
+        const [ dialog ] = dialogs[curDialog]
+        content.text = dialog
+
+    }
+    updateDialog()
+})
+player.onCollide('church42', () => {   
+    worldState.playerPos = player.pos 
+    go("world", worldState)
+})
+
+onClick(() => {
+    player.moveTo(mousePos())
+})
+
+function flashScreen() {
+    const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
+    tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
+}
+function onCollideWithPlayer(enemyName, player, worldState){
+    player.onCollide(enemyName,() => {
+        flashScreen()
+        setTimeout(() => {
+            worldState.playerPos = player.pos 
+            worldState.enemyName = enemyName
+            go('battle', worldState)
+        }, 1000)
+    })
 }
 
-// player.onCollide('npc', () => {
-//     player.isInDialogue = true
-//     const dialogueBoxFixedContainer = add([fixed()])
-//     const dialogueBox = dialogueBoxFixedContainer.add([
-//         rect(1000, 200),
-//         outline(5),
-//         pos(150,500),
-//         fixed()
-//     ])
-//     const dialogue = "Defeat all monsters on this island and you'll become the champion !"
-//     const content = dialogueBox.add([
-//         text('',
-//         {
-//             $size : 42,
-//             width: 900,
-//             lineSpacing: 15,
-//         }),
-//         color(10,10,10),
-//         pos(40,30),
-//         fixed()
-//     ])
-
-//     if (worldState.faintedMons < 4){
-//         content.text = dialogue
-//     } else {
-//         content.text = "You did it! You're the champion!"
-//     }
-
-//     onUpdate(() => {
-//         if (isKeyDown('space')){
-//            destroy(dialogueBox)
-//             player.isInDialogue = false
-//         }
-//         // if (isKeyDown('enter')){
-//         //     window.open('https://www.codexworld.com', '_blank');
-//         // }
-//     })
-// })
-
-// function flashScreen() {
-//     const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
-//     tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
-// }
-// function onCollideWithPlayer(enemyName, player, worldState){
-//     player.onCollide(enemyName,() => {
-//         flashScreen()
-//         setTimeout(() => {
-//             worldState.playerPos = player.pos 
-//             worldState.enemyName = enemyName
-//             go('battle', worldState)
-//         }, 1000)
-//     })
-// }
-
-// onCollideWithPlayer('cat', player, worldState)
-// onCollideWithPlayer('spider', player, worldState)
-// onCollideWithPlayer('centipede', player, worldState)
-// onCollideWithPlayer('grass', player, worldState)
+// onCollideWithPlayer('church42', player, worldState)
+onCollideWithPlayer('spider', player, worldState)
+onCollideWithPlayer('centipede', player, worldState)
+onCollideWithPlayer('grass', player, worldState)
 
 
 }
