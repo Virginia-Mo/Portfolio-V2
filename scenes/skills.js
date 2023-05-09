@@ -165,6 +165,38 @@ setBackground(Color.fromHex("#000000"))
                 '9': () => makeSmallTile('candle'),
             }
          }),
+         addLevel([
+            '                                      ',
+            '                                      ',
+            '       00000000000000                 ',
+            '       00000000000000                 ',
+            '       00000000000000                 ',
+            '       00000000000000                 ',
+            '       0    0000    0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0           00                 ',
+            '       0000        00                 ',
+            '       0           00                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0       0   00                 ',
+            '       000000  000000                 ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                '0': () => [
+                    area({shape: new Rect(vec2(0), 16, 16)}),
+                    body({isStatic: true})
+                ],
+            }
+        }),
 
     
 ]
@@ -176,7 +208,105 @@ setBackground(Color.fromHex("#000000"))
             }
         }
     }
+add([ sprite('carpet2'), scale(2.5), pos(520,600), area(), body({isStatic: true}), 'carpet2'])
 
-
+const player = add([
+            sprite('player-up'),
+            scale(2.5),
+            pos(550,500),
+            area(),
+            body(),
+            {
+                currentSprite: 'player-down',
+                speed: 400,
+                isInDialogue: false,
+            }
+        ])
+        
+        onUpdate(() => {
+            camPos(player.pos)
+        })
+        
+        function setSprite(player, spriteName){
+            if (player.currentSprite !== spriteName){
+                player.use(sprite(spriteName))
+                player.currentSprite = spriteName
+            }
+        }
+        
+        onKeyDown('down', () => {
+            if (player.isInDialogue){ 
+                return
+            }
+            if (player.curAnim() !== 'godown'){
+                setSprite(player, 'player-down')
+                player.play('godown')
+            }
+            player.move(0,player.speed)
+        })
+        onKeyDown('up', () => {
+            if (player.isInDialogue){ 
+                return
+            }
+            if (player.curAnim() !== 'goup'){
+                setSprite(player, 'player-up')
+                player.play('goup')
+            }
+            player.move(0,-player.speed)
+        })
+        
+        onKeyDown('left', () => {
+            if (player.isInDialogue){ 
+                return
+            }
+            player.flipX = false
+            if (player.curAnim() !== 'walk'){
+                setSprite(player, 'player-side')
+                player.play('walk')
+            }
+            player.move(-player.speed, 0)
+        })
+        onKeyDown('right', () => {
+            if (player.isInDialogue){ 
+                return
+            }
+            player.flipX = true
+            if (player.curAnim() !== 'walk'){
+                setSprite(player, 'player-side')
+                player.play('walk')
+            }
+            player.move(player.speed, 0)
+        })
+        
+        onKeyRelease('left', () => {
+            player.stop()
+        })
+        onKeyRelease('right', () => {
+            player.stop()
+        })
+        onKeyRelease('up', () => {
+            player.stop()
+        })
+        onKeyRelease('down', () => {
+            player.stop()
+        })
+        if (!worldState){
+            worldState = {
+                playerPos : (850,500),
+            }
+        }
+player.onCollide('carpet2', () => {   
+            flashScreen()
+            setTimeout(() => {
+            worldState.playerPos = vec2(1720,300)
+            go("world", worldState)
+            }, 1000)
+        })
+function flashScreen() {
+            const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
+            tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
+        }
+    
 
 }
+

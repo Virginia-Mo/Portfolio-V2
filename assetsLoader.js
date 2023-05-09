@@ -19,6 +19,12 @@ function loadAssets(){
     loadSpriteAtlas('/assets/churchday.png', {
         'church42':{x: 48, y: 80, width: 16, height: 16},
     })
+    loadSpriteAtlas('/assets/tileset_village.png', {
+        'blueh':{x: 32, y: 192, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/tileset_village.png', {
+        'orangeh':{x: 112, y: 192, width: 16, height: 16},
+    })
     loadSprite('battle-background', '/assets/battleBackground.png')
     loadSpriteAtlas('/assets/tileset_village.png',{
         'tile': {x: 0, y: 0, width: 384, height: 400, sliceX:24, sliceY:25,
@@ -281,6 +287,44 @@ function loadAssets(){
             'doubleF': 367,
             'fence': 396,
             'smallfence': 397,
+        }},
+    })
+    loadSpriteAtlas('/assets/boards.png',{
+        'boardtiles': {x: 0, y: 0, width: 384, height: 400, sliceX:24, sliceY:25,
+        anims:{
+            'skills': 137,
+            'skills1': 138,
+            'skills2': 139,
+            'skills3': 161,
+            'skills4': 162,
+            'skills5': 163,
+            'skills6': 186,
+            'relax': 85,
+            'relax1': 86,
+            'relax2': 87,
+            'relax3': 109,
+            'relax4': 110,
+            'relax5': 111,
+            'relax6': 134,
+            'contact': 13,
+            'contact1': 14,
+            'contact2': 15,
+            'contact3': 37,
+            'contact4': 38,
+            'contact5': 39,
+            'contact6': 62,
+            'exp': 41,
+            'exp1': 42,
+            'exp2': 43,
+            'exp3': 65,
+            'exp4': 66,
+            'exp5': 67,
+            'exp6': 89,
+            'exp7': 90,
+            'projets': 93,
+            'projets1': 94,
+            'projets2': 95,
+            'projets3': 118,
         }},
     })
 } 

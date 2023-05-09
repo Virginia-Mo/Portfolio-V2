@@ -1,5 +1,4 @@
-function setMyHouse(worldState) {
-console.log(worldState)
+function setProjects(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),
@@ -25,19 +24,19 @@ setBackground(Color.fromHex("#000000"))
             '                                      ',
             '                                      ',
             '                                      ',
-            '      56666666666666666667            ',
-            '      9333333333333333333a            ',
-            '      9444444444444444444a            ',
-            '      9111222111221112211a            ',
-            '      9111111112222111221a            ',
-            '      9222111111111111111a            ',
-            '      9111122111112211111a            ',
-            '      9122111111222221221a            ',
-            '      9111112221111111111a            ',
-            '      9112211111222111111a            ',
-            '      cddddddb1111fdddddde            ',
-            '             cb11fe                   ',
-            '              cdde                    ',
+            '      566666666666667                 ',
+            '      91111111111111a                 ',
+            '      92222222222222a                 ',
+            '      90000000000000a                 ',
+            '      90000000000000a                 ',
+            '      90000000000000a                 ',
+            '      90000000000000a                 ',
+            '      900000000fdddde                 ',
+            '      900000000a                      ',
+            '      900000000a                      ',
+            '      cddb00fdde                      ',
+            '         cdde                         ',
+            '                                      ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -47,11 +46,9 @@ setBackground(Color.fromHex("#000000"))
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeTile('black'),
-                '1': () => makeTile('ground-dark'),
-                '2': () => makeTile('ground-dark-details'),
-                '3': () => makeTile('brickwalltop'),
-                '4': () => makeTile('brickwallbottom'),
+                '0': () => makeTile('ground-clear'),
+                '1': () => makeTile('redwalltop'),
+                '2': () => makeTile('redwallbottom'),
                 '5': () => makeTile('cornerwallTL'),
                 '6': () => makeTile('wall'),
                 '7': () => makeTile('cornerwallTR'),
@@ -70,17 +67,18 @@ setBackground(Color.fromHex("#000000"))
             '                                      ',
             '                                      ',
             '                                      ',
-            '        o 01    01    01              ',
-            '        p 23 de 23deq 23k             ',
-            '             fg   fgr   l             ',
-            '        F F        456 s              ',
-            '        uvw        789 t              ',
-            '        xyz        abc                ',
-            '        BCD            s              ',
-            '        E E        h h tk             ',
-            '              G  G      l             ',
-            '              H  H                    ',
-            '               mn                     ',
+            '        d d d d d01                   ',
+            '       fe e e e e23f                  ',
+            '       g4555555556 g                  ',
+            '        7888888889                    ',
+            '        abbbbbbbbc q                  ',
+            '                 h r                  ',
+            '        w                             ',
+            '        st   kl                       ',
+            '       wuv   mn                       ',
+            '          op                          ',
+            '                                      ',
+            '                                      ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -103,34 +101,24 @@ setBackground(Color.fromHex("#000000"))
                 'a': () => makeBigTile('redcarpet6'),
                 'b': () => makeBigTile('redcarpet7'),
                 'c': () => makeBigTile('redcarpet8'),
-                'd': () => makeBigTile('board'),
-                'e': () => makeBigTile('board1'),
-                'f': () => makeBigTile('board2'),
-                'g': () => makeBigTile('board3'),
+                'd': () => makeBigTile('miniboard'),
+                'e': () => makeBigTile('miniboard1'),
+                'f': () => makeBigTile('plant'),
+                'g': () => makeBigTile('plant1'),
                 'h': () => makeBigTile('poufred'),
-                'k': () => makeBigTile('tree1'),
-                'l': () => makeBigTile('tree2'),
-                'm': () => makeBigTile('carpetred'),
-                'n': () => makeBigTile('carpetred1'),
-                'o': () => makeBigTile('etagere'),
-                'p': () => makeBigTile('etagere1'),
-                'q': () => makeBigTile('tv1'),
-                'r': () => makeBigTile('tv2'),
-                's': () => makeBigTile('sofa1'),
-                't': () => makeBigTile('sofa2'),
-                'u': () => makeBigTile('table1'),
-                'v': () => makeBigTile('table2'),
-                'w': () => makeBigTile('table3'),
-                'x': () => makeBigTile('table4'),
-                'y': () => makeBigTile('table5'),
-                'z': () => makeBigTile('table6'),
-                'B': () => makeBigTile('table7'),
-                'C': () => makeBigTile('table8'),
-                'D': () => makeBigTile('table9'),
-                'E': () => makeBigTile('backchair'),
-                'F': () => makeBigTile('chair'),
-                'G': () => makeBigTile('plant'),
-                'H': () => makeBigTile('plant1'),
+                'k': () => makeBigTile('commode1'),
+                'l': () => makeBigTile('commode2'),
+                'm': () => makeBigTile('commode3'),
+                'n': () => makeBigTile('commode4'),
+                'o': () => makeBigTile('carpetred'),
+                'p': () => makeBigTile('carpetred1'),
+                'q': () => makeBigTile('sofa1'),
+                'r': () => makeBigTile('sofa2'),
+                's': () => makeBigTile('smalltable'),
+                't': () => makeBigTile('smalltable1'),
+                'u': () => makeBigTile('smalltable2'),
+                'v': () => makeBigTile('smalltable3'),
+                'w': () => makeBigTile('smallchair'),
             }
         }),
         addLevel([
@@ -138,14 +126,15 @@ setBackground(Color.fromHex("#000000"))
             '                                      ',
             '                                      ',
             '                                      ',
-            '          34    34    34              ',
-            '          56    56   056              ',
-            '                     1                ',
+            '                 34                   ',
+            '                 56                   ',
             '                                      ',
             '                                      ',
-            '          2                           ',
+            '               7                      ',
+            '               8                      ',
             '                                      ',
-            '                                      ',
+            '         9    0                      ',
+            '              1                       ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -158,32 +147,34 @@ setBackground(Color.fromHex("#000000"))
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeSmallTile('minitable'),
-                '1': () => makeSmallTile('minitable1'),
-                '2': () => makeSmallTile('coffee'),
+                '0': () => makeSmallTile('book'),
+                '1': () => makeSmallTile('book1'),
                 '3': () => makeSmallTile('curtainred'),
                 '4': () => makeSmallTile('curtainred1'),
                 '5': () => makeSmallTile('curtainred2'),
                 '6': () => makeSmallTile('curtainred3'),
+                '7': () => makeSmallTile('minitable'),
+                '8': () => makeSmallTile('minitable1'),
+                '9': () => makeSmallTile('potion'),
             }
          }),
          addLevel([
             '                                      ',
             '                                      ',
             '                                      ',
-            '      00000000000000000000            ',
-            '      00000000000000000000            ',
-            '      00000000000000000000            ',
-            '      0                 00            ',
-            '      0                  0            ',
-            '      0 000              0            ',
-            '      0 000              0            ',
-            '      0 000              0            ',
-            '      0                  0            ',
-            '      0                 00            ',
-            '      000000000  000000000            ',
-            '             00  00                   ',
-            '              0000                    ',
+            '      000000000000000                 ',
+            '      000000000000000                 ',
+            '      00           00                 ',
+            '      0            00                 ',
+            '      0             0                 ',
+            '      0             0                 ',
+            '      0        0    0                 ',
+            '      0        000000                 ',
+            '      0 00     0                      ',
+            '      0 00   000                      ',
+            '      0000  0000                      ',
+            '         0000                         ',
+            '                                      ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -199,7 +190,6 @@ setBackground(Color.fromHex("#000000"))
                 ],
             }
         }),
-
     
 ]
     for (const layer of map) {
@@ -210,13 +200,12 @@ setBackground(Color.fromHex("#000000"))
             }
         }
     }
-
-    add([ sprite('carpet'), scale(2.5), pos(600,560), area(), body({isStatic: true}), 'carpet'])
+    add([ sprite('carpet'), scale(2.5), pos(400,520), area(), body({isStatic: true}), 'carpet'])
 
     const player = add([
         sprite('player-up'),
         scale(2.5),
-        pos(660,450),
+        pos(400,420),
         area(),
         body(),
         {
@@ -293,7 +282,7 @@ setBackground(Color.fromHex("#000000"))
     onKeyRelease('down', () => {
         player.stop()
     })
- if (!worldState){
+    if (!worldState){
         worldState = {
             playerPos : (850,500),
         }
@@ -301,7 +290,7 @@ setBackground(Color.fromHex("#000000"))
 player.onCollide('carpet', () => {   
         flashScreen()
         setTimeout(() => {
-        worldState.playerPos = vec2(950,500)
+        worldState.playerPos = vec2(1840,940)
         go("world", worldState)
         }, 1000)
     })
@@ -309,4 +298,5 @@ function flashScreen() {
         const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
         tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
     }
+
 }

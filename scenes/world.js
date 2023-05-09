@@ -17,7 +17,13 @@ function setWorld(worldState) {
             {type}
         ]
     }
-
+    function makeBoardTile(type) {
+        return [
+            sprite('boardtiles'),
+            {type}
+        ]
+    }
+    setBackground(Color.fromHex("#065694"))
 const map = [
         addLevel([
             '                                                         ',
@@ -577,6 +583,84 @@ const map = [
                     body({isStatic: true})
                 ],
             }
+        }),
+        addLevel([
+            '                                                         ',
+            '                                                         ',
+            '            0000000000000000000000000000000000000000000  ',
+            '            0                        0000000000000    0  ',
+            '            0                        0   000000000    0  ',
+            '            0    000000000000000     0   000000000    0  ',
+            '            0    000000000000000     0  000 *+1  0    0  ',
+            '            0    0  000000000  0     0      234  0    0  ',
+            '            0    0  000000000  0     0       A  00    0  ',
+            '            0    0  000000000 0      0           0    0  ',
+            '            0    0  cde0000   0      00000  000000    0  ',
+            '            0    0  fgh       0      o                0  ',
+            '            0    0   i        0          0  0         0  ',
+            '            0    0            0          0  0         0  ',
+            '            0    00  0    0  00          0  0         0  ',
+            '            0    000000  000000          0  0         0  ',
+            '            0    0                      0  00         0  ',
+            '            0         0  00000000000000000  0         0  ',
+            '            0         0                     0       000  ',
+            '                     00                     00000000  0  ',
+            '                     00                     00000000  0  ',
+            '                     0000                   00        0  ',
+            ' 000000000000000000000000000000000  00 0       rst    0  ',
+            ' 0       0000000    000   0      0  0 000       u     0  ',
+            ' 0      0000000000  000   0      0  0                 0  ',
+            ' 0       000000000  000   00000000  0              0000  ',
+            ' 0       000000000                                 0000  ',
+            ' 0         0 0 jkl                                 0000  ',
+            ' 0   0000      mno                    0               0  ',
+            ' 00  00000     pq     0000                    000000000  ',
+            ' 0   00000            0   0000000  00      000000000000  ',
+            ' 0   00000            0   0     0  00      0000          ',
+            ' 0  567 00          000   0      000000    0000          ',
+            ' 0 089a             000   000000000000000000000          ',
+            ' 000 b              000   000000000000000000000          ',
+            ' 000  0        0    000                                  ',
+            ' 0000000000000000000000                                  ',
+            ' 0000000000000000000000                                  ',
+        ], {
+            tileWidth: 16,
+            tileHeight: 16,
+            tiles: {
+                    '*': () => makeBoardTile('skills'),
+                    '+': () => makeBoardTile('skills1'),
+                    '1': () => makeBoardTile('skills2'),
+                    '2': () => makeBoardTile('skills3'),
+                    '3': () => makeBoardTile('skills4'),
+                    '4': () => makeBoardTile('skills5'),
+                    'A': () => makeBoardTile('skills6'),
+                    '5': () => makeBoardTile('relax'),
+                    '6': () => makeBoardTile('relax1'),
+                    '7': () => makeBoardTile('relax2'),
+                    '8': () => makeBoardTile('relax3'),
+                    '9': () => makeBoardTile('relax4'),
+                    'a': () => makeBoardTile('relax5'),
+                    'b': () => makeBoardTile('relax6'),
+                    'c': () => makeBoardTile('contact'),
+                    'd': () => makeBoardTile('contact1'),
+                    'e': () => makeBoardTile('contact2'),
+                    'f': () => makeBoardTile('contact3'),
+                    'g': () => makeBoardTile('contact4'),
+                    'h': () => makeBoardTile('contact5'),
+                    'i': () => makeBoardTile('contact6'),
+                    'j': () => makeBoardTile('exp'),
+                    'k': () => makeBoardTile('exp1'),
+                    'l': () => makeBoardTile('exp2'),
+                    'm': () => makeBoardTile('exp3'),
+                    'n': () => makeBoardTile('exp4'),
+                    'o': () => makeBoardTile('exp5'),
+                    'p': () => makeBoardTile('exp6'),
+                    'q': () => makeBoardTile('exp7'),
+                    'r': () => makeBoardTile('projets'),
+                    's': () => makeBoardTile('projets1'),
+                    't': () => makeBoardTile('projets2'),
+                    'u': () => makeBoardTile('projets3'),
+            }
         })
     
 ]
@@ -590,11 +674,15 @@ const map = [
     }
 add([ sprite('npc'), scale(2.5), pos(1030,480), area(), body({isStatic: true}), 'npc'])
 add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
+add([ sprite('blueh'), scale(2.5), pos(1720,240), area(), body({isStatic: true}), 'blueh'])
+add([ sprite('blueh'), scale(2.5), pos(280,1280), area(), body({isStatic: true}), 'blueh1'])
+add([ sprite('orangeh'), scale(2.5), pos(480,1080), area(), body({isStatic: true}), 'orangeh'])
+add([ sprite('orangeh'), scale(2.5), pos(1840,840), area(), body({isStatic: true}), 'orangeh1'])
 
 const player = add([
     sprite('player-down'),
     scale(2.5),
-    pos(950,500),
+    pos(950,800),
     area(),
     body(),
     {
@@ -676,12 +764,10 @@ onKeyRelease('down', () => {
 if (!worldState){
     worldState = {
         playerPos : player.pos,
-        faintedMons : []
+        info : player
     }
 }
-
-
-
+player.pos = vec2(worldState.playerPos)
 player.onCollide('npc', () => {
     player.isInDialogue = true
     let dialogs = [
@@ -745,33 +831,62 @@ player.onCollide('npc', () => {
     updateDialog()
 })
 player.onCollide('church42', () => {   
+    flashScreen()
+    setTimeout(() => {
     worldState.playerPos = player.pos 
-    go("world", worldState)
+    go("myhouse", worldState)
+    }, 1000)
 })
-
-onClick(() => {
-    player.moveTo(mousePos())
+player.onCollide('blueh', () => {   
+    flashScreen()
+    setTimeout(() => {
+    worldState.playerPos = player.pos 
+    go("skills", worldState)
+    }, 1000)
 })
+player.onCollide('blueh1', () => {   
+    flashScreen()
+    setTimeout(() => {
+    worldState.playerPos = player.pos 
+    go("skills", worldState)
+    }, 1000)
+})
+player.onCollide('orangeh', () => {   
+    flashScreen()
+    setTimeout(() => {
+    worldState.playerPos = player.pos 
+    go("school", worldState)
+    }, 1000)
+})
+player.onCollide('orangeh1', () => {   
+    flashScreen()
+    setTimeout(() => {
+    worldState.playerPos = player.pos 
+    go("projects", worldState)
+    }, 1000)
+})
+// onClick(() => {
+//     player.moveTo(mousePos())
+// })
 
 function flashScreen() {
     const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
-    tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
+    tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
 }
-function onCollideWithPlayer(enemyName, player, worldState){
-    player.onCollide(enemyName,() => {
-        flashScreen()
-        setTimeout(() => {
-            worldState.playerPos = player.pos 
-            worldState.enemyName = enemyName
-            go('battle', worldState)
-        }, 1000)
-    })
-}
+// function onCollideWithPlayer(player, worldState){
+//     player.onCollide(() => {
+//         flashScreen()
+//         setTimeout(() => {
+//             worldState.playerPos = player.pos 
+//             go('battle', worldState)
+//         }, 1000)
+//     })
+// }
 
 // onCollideWithPlayer('church42', player, worldState)
-onCollideWithPlayer('spider', player, worldState)
-onCollideWithPlayer('centipede', player, worldState)
-onCollideWithPlayer('grass', player, worldState)
+// onCollideWithPlayer('spider', player, worldState)
+// onCollideWithPlayer('centipede', player, worldState)
+// onCollideWithPlayer('grass', player, worldState)
 
 
 }

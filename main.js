@@ -12,6 +12,7 @@ scene('world', (worldState) => setWorld(worldState))
 scene('myhouse', (worldState) => setMyHouse(worldState))
 scene('skills', (worldState) => setSkills(worldState))
 scene('school', (worldState) => setSchool(worldState))
+scene('projects', (worldState) => setProjects(worldState))
 
 go('world')
 

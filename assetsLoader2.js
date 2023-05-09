@@ -1,4 +1,10 @@
 function loadAssets2(){
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'carpet':{x: 96, y: 48, width:32, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'carpet2':{x: 64, y: 48, width:32, height: 16},
+    })
     loadSpriteAtlas('/assets/atlas_16x.png',{
         'tile2': {x: 0, y: 0, width: 768, height: 256, sliceX:48, sliceY:16,
         anims:{
