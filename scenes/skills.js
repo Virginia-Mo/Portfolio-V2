@@ -209,6 +209,11 @@ setBackground(Color.fromHex("#000000"))
         }
     }
 add([ sprite('carpet2'), scale(2.5), pos(520,600), area(), body({isStatic: true}), 'carpet2'])
+add([ sprite('seriouscat'), scale(2.5), pos(520,215), area(), body({isStatic: true}), 'seriouscat'])
+add([ sprite('library'), scale(2.5), pos(320,160), area(), body({isStatic: true}), 'library'])
+add([ sprite('library'), scale(2.5), pos(400,160), area(), body({isStatic: true}), 'library2'])
+add([ sprite('library'), scale(2.5), pos(640,160), area(), body({isStatic: true}), 'library3'])
+add([ sprite('library'), scale(2.5), pos(720,160), area(), body({isStatic: true}), 'library4'])
 
 const player = add([
             sprite('player-up'),
@@ -301,6 +306,58 @@ player.onCollide('carpet2', () => {
             worldState.playerPos = vec2(1720,300)
             go("world", worldState)
             }, 1000)
+        })
+        player.onCollide('seriouscat', () => {
+            player.isInDialogue = true
+            let dialogs = [
+                ["Bonjour! Pour avoir plus d'informations sur les compétences techniques maitrisées"],
+                ["dirigez vous vers les bibliothèques à droite."],
+                ["Les soft skills et compétences de gestion de projet se trouvent à gauche."],
+                ["Bonne lecture!"],
+            ]
+    
+            let curDialog = 0
+            const dialogueBoxFixedContainer = add([fixed()])
+            const dialogueBox = dialogueBoxFixedContainer.add([
+                rect(1000, 190, {
+                    radius: 32
+                }),
+                outline(4),
+                pos(150, 500),
+                fixed(),
+                color(237, 221, 187),
+            ])
+    
+            const content = dialogueBox.add([
+                text('', {
+                    size: 42,
+                    width: 900,
+                    lineSpacing: 15,
+                }),
+                color(10, 10, 10),
+                pos(40, 30),
+                fixed()
+            ])
+    
+            onKeyPress("space", () => {
+                curDialog = (curDialog + 1) % dialogs.length
+                updateDialog()
+                console.log(curDialog)
+                if (curDialog === 0) {
+                    destroy(dialogueBox)
+                    player.isInDialogue = false
+                }
+            })
+            onKeyPress("escape", () => {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+            })
+    
+            function updateDialog() {
+                const [dialog] = dialogs[curDialog]
+                content.text = dialog
+            }
+            updateDialog()
         })
 function flashScreen() {
             const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])

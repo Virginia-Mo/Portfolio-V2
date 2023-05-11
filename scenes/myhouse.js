@@ -1,24 +1,31 @@
 function setMyHouse(worldState) {
-console.log(worldState)
     function makeTile(type) {
         return [
             sprite('tile2'),
-            {type}
+            {
+                type
+            }
         ]
     }
+
     function makeBigTile(type) {
         return [
             sprite('bigobject2'),
-            {type}
+            {
+                type
+            }
         ]
     }
+
     function makeSmallTile(type) {
         return [
             sprite('smalltiles2'),
-            {type}
+            {
+                type
+            }
         ]
     }
-setBackground(Color.fromHex("#000000"))
+    setBackground(Color.fromHex("#000000"))
 
     const map = [
         addLevel([
@@ -71,8 +78,8 @@ setBackground(Color.fromHex("#000000"))
             '                                      ',
             '                                      ',
             '        o 01    01    01              ',
-            '        p 23 de 23deq 23k             ',
-            '             fg   fgr   l             ',
+            '        p 23de  23deq 23k             ',
+            '            fg    fgr   l             ',
             '        F F        456 s              ',
             '        uvw        789 t              ',
             '        xyz        abc                ',
@@ -166,8 +173,8 @@ setBackground(Color.fromHex("#000000"))
                 '5': () => makeSmallTile('curtainred2'),
                 '6': () => makeSmallTile('curtainred3'),
             }
-         }),
-         addLevel([
+        }),
+        addLevel([
             '                                      ',
             '                                      ',
             '                                      ',
@@ -181,8 +188,8 @@ setBackground(Color.fromHex("#000000"))
             '      0 000              0            ',
             '      0                  0            ',
             '      0                 00            ',
-            '      000000000  000000000            ',
-            '             00  00                   ',
+            '      00000000    00000000            ',
+            '             0    0                   ',
             '              0000                    ',
             '                                      ',
             '                                      ',
@@ -194,14 +201,18 @@ setBackground(Color.fromHex("#000000"))
             tileHeight: 16,
             tiles: {
                 '0': () => [
-                    area({shape: new Rect(vec2(0), 16, 16)}),
-                    body({isStatic: true})
+                    area({
+                        shape: new Rect(vec2(0), 16, 16)
+                    }),
+                    body({
+                        isStatic: true
+                    })
                 ],
             }
         }),
 
-    
-]
+
+    ]
     for (const layer of map) {
         layer.use(scale(2.5))
         for (const tile of layer.children) {
@@ -211,76 +222,78 @@ setBackground(Color.fromHex("#000000"))
         }
     }
 
-    add([ sprite('carpet'), scale(2.5), pos(600,560), area(), body({isStatic: true}), 'carpet'])
-
+    add([sprite('carpet'), scale(2.5), pos(600, 560), area(), 'carpet'])
+    add([sprite('happycat'), scale(2.2), pos(600, 220), area(), 'happycat'])
+    add([sprite('board'), scale(2.5), pos(480, 200), area(), 'board'])
+    add([sprite('board'), scale(2.5), pos(720, 200), area(), 'board2'])
     const player = add([
         sprite('player-up'),
-        scale(2.5),
-        pos(660,450),
+        scale(2.2),
+        pos(600, 450),
         area(),
         body(),
         {
-            currentSprite: 'player-down',
+            // currentSprite: 'player-down',
             speed: 400,
             isInDialogue: false,
         }
     ])
-    
+
     onUpdate(() => {
         camPos(player.pos)
     })
-    
-    function setSprite(player, spriteName){
-        if (player.currentSprite !== spriteName){
+
+    function setSprite(player, spriteName) {
+        if (player.currentSprite !== spriteName) {
             player.use(sprite(spriteName))
             player.currentSprite = spriteName
         }
     }
-    
-    onKeyDown('down', () => {
-        if (player.isInDialogue){ 
-            return
-        }
-        if (player.curAnim() !== 'godown'){
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0,player.speed)
-    })
+
+
     onKeyDown('up', () => {
-        if (player.isInDialogue){ 
+        if (player.isInDialogue) {
             return
         }
-        if (player.curAnim() !== 'goup'){
+        if (player.curAnim() !== 'goup') {
             setSprite(player, 'player-up')
             player.play('goup')
         }
-        player.move(0,-player.speed)
+        player.move(0, -player.speed)
     })
-    
+
     onKeyDown('left', () => {
-        if (player.isInDialogue){ 
+        if (player.isInDialogue) {
             return
         }
         player.flipX = false
-        if (player.curAnim() !== 'walk'){
+        if (player.curAnim() !== 'walk') {
             setSprite(player, 'player-side')
             player.play('walk')
         }
         player.move(-player.speed, 0)
     })
     onKeyDown('right', () => {
-        if (player.isInDialogue){ 
+        if (player.isInDialogue) {
             return
         }
         player.flipX = true
-        if (player.curAnim() !== 'walk'){
+        if (player.curAnim() !== 'walk') {
             setSprite(player, 'player-side')
             player.play('walk')
         }
         player.move(player.speed, 0)
     })
-    
+    onKeyDown('down', () => {
+        if (player.isInDialogue) {
+            return
+        }
+        if (player.curAnim() !== 'godown') {
+            setSprite(player, 'player-down')
+            player.play('godown')
+        }
+        player.move(0, player.speed)
+    })
     onKeyRelease('left', () => {
         player.stop()
     })
@@ -293,20 +306,87 @@ setBackground(Color.fromHex("#000000"))
     onKeyRelease('down', () => {
         player.stop()
     })
- if (!worldState){
+    if (!worldState) {
         worldState = {
-            playerPos : (850,500),
+            playerPos: player.pos,
         }
     }
-player.onCollide('carpet', () => {   
+    player.pos = worldState.playerPos
+    player.onCollide('carpet', () => {
         flashScreen()
         setTimeout(() => {
-        worldState.playerPos = vec2(950,500)
-        go("world", worldState)
+            worldState.playerPos = vec2(950, 500)
+            go("world", worldState)
         }, 1000)
     })
-function flashScreen() {
-        const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
+
+    player.onCollide('happycat', () => {
+        player.isInDialogue = true
+        let dialogs = [
+            ["Bonjour! Vous trouverez à gauche une description succinte de Virginia."],
+            ["Et à droite, les différentes informations de contact."],
+            ["Bonne lecture!"],
+        ]
+
+        let curDialog = 0
+        const dialogueBoxFixedContainer = add([fixed()])
+        const dialogueBox = dialogueBoxFixedContainer.add([
+            rect(1000, 170, {
+                radius: 32
+            }),
+            outline(4),
+            pos(150, 500),
+            fixed(),
+            color(237, 221, 187),
+        ])
+
+        const content = dialogueBox.add([
+            text('', {
+                size: 42,
+                width: 900,
+                lineSpacing: 15,
+            }),
+            color(10, 10, 10),
+            pos(40, 30),
+            fixed()
+        ])
+
+        onKeyPress("space", () => {
+            curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            console.log(curDialog)
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+            }
+        })
+        onKeyPress("escape", () => {
+            destroy(dialogueBox)
+            player.isInDialogue = false
+        })
+
+        function updateDialog() {
+            const [dialog] = dialogs[curDialog]
+            content.text = dialog
+        }
+        updateDialog()
+    })
+    player.onCollide('board', () => {
+        flashScreen()
+        setTimeout(() => {
+            go("aboutme", worldState)
+        }, 500)
+    })
+    player.onCollide('board2', () => {
+        flashScreen()
+        setTimeout(() => {
+            go("contact", worldState)
+        }, 500)
+    })
+    function flashScreen() {
+        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
+        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
     }
+
+
 }

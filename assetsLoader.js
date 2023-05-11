@@ -1,23 +1,37 @@
 function loadAssets(){
-    loadSpriteAtlas('/assets/spr_alex.png', {
-        'player-down': {x: 0, y: 8, width: 64, height: 32, sliceX : 4, sliceY:1, 
+    loadSpriteAtlas('/assets/cat.png', {
+        'player-down': {x: 0, y: 3, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {
             'godown': {from: 0, to: 1, speed:6}}
         },
-        'player-up': {x: 0, y:104, width: 64, height: 32, sliceX : 4, sliceY:1, 
+        'player-up': {x: 0, y:96, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {
             'goup': {from: 0, to: 1, speed:6}}
         },
-        'player-side': {x: 0, y:32, width: 32, height: 32, sliceX : 2, sliceY:1, 
+        'player-side': {x: 0, y:32, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {
             'walk': {from: 0, to: 1, speed:6}}
         },
     })
+    loadSprite('tea1-background', './assets/teastain38.png')
+    loadSprite('tea2-background', './assets/teastain96.png')
     loadSpriteAtlas('/assets/spr_anna.png', {
         'npc':{x: 0, y: 9, width: 16, height: 18},
     })
+    loadSpriteAtlas('/assets/happycat.png', {
+        'happycat':{x: 32, y: 5, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/catswim.png', {
+        'catswim':{x: 32, y: 5, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/seriouscat.png', {
+        'seriouscat':{x: 32, y: 5, width: 32, height: 32},
+    })
     loadSpriteAtlas('/assets/churchday.png', {
         'church42':{x: 48, y: 80, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/tileset_village.png', {
+        'tank':{x: 304, y: 256, width: 32, height: 16},
     })
     loadSpriteAtlas('/assets/tileset_village.png', {
         'blueh':{x: 32, y: 192, width: 16, height: 16},
@@ -25,7 +39,6 @@ function loadAssets(){
     loadSpriteAtlas('/assets/tileset_village.png', {
         'orangeh':{x: 112, y: 192, width: 16, height: 16},
     })
-    loadSprite('battle-background', '/assets/battleBackground.png')
     loadSpriteAtlas('/assets/tileset_village.png',{
         'tile': {x: 0, y: 0, width: 384, height: 400, sliceX:24, sliceY:25,
         anims:{

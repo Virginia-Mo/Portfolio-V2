@@ -561,7 +561,7 @@ const map = [
             ' 000000000000000000000000000000000  00 0              0  ',
             ' 0       0000000    000   0      0  0 000             0  ',
             ' 0      0000000000  000   0      0  0                 0  ',
-            ' 0       000000000  000   00000000  0              0000  ',
+            ' 0       000000000  00000000000000  0              0000  ',
             ' 0       000000000                                 0000  ',
             ' 0         0 0  0                                  0000  ',
             ' 0   0000                             0               0  ',
@@ -673,15 +673,18 @@ const map = [
         }
     }
 add([ sprite('npc'), scale(2.5), pos(1030,480), area(), body({isStatic: true}), 'npc'])
+add([ sprite('catswim'), scale(1.8), pos(95,1370), area(), body({isStatic: true}), 'npc'])
 add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
 add([ sprite('blueh'), scale(2.5), pos(1720,240), area(), body({isStatic: true}), 'blueh'])
 add([ sprite('blueh'), scale(2.5), pos(280,1280), area(), body({isStatic: true}), 'blueh1'])
 add([ sprite('orangeh'), scale(2.5), pos(480,1080), area(), body({isStatic: true}), 'orangeh'])
 add([ sprite('orangeh'), scale(2.5), pos(1840,840), area(), body({isStatic: true}), 'orangeh1'])
+add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 'orangeh1'])
+
 
 const player = add([
     sprite('player-down'),
-    scale(2.5),
+    scale(2.2),
     pos(950,800),
     area(),
     body(),
@@ -784,8 +787,9 @@ player.onCollide('npc', () => {
     const dialogueBoxFixedContainer = add([fixed()])
     const dialogueBox = dialogueBoxFixedContainer.add([
         rect(1000, 200, { radius: 32 }),
-        outline(5),
+        outline(4),
         pos(150,500),
+        color(223,242,206),
         fixed()
     ])
 
@@ -800,15 +804,6 @@ player.onCollide('npc', () => {
         pos(40,30),
         fixed()
     ])
-// if (back === 1){
-//             content.text = dialogs
-//         } else if (back === 2) {
-//             dialogs = ["N'hésitez pas à me contacter si vous avez des questions!"]
-//             content.text = dialogs
-//         } else {
-//             dialogs = ["Merci d'avoir visité mon portfolio!"]
-//             content.text = dialogs
-//         }
 
     onKeyPress("space", () => {
         curDialog = (curDialog + 1) % dialogs.length
@@ -826,14 +821,13 @@ player.onCollide('npc', () => {
     function updateDialog() {
         const [ dialog ] = dialogs[curDialog]
         content.text = dialog
-
     }
     updateDialog()
 })
 player.onCollide('church42', () => {   
     flashScreen()
     setTimeout(() => {
-    worldState.playerPos = player.pos 
+    worldState.playerPos = vec2(600,400) 
     go("myhouse", worldState)
     }, 1000)
 })
@@ -873,20 +867,7 @@ function flashScreen() {
     const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
     tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
 }
-// function onCollideWithPlayer(player, worldState){
-//     player.onCollide(() => {
-//         flashScreen()
-//         setTimeout(() => {
-//             worldState.playerPos = player.pos 
-//             go('battle', worldState)
-//         }, 1000)
-//     })
-// }
 
-// onCollideWithPlayer('church42', player, worldState)
-// onCollideWithPlayer('spider', player, worldState)
-// onCollideWithPlayer('centipede', player, worldState)
-// onCollideWithPlayer('grass', player, worldState)
 
 
 }
