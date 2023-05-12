@@ -231,7 +231,7 @@ function setProjects(worldState) {
     add([sprite('miniboard'), scale(2.5), pos(640, 200), area(), body({
         isStatic: true
     }), 'board5'])
-    const cat = add([sprite('meloncat'), scale(2.2), pos(310, 370), area(), body({
+    const cat = add([sprite('meloncat'), scale(2.2), pos(300, 370), area(), body({
         isStatic: true
     }), 'meloncat'])
     

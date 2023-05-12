@@ -1,11 +1,11 @@
-function setSoft(worldState) {
+function setWork(worldState) {
     add([
-        sprite('tea3-background'),
+        sprite('tea2-background'),
         scale(2.5),
         pos(0, 0)
     ])
     const title = add([
-        text("Autres compétences", {
+        text("Expériences professionnelles", {
             font: "title",
             width: 900,
             size: 40,
@@ -17,51 +17,51 @@ function setSoft(worldState) {
             }),
 
         }),
-        pos(350, 30),
+        pos(300, 30),
         color(10, 10, 10)
     ])
     const input = add([
-        pos(300, 150),
+        pos(60, 150),
         color(10, 10, 10),
-        text("Gestion de projet", {
+        text("Développeuse Web - O'Clock", {
             font: "unscii",
-            width: 900,
-            size: 38,
+            width: 1200,
+            size: 32,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
     const input2 = add([
-        pos(100, 230),
+        pos(60, 180),
         color(10, 10, 10),
-        text("Rédaction d'un cahier des charges ", {
-            font: "unscii",
-            width: 700,
-            size: 32,
+        text("Novembre 22 à Décembre 22", {
+            font: "font1",
+            width: 1200,
+            size: 28,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
     const input12 = add([
-        pos(100, 300),
+        pos(60, 230),
         color(10, 10, 10),
-        text("Création de wireframes et userstories", {
+        text(" ~> Projet de fin d'études : Développement front-end en React, equipe de 5 développeurs, site de e-commerce.", {
             font: "unscii",
-            width: 700,
-            size: 32,
+            width: 1200,
+            size: 30,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
     const input22 = add([
-        pos(100, 370),
+        pos(60, 350),
         color(10, 10, 10),
-        text("Méthodes Agile (Scrum), Git, Trello", {
+        text("Infirmière en laboratoire - Biogroup, Puteaux", {
             font: "unscii",
-            width: 700,
+            width: 1200,
             size: 32,
             lineSpacing: 10,
             letterSpacing: 2,
@@ -69,91 +69,67 @@ function setSoft(worldState) {
         })
     ])
     const input3 = add([
-        pos(100, 440),
+        pos(60, 380),
         color(10, 10, 10),
-        text("Langues :", {
-            font: "unscii",
-            width: 700,
-            size: 30,
+        text("Octobre 21 à Avril 22 - Janvier 2019 à Novembre 2020", {
+            font: "font1",
+            width: 1200,
+            size: 28,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
     const input34 = add([
-        pos(200, 480),
+        pos(60, 430),
         color(10, 10, 10),
-        text("Français (natif), Anglais B2, Portugais B1", {
-            font: "font1",
-            width: 400,
-            size: 25,
+        text(" ~> Prélèvements sanguins, bactériologiques et mycologiques. Aide techique", {
+            font: "unscii",
+            width: 1200,
+            size: 30,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const input4 = add([
-        pos(900, 150),
+    const input23 = add([
+        pos(60, 520),
         color(10, 10, 10),
-        text("Soft Skills", {
+        text("Infirmière en pédiatrie - Hôpital A.Paré, Boulogne-Billancourt", {
             font: "unscii",
-            width: 900,
-            size: 39,
-            lineSpacing: 8,
+            width: 1200,
+            size: 32,
+            lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const input6 = add([
-        pos(800, 230),
+    const input24 = add([
+        pos(60, 560),
         color(10, 10, 10),
-        text("Rigeur", {
-            font: "unscii",
-            width: 900,
-            size: 32,
-            lineSpacing: 8,
+        text("Septembre 2013 à Décembre 2018.", {
+            font: "font1",
+            width: 1200,
+            size: 28,
+            lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const input7 = add([
-        pos(800, 300),
+    const input25 = add([
+        pos(60, 600),
         color(10, 10, 10),
-        text("Gestion du stress", {
+        text(" ~> Service de pédiatrie hospitalisations bébés/enfants, urgences pédiatriques et psychiatrie adolescents.", {
             font: "unscii",
-            width: 900,
-            size: 32,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    const input8 = add([
-        pos(800, 370),
-        color(10, 10, 10),
-        text("Empathie", {
-            font: "unscii",
-            width: 900,
-            size: 32,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    const input9 = add([
-        pos(800, 440),
-        color(10, 10, 10),
-        text("Auto-apprentissage", {
-            font: "unscii",
-            width: 900,
-            size: 32,
-            lineSpacing: 8,
+            width: 1200,
+            size: 30,
+            lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
     const details = add([
-        pos(0, 10),
+        pos(20, 20),
         color(245, 67, 54),
         text("ESC pour quitter", {
             font: "unscii",
@@ -170,8 +146,8 @@ function setSoft(worldState) {
         }
     }
     onKeyPress("escape", () => {
-        worldState.playerPos = vec2(520, 300)
-        go("skills", worldState)
+        worldState.playerPos = vec2(640, 260)
+        go("school", worldState)
     })
 
 }

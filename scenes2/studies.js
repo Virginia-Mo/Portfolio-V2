@@ -1,11 +1,11 @@
-function setContact(worldState) {
+function setStudies(worldState) {
     add([
-        sprite('tea2-background'),
+        sprite('tea1-background'),
         scale(2.5),
         pos(0, 0)
     ])
     const title = add([
-        text("Contact", {
+        text("Formations", {
             font: "title",
             width: 900,
             size: 40,
@@ -21,11 +21,11 @@ function setContact(worldState) {
         color(10, 10, 10)
     ])
     const input = add([
-        pos(100, 150),
+        pos(60, 150),
         color(10, 10, 10),
-        text("Tel : 06.73.31.48.88", {
+        text("Spécialisation React et projet professionnalisant en équipe. ", {
             font: "unscii",
-            width: 900,
+            width: 1200,
             size: 32,
             lineSpacing: 10,
             letterSpacing: 2,
@@ -33,67 +33,68 @@ function setContact(worldState) {
         })
     ])
     const input2 = add([
-        pos(100, 230),
+        pos(60, 190),
         color(10, 10, 10),
-        text("@ : antonio.vir@hotmail.com", {
+        text("Octobre 22 à Décembre 22, École O'Clock - Labélisée Grande École du Numérique.", {
+            font: "font1",
+            width: 1200,
+            size: 29,
+            lineSpacing: 10,
+            letterSpacing: 2,
+
+        })
+    ])
+    const input12 = add([
+        pos(60, 300),
+        color(10, 10, 10),
+        text("Titre Professionnel Développeur Web et Web Mobile, Niveau V- Obtenu le 27/03/2023", {
             font: "unscii",
-            width: 900,
+            width: 1200,
             size: 32,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
+    const input22 = add([
+        pos(60, 370),
+        color(10, 10, 10),
+        text("Mai 22 à Août 22, École O'Clock - Labélisée Grande École du Numérique.", {
+            font: "font1",
+            width: 1200,
+            size: 29,
+            lineSpacing: 10,
+            letterSpacing: 2,
+
+        })
+    ])
     const input3 = add([
-        pos(100, 310),
+        pos(60, 480),
         color(10, 10, 10),
-        text("GitHub => https://github.com/Virginia-Mo", {
+        text("Diplôme d'infirmière, obtenu en juillet 2013.", {
             font: "unscii",
-            width: 900,
-            size: 30,
+            width: 1200,
+            size: 32,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const input32 = add([
-        pos(100, 340),
+    const input34 = add([
+        pos(60, 530),
         color(10, 10, 10),
-        text("ou pour y accéder directement, cliquez sur 'ENTRER'", {
+        text("2010-2013 : IFSI Ambroise Paré, Boulogne Billancourt", {
             font: "font1",
-            width: 900,
-            size: 25,
+            width: 1200,
+            size: 29,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const input4 = add([
-        pos(100, 400),
-        color(10, 10, 10),
-        text("LinkedIn => https://www.linkedin.com/in/virginia-mo/", {
-            font: "unscii",
-            width: 900,
-            size: 30,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    const input6 = add([
-        pos(100, 430),
-        color(10, 10, 10),
-        text("ou pour y accéder directement, cliquez sur 'ESPACE'", {
-            font: "font1",
-            width: 900,
-            size: 25,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
+ 
     const details = add([
-        pos(0, 10),
+        pos(20, 10),
         color(245, 67, 54),
         text("ESC pour quitter", {
             font: "unscii",
@@ -110,20 +111,8 @@ function setContact(worldState) {
         }
     }
     onKeyPress("escape", () => {
-        worldState.playerPos = vec2(720, 300)
-        go("myhouse", worldState)
-    })
-    onKeyPress("enter", () => {
-        window.open(
-            'https://github.com/Virginia-Mo',
-            '_blank' 
-          );
+        worldState.playerPos = vec2(400, 270)
+        go("school", worldState)
     })
 
-    onKeyPress("space", () => {
-        window.open(
-            'https://www.linkedin.com/in/virginia-mo/',
-            '_blank' 
-          );
-    })
 }

@@ -1,7 +1,7 @@
 kaboom({
     width: 1280,
     height: 720,
-   
+   stretch: true
 })
 
 setBackground(Color.fromHex("#065694"))
@@ -26,7 +26,8 @@ scene('madji', (worldState) => setMadji(worldState))
 scene('pnb', (worldState) => setPnb(worldState))
 scene('pokedex', (worldState) => setPokedex(worldState))
 scene('todo', (worldState) => setTodo(worldState))
-
+scene('studies', (worldState) => setStudies(worldState))
+scene('work', (worldState) => setWork(worldState))
 
 go('world')
 

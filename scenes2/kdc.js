@@ -146,6 +146,7 @@ function setKDC(worldState) {
             '_blank'
         );
     })
+
     if (!worldState) {
         worldState = {
             playerPos: (850, 500),

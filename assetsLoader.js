@@ -34,11 +34,20 @@ function loadAssets(){
     loadSpriteAtlas('/assets/meloncat.png', {
         'meloncatside':{x: 32, y: 64, width: 32, height: 32},
     })
+    loadSpriteAtlas('/assets/npc.png', {
+        'me':{x: 128, y: 0, width: 32, height: 48},
+    })
+    loadSpriteAtlas('/assets/npc.png', {
+        'meside':{x: 192, y: 48, width: 32, height: 48},
+    })
     loadSpriteAtlas('/assets/catswim.png', {
         'catswim':{x: 32, y: 5, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/seriouscat.png', {
         'seriouscat':{x: 32, y: 5, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/goldcat.png', {
+        'goldcat':{x: 32, y: 5, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/churchday.png', {
         'church42':{x: 48, y: 80, width: 16, height: 16},

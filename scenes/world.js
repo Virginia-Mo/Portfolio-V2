@@ -672,7 +672,8 @@ const map = [
             }
         }
     }
-add([ sprite('npc'), scale(2.5), pos(1030,480), area(), body({isStatic: true}), 'npc'])
+const me = add([ sprite('me'), scale(1.4), pos(1030,480), area(), body({isStatic: true}), 'me'])
+
 add([ sprite('catswim'), scale(1.8), pos(95,1370), area(), body({isStatic: true}), 'npc'])
 add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
 add([ sprite('blueh'), scale(2.5), pos(1720,240), area(), body({isStatic: true}), 'blueh'])
@@ -771,7 +772,8 @@ if (!worldState){
     }
 }
 player.pos = vec2(worldState.playerPos)
-player.onCollide('npc', () => {
+player.onCollide('me', () => {
+    me.use(sprite("meside"))
     player.isInDialogue = true
     let dialogs = [
         [ "Bonjour! Bienvenue sur mon Portfolio!" ],
@@ -808,15 +810,16 @@ player.onCollide('npc', () => {
     onKeyPress("space", () => {
         curDialog = (curDialog + 1) % dialogs.length
         updateDialog()
-             console.log(curDialog)
                 if (curDialog ===0 ){
             destroy(dialogueBox)
             player.isInDialogue = false
+            me.use(sprite("me"))
         }
     })
     onKeyPress("escape", () => {
         destroy(dialogueBox)
         player.isInDialogue = false
+        me.use(sprite("me"))
     })
     function updateDialog() {
         const [ dialog ] = dialogs[curDialog]
@@ -848,14 +851,14 @@ player.onCollide('blueh1', () => {
 player.onCollide('orangeh', () => {   
     flashScreen()
     setTimeout(() => {
-    worldState.playerPos = player.pos 
+    worldState.playerPos = vec2(520, 420)
     go("school", worldState)
     }, 1000)
 })
 player.onCollide('orangeh1', () => {   
     flashScreen()
     setTimeout(() => {
-    worldState.playerPos = player.pos 
+    worldState.playerPos = vec2(400, 420)
     go("projects", worldState)
     }, 1000)
 })
@@ -917,7 +920,7 @@ function collidetank(tankname){
 }
 collidetank('tank2')
 collidetank('tank3')
-
+collidetank('tank')
 // onClick(() => {
 //     player.moveTo(mousePos())
 // })

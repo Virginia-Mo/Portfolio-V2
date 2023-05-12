@@ -249,7 +249,6 @@ function setMyHouse(worldState) {
         }
     }
 
-
     onKeyDown('up', () => {
         if (player.isInDialogue) {
             return
