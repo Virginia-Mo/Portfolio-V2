@@ -10,16 +10,29 @@ function loadAssets(){
         },
         'player-side': {x: 0, y:32, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {
-            'walk': {from: 0, to: 1, speed:6}}
+            'walk': {from: 0, to: 1, speed:7}}
         },
     })
     loadSprite('tea1-background', './assets/teastain38.png')
     loadSprite('tea2-background', './assets/teastain96.png')
+    loadSprite('tea3-background', './assets/teastain1.png')
+    loadSprite('tea4-background', './assets/teastain62.png')
+    loadSprite('kdc', './assets/teastain62kdc.png')
+    loadSprite('madji', './assets/teastain62madji.png')
+    loadSprite('pnb', './assets/teastainpnb.png')  
+    loadSprite('pokedex', './assets/teastain62pkd.png') 
+    loadSprite('todo', './assets/teastain62todo.png')
     loadSpriteAtlas('/assets/spr_anna.png', {
         'npc':{x: 0, y: 9, width: 16, height: 18},
     })
     loadSpriteAtlas('/assets/happycat.png', {
         'happycat':{x: 32, y: 5, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/meloncat.png', {
+        'meloncat':{x: 32, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/meloncat.png', {
+        'meloncatside':{x: 32, y: 64, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/catswim.png', {
         'catswim':{x: 32, y: 5, width: 32, height: 32},
@@ -32,6 +45,12 @@ function loadAssets(){
     })
     loadSpriteAtlas('/assets/tileset_village.png', {
         'tank':{x: 304, y: 256, width: 32, height: 16},
+    })
+    loadSpriteAtlas('/assets/tileset_village.png', {
+        'tank2':{x: 320, y: 240, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/tileset_village.png', {
+        'tank3':{x: 304, y: 240, width: 16, height: 16},
     })
     loadSpriteAtlas('/assets/tileset_village.png', {
         'blueh':{x: 32, y: 192, width: 16, height: 16},

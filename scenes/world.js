@@ -679,9 +679,9 @@ add([ sprite('blueh'), scale(2.5), pos(1720,240), area(), body({isStatic: true})
 add([ sprite('blueh'), scale(2.5), pos(280,1280), area(), body({isStatic: true}), 'blueh1'])
 add([ sprite('orangeh'), scale(2.5), pos(480,1080), area(), body({isStatic: true}), 'orangeh'])
 add([ sprite('orangeh'), scale(2.5), pos(1840,840), area(), body({isStatic: true}), 'orangeh1'])
-add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 'orangeh1'])
-
-
+add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 'tank'])
+add([ sprite('tank2'), scale(2.5), pos(1440,1200), area(), body({isStatic: true}), 'tank2'])
+add([ sprite('tank3'), scale(2.5), pos(1400,1200), area(), body({isStatic: true}), 'tank3'])
 const player = add([
     sprite('player-down'),
     scale(2.2),
@@ -690,7 +690,7 @@ const player = add([
     body(),
     {
         currentSprite: 'player-down',
-        speed: 400,
+        speed: 500,
         isInDialogue: false,
     }
 ])
@@ -834,7 +834,7 @@ player.onCollide('church42', () => {
 player.onCollide('blueh', () => {   
     flashScreen()
     setTimeout(() => {
-    worldState.playerPos = player.pos 
+    worldState.playerPos = vec2(550, 500) 
     go("skills", worldState)
     }, 1000)
 })
@@ -859,6 +859,65 @@ player.onCollide('orangeh1', () => {
     go("projects", worldState)
     }, 1000)
 })
+function collidetank(tankname){
+   player.onCollide(tankname, () => {
+    player.isInDialogue = true
+    let dialogs = [
+        [ "Souhaitez-vous quitter ce PortFolio et vous rendre dans la version classique ?" ],
+        [ "Oui : touche 'ENTRER'                Non : touche 'ESC'"],
+    ]
+    
+    let curDialog = 0
+    const dialogueBoxFixedContainer = add([fixed()])
+    const dialogueBox = dialogueBoxFixedContainer.add([
+        rect(1000, 200, { radius: 32 }),
+        outline(4),
+        pos(150,500),
+        color(223,242,206),
+        fixed()
+    ])
+
+    const content = dialogueBox.add([
+        text('',
+        {
+            size : 42,
+            width: 900,
+            lineSpacing: 15,
+        }),
+        color(10,10,10),
+        pos(40,30),
+        fixed()
+    ])
+
+    onKeyPress("space", () => {
+        curDialog = (curDialog + 1) % dialogs.length
+        updateDialog()
+             console.log(curDialog)
+                if (curDialog ===0 ){
+            destroy(dialogueBox)
+            player.isInDialogue = false
+        }
+    })
+    onKeyPress("escape", () => {
+        destroy(dialogueBox)
+        player.isInDialogue = false
+    })
+    onKeyPress("enter", () => {
+        window.open(
+            'https://virginiamo.fr',
+        );
+    })
+    function updateDialog() {
+        const [ dialog ] = dialogs[curDialog]
+        content.text = dialog
+    }
+    updateDialog()
+
+}) 
+}
+collidetank('tank2')
+collidetank('tank3')
+
 // onClick(() => {
 //     player.moveTo(mousePos())
 // })
@@ -867,7 +926,5 @@ function flashScreen() {
     const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
     tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
 }
-
-
 
 }

@@ -9,6 +9,9 @@ function loadAssets2(){
         'board':{x: 416, y: 176, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/atlas_16x.png', {
+        'miniboard':{x: 176, y: 176, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
         'library':{x: 128, y: 160, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/atlas_16x.png',{
@@ -153,7 +156,7 @@ function loadAssets2(){
             'curtainred1': 109,
             'curtainred2': 156,
             'curtainred3': 157,
-            'potion': 359,
+            'bottle': 503,
         }},
     })
 }

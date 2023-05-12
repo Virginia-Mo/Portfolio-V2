@@ -95,7 +95,4 @@ function setAboutMe(worldState) {
         go("myhouse", worldState)
     })
 
-    function updateDialog() {
-
-    }
 }

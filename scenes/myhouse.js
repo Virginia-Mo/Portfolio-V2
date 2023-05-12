@@ -233,7 +233,6 @@ function setMyHouse(worldState) {
         area(),
         body(),
         {
-            // currentSprite: 'player-down',
             speed: 400,
             isInDialogue: false,
         }

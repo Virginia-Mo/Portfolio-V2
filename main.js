@@ -1,7 +1,7 @@
 kaboom({
     width: 1280,
     height: 720,
-    stretch:true
+   
 })
 
 setBackground(Color.fromHex("#065694"))
@@ -19,7 +19,14 @@ scene('school', (worldState) => setSchool(worldState))
 scene('projects', (worldState) => setProjects(worldState))
 scene('aboutme', (worldState) => setAboutMe(worldState))
 scene('contact', (worldState) => setContact(worldState))
+scene('tech', (worldState) => setTech(worldState))
+scene('soft', (worldState) => setSoft(worldState))
+scene('kdc', (worldState) => setKDC(worldState))
+scene('madji', (worldState) => setMadji(worldState))
+scene('pnb', (worldState) => setPnb(worldState))
+scene('pokedex', (worldState) => setPokedex(worldState))
+scene('todo', (worldState) => setTodo(worldState))
 
 
-go('skills')
+go('world')
 
