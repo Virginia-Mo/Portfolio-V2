@@ -238,6 +238,56 @@ function setSchool(worldState) {
     add([sprite('library'), scale(2.5), pos(720, 160), area(), body({
         isStatic: true
     }), 'library4'])
+
+    let spookybananas = new Audio("/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("/audio/doorclose.wav")
+    doorclose.volume = 0.1
+    spookybananas.play()
+    spookybananas.volume = 0.1
+    spookybananas.loop = true
+
+    const textMusic = add([
+        text("Volume ON",{
+         font: "title",  
+         width: 400, 
+        }),
+        pos(10 , 10),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
+    textMusic.onClick(() => {
+        spookybananas = !spookybananas
+        if (spookybananas){
+        audio.play()
+        textMusic.text = "Volume ON"
+        } else {
+            audio.pause()
+            textMusic.text = "Volume OFF"
+        }
+    })
+    const arrow = add([
+        text("Utilisez les flêches du clavier pour vous déplacer",{
+         font: "unscii",  
+         width: 400, 
+         size: 22,
+        }),
+        pos(10 , 50),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
+    const arrow2 = add([
+        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+         font: "unscii",  
+         width: 400, 
+         size: 22,
+        }),
+        pos(10 , 90),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
     const player = add([
         sprite('player-up'),
         scale(2.2),
@@ -324,7 +374,10 @@ function setSchool(worldState) {
     }
     player.pos = worldState.playerPos
     player.onCollide('carpet12', () => {
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         flashScreen()
+        doorclose.play()
         setTimeout(() => {
             worldState.playerPos = vec2(470, 1200)
             go("world", worldState)
@@ -361,7 +414,7 @@ function setSchool(worldState) {
             fixed()
         ])
 
-        onKeyPress("space", () => {
+        onKeyPress("enter", () => {
             curDialog = (curDialog + 1) % dialogs.length
             updateDialog()
             if (curDialog === 0) {
@@ -382,12 +435,16 @@ function setSchool(worldState) {
     })
     player.onCollide('library3', () => {
         flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         setTimeout(() => {
             go("work", worldState)
         }, 500)
     })
     player.onCollide('library2', () => {
         flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         setTimeout(() => {
             go("studies", worldState)
         }, 500)

@@ -1,4 +1,4 @@
-function setProjects(worldState) {
+function setRelax2(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),
@@ -26,25 +26,24 @@ function setProjects(worldState) {
         ]
     }
     setBackground(Color.fromHex("#000000"))
-
     const map = [
         addLevel([
             '                                      ',
             '                                      ',
-            '                                      ',
-            '      566666666666667                 ',
-            '      91111111111111a                 ',
-            '      92222222222222a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      900000000fdddde                 ',
-            '      900000000a                      ',
-            '      900000000a                      ',
-            '      cddb00fdde                      ',
-            '         cdde                         ',
-            '                                      ',
+            '       56666666666667                 ',
+            '       9111111111111a                 ',
+            '       9222222222222a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       cdddddddddddde                 ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -55,8 +54,8 @@ function setProjects(worldState) {
             tileHeight: 16,
             tiles: {
                 '0': () => makeTile('ground-clear'),
-                '1': () => makeTile('redwalltop'),
-                '2': () => makeTile('redwallbottom'),
+                '1': () => makeTile('bluewalltop'),
+                '2': () => makeTile('bluewallbottom'),
                 '5': () => makeTile('cornerwallTL'),
                 '6': () => makeTile('wall'),
                 '7': () => makeTile('cornerwallTR'),
@@ -71,78 +70,58 @@ function setProjects(worldState) {
             }
         }),
         addLevel([
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '        d d d d d01                   ',
-            '       fe e e e e23f                  ',
-            '       g4555555556 g                  ',
-            '        7888888889                    ',
-            '        abbbbbbbbc q                  ',
-            '                 h r                  ',
-            '        w                             ',
-            '        st   kl                       ',
-            '       wuv   mn                       ',
-            '          op                          ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
 
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                H H                   ',
+            '         de     I I                   ',
+            '        Ofg        J                  ',
+            '        P                             ',
+            '                                      ',
+            '             L                        ',
+            '             M                        ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                  k                   ',
+            '                  l                   ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeBigTile('window1'),
-                '1': () => makeBigTile('window2'),
-                '2': () => makeBigTile('window3'),
-                '3': () => makeBigTile('window4'),
-                '4': () => makeBigTile('redcarpet0'),
-                '5': () => makeBigTile('redcarpet1'),
-                '6': () => makeBigTile('redcarpet2'),
-                '7': () => makeBigTile('redcarpet3'),
-                '8': () => makeBigTile('redcarpet4'),
-                '9': () => makeBigTile('redcarpet5'),
-                'a': () => makeBigTile('redcarpet6'),
-                'b': () => makeBigTile('redcarpet7'),
-                'c': () => makeBigTile('redcarpet8'),
-                'd': () => makeBigTile('miniboard'),
-                'e': () => makeBigTile('miniboard1'),
-                'f': () => makeBigTile('plant'),
-                'g': () => makeBigTile('plant1'),
-                'h': () => makeBigTile('poufred'),
-                'k': () => makeBigTile('commode1'),
-                'l': () => makeBigTile('commode2'),
-                'm': () => makeBigTile('commode3'),
-                'n': () => makeBigTile('commode4'),
-                'o': () => makeBigTile('carpetred'),
-                'p': () => makeBigTile('carpetred1'),
-                'q': () => makeBigTile('sofa1'),
-                'r': () => makeBigTile('sofa2'),
-                's': () => makeBigTile('smalltable'),
-                't': () => makeBigTile('smalltable1'),
-                'u': () => makeBigTile('smalltable2'),
-                'v': () => makeBigTile('smalltable3'),
-                'w': () => makeBigTile('smallchair'),
+
+                'd': () => makeBigTile('commode1'),
+                'e': () => makeBigTile('commode2'),
+                'f': () => makeBigTile('commode5'),
+                'g': () => makeBigTile('commode6'),
+                'h': () => makeBigTile('bed'),
+                'k': () => makeBigTile('plant'),
+                'l': () => makeBigTile('plant1'),
+                'm': () => makeBigTile('bed2'),
+                'H': () => makeBigTile('smallwindow1'),
+                'I': () => makeBigTile('smallwindow2'),
+                'J': () => makeBigTile('stairsdown'),
+                'L': () => makeBigTile('tv1'),
+                'M': () => makeBigTile('tv2'),
+                'N': () => makeBigTile('computertable'),
+                'O': () => makeBigTile('computertable1'),
+                'P': () => makeBigTile('backchair'),
+
             }
         }),
         addLevel([
             '                                      ',
             '                                      ',
             '                                      ',
-            '                                      ',
-            '                 34                   ',
-            '                 56                   ',
-            '                                      ',
-            '                                      ',
-            '               7                      ',
-            '               8                      ',
-            '                                      ',
-            '        a9   0                        ',
-            '             1                        ',
+            '            S                         ',
+            '          Q T                         ',
+            '          R                           ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -150,40 +129,38 @@ function setProjects(worldState) {
             '                                      ',
             '                                      ',
             '                                      ',
-
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeSmallTile('book'),
-                '1': () => makeSmallTile('book1'),
-                '3': () => makeSmallTile('curtainred'),
-                '4': () => makeSmallTile('curtainred1'),
-                '5': () => makeSmallTile('curtainred2'),
-                '6': () => makeSmallTile('curtainred3'),
-                '7': () => makeSmallTile('minitable'),
-                '8': () => makeSmallTile('minitable1'),
-                '9': () => makeSmallTile('bottle'),
-                'a': () => makeSmallTile('coffee'),
+                'Q': () => makeSmallTile('book'),
+                'R': () => makeSmallTile('book1'),
             }
         }),
         addLevel([
             '                                      ',
             '                                      ',
-            '                                      ',
-            '      000000000000000                 ',
-            '      000000000000000                 ',
-            '      00           00                 ',
-            '      0            00                 ',
-            '      0             0                 ',
-            '      0             0                 ',
-            '      0        0    0                 ',
-            '      0        000000                 ',
-            '      0 0      0                      ',
-            '      0 00   000                      ',
-            '      0000  0000                      ',
-            '         0000                         ',
-            '                                      ',
+            '       00000000000000                 ',
+            '       00000000000000                 ',
+            '       0000         0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0     0      0                 ',
+            '       0            0                 ',
+            '       0           00                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0         0  0                 ',
+            '       00000000000000                 ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -203,7 +180,6 @@ function setProjects(worldState) {
                 ],
             }
         }),
-
     ]
     for (const layer of map) {
         layer.use(scale(2.5))
@@ -213,32 +189,42 @@ function setProjects(worldState) {
             }
         }
     }
-    add([sprite('carpet'), scale(2.5), pos(400, 520), area(), body({
-        isStatic: true
-    }), 'carpet'])
-    add([sprite('miniboard'), scale(2.5), pos(320, 200), area(), body({
-        isStatic: true
-    }), 'board1'])
-    add([sprite('miniboard'), scale(2.5), pos(400, 200), area(), body({
-        isStatic: true
-    }), 'board2'])
-    add([sprite('miniboard'), scale(2.5), pos(480, 200), area(), body({
-        isStatic: true
-    }), 'board3'])
-    add([sprite('miniboard'), scale(2.5), pos(560, 200), area(), body({
-        isStatic: true
-    }), 'board4'])
-    add([sprite('miniboard'), scale(2.5), pos(640, 200), area(), body({
-        isStatic: true
-    }), 'board5'])
-    const meloncat = add([sprite('meloncat'), scale(2.2), pos(300, 370), area({scale:0.7}), body({
-        isStatic: true
-    }), 'meloncat'])
-    
 
+
+    const glassescat = add([sprite('catglassesdown'), scale(2.2), pos(735, 400), area(), body({
+        isStatic: true
+    }), 'catglassesdown'])
+    add([sprite('stairsdown'), scale(2.5), pos(760, 200), area({
+        scale: 0.7
+    }), body({
+        isStatic: true
+    }), 'stairsdown'])
+    add([sprite('computer'), scale(2.5), pos(320, 170), area(), body({
+        isStatic: true
+    }), 'computer'])
+    add([sprite('computer2'), scale(2.5), pos(320, 130), area(), body({
+        isStatic: true
+    }), 'computer2'])
+    add([sprite('tv'), scale(2.5), pos(520, 360), area(), body({
+        isStatic: true
+    }), 'tv'])
+    add([sprite('bed1'), scale(3.5), pos(320, 490), area(), body({
+        isStatic: true
+    }), 'bed1'])
+    add([sprite('bed2'), scale(3.5), pos(320, 545), area(), body({
+        isStatic: true
+    }), 'bed2'])
+    add([sprite('books'), scale(2.5), pos(400, 200), area({
+        scale: 0.5
+    }), body({
+        isStatic: true
+    }), 'books'])
+    add([sprite('map'), scale(2.5), pos(490, 115), area(), body({
+        isStatic: true
+    }), 'map'])
+
+    const badjoke = new Audio("/audio/badjoke.wav")
     let spookybananas = new Audio("/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("/audio/doorclose.wav")
-    doorclose.volume = 0.1
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
@@ -285,10 +271,11 @@ function setProjects(worldState) {
         fixed(),
         area()
     ])
+
     const player = add([
         sprite('player-up'),
         scale(2.2),
-        pos(400, 420),
+        pos(450, 500),
         area(),
         body(),
         {
@@ -366,99 +353,167 @@ function setProjects(worldState) {
     })
     if (!worldState) {
         worldState = {
-            playerPos: vec2(400, 420),
+            playerPos: vec2(450, 500),
         }
     }
     player.pos = worldState.playerPos
-    player.onCollide('carpet', () => {
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        flashScreen()
-        doorclose.play()
-        setTimeout(() => {
-            worldState.playerPos = vec2(1840, 940)
-            go("world", worldState)
-        }, 1000)
-    })
-
-    player.onCollide('meloncat', () => {
+    player.sprite = worldState.playerSprite
+    player.onCollide('catglassesdown', () => {
         if (player.currentSprite === 'player-side') {
-            meloncat.use(sprite("meloncatside"))
+            glassescat.use(sprite("catglassesside"))
         } else if (player.currentSprite === 'player-up') {
-            meloncat.use(sprite("meloncat"))
+            glassescat.use(sprite("catglassesdown"))
         } else {
-            meloncat.use(sprite("meloncatup"))
+            glassescat.use(sprite("catglassessup"))
         }
         player.isInDialogue = true
         let dialogs = [
-            [ "Bonjour! Bienvenue dans la maison des projets!" ],
-            [ "Vous pouvez consulter les différents projets crées sur le mur." ],
-            [ "Ces derniers sont classés par niveau de difficulté (du projet fullstack à la simple todo liste!)" ],
-            [ "Merci pour votre attention, bonne lecture!" ],
+            ["Comment appelle-t-on un chat qui chante?"],
+            ["..."],
+            ["Chat-kira!"],
+            ["..."],
         ]
-        
+
         let curDialog = 0
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 200, { radius: 32 }),
+            rect(1000, 190, {
+                radius: 32
+            }),
             outline(4),
-            pos(150,500),
+            pos(150, 500),
+            fixed(),
             color(237, 221, 187),
-            fixed()
         ])
-    
+
         const content = dialogueBox.add([
-            text('',
-            {
-                size : 42,
+            text('', {
+                size: 42,
                 width: 900,
                 lineSpacing: 15,
             }),
-            color(10,10,10),
-            pos(40,30),
+            color(10, 10, 10),
+            pos(40, 30),
             fixed()
         ])
-    
+
         onKeyPress("enter", () => {
             curDialog = (curDialog + 1) % dialogs.length
             updateDialog()
-                    if (curDialog ===0 ){
+            if (curDialog === 3) {
+                badjoke.volume = 0.1
+                badjoke.play()
+            }
+            if (curDialog === 0) {
                 destroy(dialogueBox)
                 player.isInDialogue = false
-                meloncat.use(sprite("meloncat"))
+                glassescat.use(sprite("catglassesdown"))
             }
         })
         onKeyPress("escape", () => {
             destroy(dialogueBox)
             player.isInDialogue = false
-            meloncat.use(sprite("meloncat"))
+            glassescat.use(sprite("catglassesdown"))
         })
+
         function updateDialog() {
-            const [ dialog ] = dialogs[curDialog]
+            const [dialog] = dialogs[curDialog]
             content.text = dialog
         }
         updateDialog()
+    })
+    player.onCollide('bed2', () => {
+        const textbed = [
+            ["Vous avez fait une petite sieste, vous êtes requinqué!"]
+        ]
+        flashScreen()
+        dialog(textbed)
+        setTimeout(() => {
+            worldState.playerPos = vec2(390, 545)
+            go("relax2", worldState)
+        }, 2000)
 
     })
-
-collideBoards('board1', 'kdc')
-collideBoards('board2', 'madji')
-collideBoards('board3', 'pnb')
-collideBoards('board4', 'pokedex')
-collideBoards('board5', 'todo')
-
-function collideBoards(boardname, project){
-    player.onCollide(boardname, () => {
+    player.onCollide('tv', () => {
+        const textbed = [
+            ["Vous jouez à votre jeu favori! Hélas, vous n'avez pas gagné..."]
+        ]
+        dialog(textbed)
+    })
+    player.onCollide('computer', () => {
+        const audioCompter = new Audio("audio/keyboard.wav")
+        const textbed = [
+            ["Historique de recherche: 'Comment gagner à tous les coups à pierre feuille ciseaux'..Intéressant.."]
+        ]
+        audioCompter.play()
+        audioCompter.volume = 0.1
+        setTimeout(() => {
+            dialog(textbed), 1500
+        })
+        
+    })
+    player.onCollide('books', () => {
+        const textbed = [
+            ["Un paquet de livres sur le développement web et la vie des chats."]
+        ]
+        dialog(textbed)
+    })
+    player.onCollide('stairsdown', () => {
         flashScreen()
         spookybananas.pause()
         spookybananas.currentTime = 0
         setTimeout(() => {
-            go(project, worldState)
-        }, 1000)
-    })    
-}
+            worldState.playerPos = vec2(760, 260)
+            worldState.playerSprite = "player-down"
+            go("relax", worldState)
+        }, 500)
+    })
+    player.onCollide('map', () => {
+        flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
+        setTimeout(() => {
+            go("map", worldState)
+        }, 500)
+    })
+
     function flashScreen() {
         const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInOutQuad)
+        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
+    }
+
+    function dialog(dialogs) {
+        player.isInDialogue = true
+        const dialogueBoxFixedContainer = add([fixed()])
+        const dialogueBox = dialogueBoxFixedContainer.add([
+            rect(1000, 190, {
+                radius: 32
+            }),
+            outline(4),
+            pos(150, 500),
+            fixed(),
+            color(237, 221, 187),
+        ])
+
+        const content = dialogueBox.add([
+            text('', {
+                size: 42,
+                width: 900,
+                lineSpacing: 15,
+            }),
+            color(10, 10, 10),
+            pos(40, 30),
+            fixed()
+        ])
+
+        onKeyPress("enter", () => {
+            destroy(dialogueBox)
+            player.isInDialogue = false
+        })
+        onKeyPress("escape", () => {
+            destroy(dialogueBox)
+            player.isInDialogue = false
+        })
+        content.text = dialogs
     }
 }

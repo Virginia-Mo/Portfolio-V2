@@ -150,7 +150,7 @@ function setMyHouse(worldState) {
             '                     1                ',
             '                                      ',
             '                                      ',
-            '          2                           ',
+            '        7 2                           ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -172,6 +172,7 @@ function setMyHouse(worldState) {
                 '4': () => makeSmallTile('curtainred1'),
                 '5': () => makeSmallTile('curtainred2'),
                 '6': () => makeSmallTile('curtainred3'),
+                '7': () => makeSmallTile('bottle'),
             }
         }),
         addLevel([
@@ -183,9 +184,9 @@ function setMyHouse(worldState) {
             '      00000000000000000000            ',
             '      0                 00            ',
             '      0                  0            ',
+            '      0                  0            ',
             '      0 000              0            ',
-            '      0 000              0            ',
-            '      0 000              0            ',
+            '      0                  0            ',
             '      0                  0            ',
             '      0                 00            ',
             '      00000000    00000000            ',
@@ -223,9 +224,60 @@ function setMyHouse(worldState) {
     }
 
     add([sprite('carpet'), scale(2.5), pos(600, 560), area(), 'carpet'])
-    add([sprite('happycat'), scale(2.2), pos(600, 220), area(), 'happycat'])
-    add([sprite('board'), scale(2.5), pos(480, 200), area(), 'board'])
-    add([sprite('board'), scale(2.5), pos(720, 200), area(), 'board2'])
+    add([sprite('happycat'), scale(2.2), pos(600, 220), area({scale: 0.6}), 'happycat'])
+    add([sprite('board'), scale(2.5), pos(480, 200), area({scale:0.6}), 'board'])
+    add([sprite('board'), scale(2.5), pos(720, 200), area({scale:0.6}), 'board2'])
+
+    let spookybananas = new Audio("/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("/audio/doorclose.wav")
+    doorclose.volume = 0.1
+    spookybananas.play()
+    spookybananas.volume = 0.1
+    spookybananas.loop = true
+
+    const textMusic = add([
+        text("Volume ON",{
+         font: "title",  
+         width: 400, 
+        }),
+        pos(10 , 10),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
+    textMusic.onClick(() => {
+        spookybananas = !spookybananas
+        if (spookybananas){
+        audio.play()
+        textMusic.text = "Volume ON"
+        } else {
+            audio.pause()
+            textMusic.text = "Volume OFF"
+        }
+    })
+    const arrow = add([
+        text("Utilisez les flêches du clavier pour vous déplacer",{
+         font: "unscii",  
+         width: 400, 
+         size: 22,
+        }),
+        pos(10 , 50),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
+    const arrow2 = add([
+        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+         font: "unscii",  
+         width: 400, 
+         size: 22,
+        }),
+        pos(10 , 90),
+        color(255,255,255),
+        fixed(),
+        area()
+    ])
+
     const player = add([
         sprite('player-up'),
         scale(2.2),
@@ -311,7 +363,10 @@ function setMyHouse(worldState) {
     }
     player.pos = worldState.playerPos
     player.onCollide('carpet', () => {
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         flashScreen()
+        doorclose.play()
         setTimeout(() => {
             worldState.playerPos = vec2(950, 500)
             go("world", worldState)
@@ -349,10 +404,9 @@ function setMyHouse(worldState) {
             fixed()
         ])
 
-        onKeyPress("space", () => {
+        onKeyPress("enter", () => {
             curDialog = (curDialog + 1) % dialogs.length
             updateDialog()
-            console.log(curDialog)
             if (curDialog === 0) {
                 destroy(dialogueBox)
                 player.isInDialogue = false
@@ -371,12 +425,16 @@ function setMyHouse(worldState) {
     })
     player.onCollide('board', () => {
         flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         setTimeout(() => {
             go("aboutme", worldState)
         }, 500)
     })
     player.onCollide('board2', () => {
         flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         setTimeout(() => {
             go("contact", worldState)
         }, 500)

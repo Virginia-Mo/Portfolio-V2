@@ -1,4 +1,4 @@
-function setProjects(worldState) {
+function setRelax(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),
@@ -26,26 +26,25 @@ function setProjects(worldState) {
         ]
     }
     setBackground(Color.fromHex("#000000"))
-
     const map = [
         addLevel([
             '                                      ',
             '                                      ',
-            '                                      ',
-            '      566666666666667                 ',
-            '      91111111111111a                 ',
-            '      92222222222222a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      90000000000000a                 ',
-            '      900000000fdddde                 ',
-            '      900000000a                      ',
-            '      900000000a                      ',
-            '      cddb00fdde                      ',
-            '         cdde                         ',
-            '                                      ',
-            '                                      ',
+            '       56666666666667                 ',
+            '       9111111111111a                 ',
+            '       9222222222222a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       9000000000000a                 ',
+            '       cddddb00fdddde                 ',
+            '            cdde                      ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -55,8 +54,8 @@ function setProjects(worldState) {
             tileHeight: 16,
             tiles: {
                 '0': () => makeTile('ground-clear'),
-                '1': () => makeTile('redwalltop'),
-                '2': () => makeTile('redwallbottom'),
+                '1': () => makeTile('bluewalltop'),
+                '2': () => makeTile('bluewallbottom'),
                 '5': () => makeTile('cornerwallTL'),
                 '6': () => makeTile('wall'),
                 '7': () => makeTile('cornerwallTR'),
@@ -71,62 +70,56 @@ function setProjects(worldState) {
             }
         }),
         addLevel([
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '        d d d d d01                   ',
-            '       fe e e e e23f                  ',
-            '       g4555555556 g                  ',
-            '        7888888889                    ',
-            '        abbbbbbbbc q                  ',
-            '                 h r                  ',
-            '        w                             ',
-            '        st   kl                       ',
-            '       wuv   mn                       ',
-            '          op                          ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
-            '                                      ',
 
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '             H  H H                   ',
+            '        dede IL I IJ                  ',
+            '        fgfg  M    K                  ',
+            '                                      ',
+            '                                      ',
+            '            45556                     ',
+            '            78889                     ',
+            '            78889                     ',
+            '            78889                     ',
+            '            abbbc                     ',
+            '                   k                  ',
+            '                   l                  ',
+            '             mn                       ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
+            '                                      ',
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeBigTile('window1'),
-                '1': () => makeBigTile('window2'),
-                '2': () => makeBigTile('window3'),
-                '3': () => makeBigTile('window4'),
-                '4': () => makeBigTile('redcarpet0'),
-                '5': () => makeBigTile('redcarpet1'),
-                '6': () => makeBigTile('redcarpet2'),
-                '7': () => makeBigTile('redcarpet3'),
-                '8': () => makeBigTile('redcarpet4'),
-                '9': () => makeBigTile('redcarpet5'),
-                'a': () => makeBigTile('redcarpet6'),
-                'b': () => makeBigTile('redcarpet7'),
-                'c': () => makeBigTile('redcarpet8'),
-                'd': () => makeBigTile('miniboard'),
-                'e': () => makeBigTile('miniboard1'),
-                'f': () => makeBigTile('plant'),
-                'g': () => makeBigTile('plant1'),
-                'h': () => makeBigTile('poufred'),
-                'k': () => makeBigTile('commode1'),
-                'l': () => makeBigTile('commode2'),
-                'm': () => makeBigTile('commode3'),
-                'n': () => makeBigTile('commode4'),
-                'o': () => makeBigTile('carpetred'),
-                'p': () => makeBigTile('carpetred1'),
-                'q': () => makeBigTile('sofa1'),
-                'r': () => makeBigTile('sofa2'),
-                's': () => makeBigTile('smalltable'),
-                't': () => makeBigTile('smalltable1'),
-                'u': () => makeBigTile('smalltable2'),
-                'v': () => makeBigTile('smalltable3'),
-                'w': () => makeBigTile('smallchair'),
+
+                'd': () => makeBigTile('library1'),
+                'e': () => makeBigTile('library2'),
+                'f': () => makeBigTile('library3'),
+                'g': () => makeBigTile('library4'),
+                'h': () => makeBigTile('poufblue'),
+                'k': () => makeBigTile('plant'),
+                'l': () => makeBigTile('plant1'),
+                'm': () => makeBigTile('carpetblack'),
+                'n': () => makeBigTile('carpetblack2'),
+                'H': () => makeBigTile('smallwindow1'),
+                'I': () => makeBigTile('smallwindow2'),
+                'J': () => makeBigTile('stairsup'),
+                'K': () => makeBigTile('stairsup2'),
+                'L': () => makeBigTile('tv1'),
+                'M': () => makeBigTile('tv2'),
+                '4': () => makeBigTile('bluecarpet0'),
+                '5': () => makeBigTile('bluecarpet1'),
+                '6': () => makeBigTile('bluecarpet2'),
+                '7': () => makeBigTile('bluecarpet3'),
+                '8': () => makeBigTile('bluecarpet4'),
+                '9': () => makeBigTile('bluecarpet5'),
+                'a': () => makeBigTile('bluecarpet6'),
+                'b': () => makeBigTile('bluecarpet7'),
+                'c': () => makeBigTile('bluecarpet8'),
             }
         }),
         addLevel([
@@ -134,56 +127,55 @@ function setProjects(worldState) {
             '                                      ',
             '                                      ',
             '                                      ',
-            '                 34                   ',
-            '                 56                   ',
             '                                      ',
             '                                      ',
-            '               7                      ',
-            '               8                      ',
-            '                                      ',
-            '        a9   0                        ',
-            '             1                        ',
             '                                      ',
             '                                      ',
+            '             P+Q                      ',
+            '            NRTUN                     ',
+            '             RTU                      ',
+            '            NVWXN                     ',
             '                                      ',
             '                                      ',
             '                                      ',
             '                                      ',
             '                                      ',
-
+            '                                      ',
+            '                                      ',
+            '                                      ',
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeSmallTile('book'),
-                '1': () => makeSmallTile('book1'),
-                '3': () => makeSmallTile('curtainred'),
-                '4': () => makeSmallTile('curtainred1'),
-                '5': () => makeSmallTile('curtainred2'),
-                '6': () => makeSmallTile('curtainred3'),
-                '7': () => makeSmallTile('minitable'),
-                '8': () => makeSmallTile('minitable1'),
-                '9': () => makeSmallTile('bottle'),
-                'a': () => makeSmallTile('coffee'),
+                'N': () => makeBigTile('smallchair'),
+                'P': () => makeBigTile('tablebrown'),
+                '+': () => makeBigTile('tablebrown1'),
+                'Q': () => makeBigTile('tablebrown2'),
+                'R': () => makeBigTile('tablebrown3'),
+                'T': () => makeBigTile('tablebrown4'),
+                'U': () => makeBigTile('tablebrown5'),
+                'V': () => makeBigTile('tablebrown6'),
+                'W': () => makeBigTile('tablebrown7'),
+                'X': () => makeBigTile('tablebrown8'),
             }
         }),
         addLevel([
             '                                      ',
             '                                      ',
-            '                                      ',
-            '      000000000000000                 ',
-            '      000000000000000                 ',
-            '      00           00                 ',
-            '      0            00                 ',
-            '      0             0                 ',
-            '      0             0                 ',
-            '      0        0    0                 ',
-            '      0        000000                 ',
-            '      0 0      0                      ',
-            '      0 00   000                      ',
-            '      0000  0000                      ',
-            '         0000                         ',
-            '                                      ',
+            '       00000000000000                 ',
+            '       00000000000000                 ',
+            '       0000   0     0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0      00    0                 ',
+            '       0      0     0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0            0                 ',
+            '       0           00                 ',
+            '       000000  000000                 ',
             '                                      ',
             '                                      ',
             '                                      ',
@@ -203,7 +195,6 @@ function setProjects(worldState) {
                 ],
             }
         }),
-
     ]
     for (const layer of map) {
         layer.use(scale(2.5))
@@ -213,28 +204,22 @@ function setProjects(worldState) {
             }
         }
     }
-    add([sprite('carpet'), scale(2.5), pos(400, 520), area(), body({
+    add([sprite('carpet2'), scale(2.5), pos(520, 600), area(), body({
         isStatic: true
-    }), 'carpet'])
-    add([sprite('miniboard'), scale(2.5), pos(320, 200), area(), body({
+    }), 'carpet2'])
+const mumcat = add([sprite('mumcat'), scale(2.2), pos(620, 310), area({scale:0.8}), body({
         isStatic: true
-    }), 'board1'])
-    add([sprite('miniboard'), scale(2.5), pos(400, 200), area(), body({
+    }), 'mumcat'])
+const stairs = add([sprite('stairsup'), scale(2.5), pos(760, 200), area({scale:0.6}), body({
         isStatic: true
-    }), 'board2'])
-    add([sprite('miniboard'), scale(2.5), pos(480, 200), area(), body({
+    }), 'stairsup'])
+const library =  add([sprite('library'), scale(2.5), pos(320, 160), area(), body({
         isStatic: true
-    }), 'board3'])
-    add([sprite('miniboard'), scale(2.5), pos(560, 200), area(), body({
+    }), 'library2'])
+
+const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body({
         isStatic: true
-    }), 'board4'])
-    add([sprite('miniboard'), scale(2.5), pos(640, 200), area(), body({
-        isStatic: true
-    }), 'board5'])
-    const meloncat = add([sprite('meloncat'), scale(2.2), pos(300, 370), area({scale:0.7}), body({
-        isStatic: true
-    }), 'meloncat'])
-    
+    }), 'library4'])
 
     let spookybananas = new Audio("/audio/SpookyBananas.mp3")
     let doorclose = new Audio("/audio/doorclose.wav")
@@ -288,7 +273,7 @@ function setProjects(worldState) {
     const player = add([
         sprite('player-up'),
         scale(2.2),
-        pos(400, 420),
+        pos(550, 500),
         area(),
         body(),
         {
@@ -366,99 +351,109 @@ function setProjects(worldState) {
     })
     if (!worldState) {
         worldState = {
-            playerPos: vec2(400, 420),
+            playerPos: vec2(550, 500),
+            playerSprite: 'player-down',
         }
     }
     player.pos = worldState.playerPos
-    player.onCollide('carpet', () => {
+    player.sprite = worldState.playerSprite
+    
+    player.onCollide('carpet2', () => {
         spookybananas.pause()
         spookybananas.currentTime = 0
         flashScreen()
         doorclose.play()
         setTimeout(() => {
-            worldState.playerPos = vec2(1840, 940)
+            worldState.playerPos = vec2(420, 1300)
             go("world", worldState)
         }, 1000)
     })
-
-    player.onCollide('meloncat', () => {
+    player.onCollide('mumcat', () => {
         if (player.currentSprite === 'player-side') {
-            meloncat.use(sprite("meloncatside"))
+            mumcat.use(sprite("mumcatside"))
         } else if (player.currentSprite === 'player-up') {
-            meloncat.use(sprite("meloncat"))
+            mumcat.use(sprite("mumcatdown"))
         } else {
-            meloncat.use(sprite("meloncatup"))
+            mumcat.use(sprite("mumcatup"))
         }
         player.isInDialogue = true
         let dialogs = [
-            [ "Bonjour! Bienvenue dans la maison des projets!" ],
-            [ "Vous pouvez consulter les différents projets crées sur le mur." ],
-            [ "Ces derniers sont classés par niveau de difficulté (du projet fullstack à la simple todo liste!)" ],
-            [ "Merci pour votre attention, bonne lecture!" ],
+            ["Bonjour! Bienvenue à la maison!"],
+            ["N'hésitez pas à lire un livre ou vous reposez dans la chambre à l'étage."],
+            ["PS:Vous aimez ma coiffure? So Shiny!"],
         ]
-        
+
         let curDialog = 0
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 200, { radius: 32 }),
+            rect(1000, 190, {
+                radius: 32
+            }),
             outline(4),
-            pos(150,500),
+            pos(150, 500),
+            fixed(),
             color(237, 221, 187),
-            fixed()
         ])
-    
+
         const content = dialogueBox.add([
-            text('',
-            {
-                size : 42,
+            text('', {
+                size: 42,
                 width: 900,
                 lineSpacing: 15,
             }),
-            color(10,10,10),
-            pos(40,30),
+            color(10, 10, 10),
+            pos(40, 30),
             fixed()
         ])
-    
+
         onKeyPress("enter", () => {
             curDialog = (curDialog + 1) % dialogs.length
             updateDialog()
-                    if (curDialog ===0 ){
+            if (curDialog === 0) {
                 destroy(dialogueBox)
                 player.isInDialogue = false
-                meloncat.use(sprite("meloncat"))
+                mumcat.use(sprite("mumcat"))
             }
         })
         onKeyPress("escape", () => {
             destroy(dialogueBox)
             player.isInDialogue = false
-            meloncat.use(sprite("meloncat"))
+            mumcat.use(sprite("mumcat"))
         })
+
         function updateDialog() {
-            const [ dialog ] = dialogs[curDialog]
+            const [dialog] = dialogs[curDialog]
             content.text = dialog
         }
         updateDialog()
-
     })
-
-collideBoards('board1', 'kdc')
-collideBoards('board2', 'madji')
-collideBoards('board3', 'pnb')
-collideBoards('board4', 'pokedex')
-collideBoards('board5', 'todo')
-
-function collideBoards(boardname, project){
-    player.onCollide(boardname, () => {
+    player.onCollide('stairsup', () => {
         flashScreen()
         spookybananas.pause()
         spookybananas.currentTime = 0
         setTimeout(() => {
-            go(project, worldState)
-        }, 1000)
-    })    
-}
+            worldState.playerPos = vec2(760, 250)
+            go("relax2", worldState)
+        }, 500)
+    })
+    player.onCollide('library', () => {
+        flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
+        setTimeout(() => {
+            go("copyrights", worldState)
+        }, 500)
+    })
+    player.onCollide('library2', () => {
+        flashScreen()
+        spookybananas.pause()
+        spookybananas.currentTime = 0
+        setTimeout(() => {
+            go("copyrights", worldState)
+        }, 500)
+    })
     function flashScreen() {
         const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInOutQuad)
+        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
     }
 }

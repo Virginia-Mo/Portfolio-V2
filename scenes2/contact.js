@@ -54,20 +54,15 @@ function setContact(worldState) {
             lineSpacing: 10,
             letterSpacing: 2,
 
-        })
+        }),
+        area({ cursor: "pointer" })
     ])
-    const input32 = add([
-        pos(100, 340),
-        color(10, 10, 10),
-        text("ou pour y accéder directement, cliquez sur 'ENTRER'", {
-            font: "font1",
-            width: 900,
-            size: 25,
-            lineSpacing: 10,
-            letterSpacing: 2,
-
-        })
-    ])
+    input3.onClick( () => {
+        window.open(
+            'https://github.com/Virginia-Mo',
+            '_blank'
+        );
+    })
     const input4 = add([
         pos(100, 400),
         color(10, 10, 10),
@@ -77,21 +72,15 @@ function setContact(worldState) {
             size: 30,
             lineSpacing: 8,
             letterSpacing: 2,
-
-        })
+        }),
+        area({ cursor: "pointer" })
     ])
-    const input6 = add([
-        pos(100, 430),
-        color(10, 10, 10),
-        text("ou pour y accéder directement, cliquez sur 'ESPACE'", {
-            font: "font1",
-            width: 900,
-            size: 25,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
+    input4.onClick( () => {
+        window.open(
+            'https://www.linkedin.com/in/virginia-mo/',
+            '_blank'
+        );
+    })
     const details = add([
         pos(0, 10),
         color(245, 67, 54),
@@ -112,18 +101,5 @@ function setContact(worldState) {
     onKeyPress("escape", () => {
         worldState.playerPos = vec2(720, 300)
         go("myhouse", worldState)
-    })
-    onKeyPress("enter", () => {
-        window.open(
-            'https://github.com/Virginia-Mo',
-            '_blank' 
-          );
-    })
-
-    onKeyPress("space", () => {
-        window.open(
-            'https://www.linkedin.com/in/virginia-mo/',
-            '_blank' 
-          );
     })
 }

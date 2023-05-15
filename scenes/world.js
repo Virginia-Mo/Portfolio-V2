@@ -119,9 +119,9 @@ const map = [
             '             def  456      456                pqr        ',
             '             ghi  789      789                           ',
             '                                                         ',
-            '                                          st             ',
-            '                                          uv             ',
-            '                                          wx             ',
+            '                                   abc    st             ',
+            '                                   def    uv             ',
+            '                                   ghi    wx             ',
             '                                          yz      jkl    ',
             '                                                  mno    ',
             '            123        st                         pqr123 ',
@@ -485,9 +485,9 @@ const map = [
             '                     4    4     144   444                ',
             '                4              4   1   c0     434   44   ',
             '                4              42324    c4   24 1  c44   ',
-            '             cc44 24        20  3234   444   34    4c4   ',
-            '             cc4  4         43  23244                    ',
-            '             444  23        32  4  4                     ',                                         
+            '             cc44 24        20  32     444   34    4c4   ',
+            '             cc4  4         43  23                       ',
+            '             444  23        32  4                        ',                                         
             '             cc4  4444     024 43 4 2cccc     3 44       ',
             '             cc4  323      444 42 4 4  33    2  44       ',                                      
             '                1 d44d4  4d44d 43   2   2 86 3           ',
@@ -546,8 +546,8 @@ const map = [
             '            0    0  000000000  0     0           0    0  ',
             '            0    0  000000000  0     0          00    0  ',
             '            0    0  000000000 0      0           0    0  ',
-            '            0    0    0000    0      00000  000000    0  ',
-            '            0    0            0      o                0  ',
+            '            0    0    0000    0       0000  000000    0  ',
+            '            0    0            0                       0  ',
             '            0    0            0          0  0         0  ',
             '            0    0            0          0  0         0  ',
             '            0    00  0    0  00          0  0         0  ',
@@ -672,7 +672,7 @@ const map = [
             }
         }
     }
-const me = add([ sprite('me'), scale(1.4), pos(1030,480), area(), body({isStatic: true}), 'me'])
+const me = add([ sprite('me'), scale(1.4), pos(1030,480), area({scale:0.7}), body({isStatic: true}), 'me'])
 
 add([ sprite('catswim'), scale(1.8), pos(95,1370), area(), body({isStatic: true}), 'npc'])
 add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
@@ -683,6 +683,60 @@ add([ sprite('orangeh'), scale(2.5), pos(1840,840), area(), body({isStatic: true
 add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 'tank'])
 add([ sprite('tank2'), scale(2.5), pos(1440,1200), area(), body({isStatic: true}), 'tank2'])
 add([ sprite('tank3'), scale(2.5), pos(1400,1200), area(), body({isStatic: true}), 'tank3'])
+
+const audio = new Audio("/audio/putABanana.mp3")
+const houseopen = new Audio("/audio/dooropen.wav")
+const relaxdoor = new Audio("/audio/relaxdoor.mp3")
+
+let playAudio = true
+audio.volume = 0.1
+houseopen.volume = 0.1
+relaxdoor.volume = 0.1
+audio.play()
+audio.loop = true
+
+const textMusic = add([
+    text("Volume ON",{
+     font: "title",  
+     width: 400, 
+    }),
+    pos(10 , 10),
+    color(10, 10, 10),
+    fixed(),
+    area()
+])
+textMusic.onClick(() => {
+    playAudio = !playAudio
+    if (playAudio){
+    audio.play()
+    textMusic.text = "Volume ON"
+    } else {
+        audio.pause()
+        textMusic.text = "Volume OFF"
+    }
+})
+const arrow = add([
+    text("Utilisez les flêches du clavier pour vous déplacer",{
+     font: "unscii",  
+     width: 400, 
+     size: 22,
+    }),
+    pos(10 , 50),
+    color(0, 0, 0),
+    fixed(),
+    area()
+])
+const arrow2 = add([
+    text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+     font: "unscii",  
+     width: 400, 
+     size: 22,
+    }),
+    pos(10 , 90),
+    color(10, 10, 10),
+    fixed(),
+    area()
+])
 const player = add([
     sprite('player-down'),
     scale(2.2),
@@ -807,7 +861,7 @@ player.onCollide('me', () => {
         fixed()
     ])
 
-    onKeyPress("space", () => {
+    onKeyPress("enter", () => {
         curDialog = (curDialog + 1) % dialogs.length
         updateDialog()
                 if (curDialog ===0 ){
@@ -828,35 +882,54 @@ player.onCollide('me', () => {
     updateDialog()
 })
 player.onCollide('church42', () => {   
+    audio.pause()
+    audio.currentTime = 0
     flashScreen()
+    houseopen.play()
+    houseopen.volume = 0.4
     setTimeout(() => {
     worldState.playerPos = vec2(600,400) 
     go("myhouse", worldState)
     }, 1000)
 })
 player.onCollide('blueh', () => {   
+    audio.pause()
+    audio.currentTime = 0
     flashScreen()
+    houseopen.play()
+    houseopen.volume = 0.4
     setTimeout(() => {
     worldState.playerPos = vec2(550, 500) 
     go("skills", worldState)
     }, 1000)
 })
-player.onCollide('blueh1', () => {   
+player.onCollide('blueh1', () => {
+    audio.pause()
+    audio.currentTime = 0   
     flashScreen()
+    relaxdoor.play()
     setTimeout(() => {
-    worldState.playerPos = player.pos 
-    go("skills", worldState)
-    }, 1000)
+        worldState.playerPos = vec2(550, 500) 
+    go("relax", worldState)
+    }, 2000)
 })
-player.onCollide('orangeh', () => {   
+player.onCollide('orangeh', () => { 
+    audio.pause()
+    audio.currentTime = 0  
     flashScreen()
+    houseopen.play()
+    houseopen.volume = 0.4
     setTimeout(() => {
     worldState.playerPos = vec2(520, 420)
     go("school", worldState)
     }, 1000)
 })
-player.onCollide('orangeh1', () => {   
+player.onCollide('orangeh1', () => {
+    audio.pause()
+    audio.currentTime = 0  
     flashScreen()
+    houseopen.play()
+    houseopen.volume = 0.4
     setTimeout(() => {
     worldState.playerPos = vec2(400, 420)
     go("projects", worldState)
@@ -867,7 +940,7 @@ function collidetank(tankname){
     player.isInDialogue = true
     let dialogs = [
         [ "Souhaitez-vous quitter ce PortFolio et vous rendre dans la version classique ?" ],
-        [ "Oui : touche 'ENTRER'                Non : touche 'ESC'"],
+        [ "Oui : touche 'ENTRER'                Non : touche 'ECHAP'" ],
     ]
     
     let curDialog = 0

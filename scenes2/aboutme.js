@@ -71,7 +71,7 @@ function setAboutMe(worldState) {
     const details = add([
         pos(0, 10),
         color(245, 67, 54),
-        text("ESC ou ESPACE pour quitter", {
+        text("ESC pour quitter", {
             font: "unscii",
             width: 900,
             size: 26,
@@ -85,7 +85,7 @@ function setAboutMe(worldState) {
             playerPos : (850,500),
         }
     }
-    onKeyPress("space", () => {
+    onKeyPress("enter", () => {
         worldState.playerPos = vec2(500, 300)
         go("myhouse", worldState)
     })

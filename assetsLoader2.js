@@ -14,6 +14,33 @@ function loadAssets2(){
     loadSpriteAtlas('/assets/atlas_16x.png', {
         'library':{x: 128, y: 160, width: 32, height: 32},
     })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'stairsdown':{x: 384, y: 0, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'stairsup':{x: 400, y: 16, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'bed1':{x: 160, y: 224, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'bed2':{x: 160, y: 240, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'tv':{x: 144, y: 208, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'computer':{x: 128, y: 208, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'computer2':{x: 128, y: 192, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'books':{x: 336, y: 48, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'map':{x: 160, y: 128, width: 32, height: 32},
+    })
     loadSpriteAtlas('/assets/atlas_16x.png',{
         'tile2': {x: 0, y: 0, width: 768, height: 256, sliceX:48, sliceY:16,
         anims:{
@@ -49,6 +76,13 @@ function loadAssets2(){
             'window2': 12,
             'window3': 59,
             'window4': 60,
+            'smallwindow1': 10,
+            'smallwindow2': 58,
+            'stairsup': 25,
+            'stairsdown': 24,
+            'stairsup2': 73,
+            "smalltv": 584,
+            "smalltv2": 632,
             'library1': 488,
             'library2': 489,
             'library3': 536,
@@ -96,6 +130,8 @@ function loadAssets2(){
             'commode2': 214,
             'commode3': 309,
             'commode4': 310,
+            'commode5': 261,
+            'commode6': 262,
             'miniboard': 491,
             'miniboard1': 539,
             'minitableC': 687,
@@ -132,6 +168,19 @@ function loadAssets2(){
             'smallchair': 344,
             'etagere': 494,
             'etagere1': 542,
+            'tablebrown': 204,
+            'tablebrown1': 205,
+            'tablebrown2': 206,
+            'tablebrown3': 252,
+            'tablebrown4': 253,
+            'tablebrown5': 254,
+            'tablebrown6': 300,
+            'tablebrown7': 301,
+            'tablebrown8': 302,
+            'bed': 682,
+            'bed2': 730,
+            'computertable': 594,
+            'computertable1': 642,
         }},
     })
     loadSpriteAtlas('/assets/atlas_16x.png',{
@@ -144,6 +193,8 @@ function loadAssets2(){
             'book': 117,
             'book1': 165,
             'coffee': 263,
+            'tv3': 584,
+            'tv4': 632,
             'curtainblue': 104,
             'curtainblue1': 105,
             'curtainblue2': 152,
@@ -157,6 +208,10 @@ function loadAssets2(){
             'curtainred2': 156,
             'curtainred3': 157,
             'bottle': 503,
+            'bed': 682,
+            'bed2': 730,
+            'clock': 652,
+            'clock1': 700,
         }},
     })
 }

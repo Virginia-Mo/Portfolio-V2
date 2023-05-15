@@ -22,6 +22,7 @@ function loadAssets(){
     loadSprite('pnb', './assets/teastainpnb.png')  
     loadSprite('pokedex', './assets/teastain62pkd.png') 
     loadSprite('todo', './assets/teastain62todo.png')
+    loadSprite('villagezoom', './assets/villagezoom.png')
     loadSpriteAtlas('/assets/spr_anna.png', {
         'npc':{x: 0, y: 9, width: 16, height: 18},
     })
@@ -34,6 +35,9 @@ function loadAssets(){
     loadSpriteAtlas('/assets/meloncat.png', {
         'meloncatside':{x: 32, y: 64, width: 32, height: 32},
     })
+    loadSpriteAtlas('/assets/meloncat.png', {
+        'meloncatup':{x: 32, y: 96, width: 32, height: 32},
+    })
     loadSpriteAtlas('/assets/npc.png', {
         'me':{x: 128, y: 0, width: 32, height: 48},
     })
@@ -45,6 +49,27 @@ function loadAssets(){
     })
     loadSpriteAtlas('/assets/seriouscat.png', {
         'seriouscat':{x: 32, y: 5, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/catglasses.png', {
+        'catglassesdown':{x: 32, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/catglasses.png', {
+        'catglassesside':{x: 32, y: 32, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/catglasses.png', {
+        'catglassessup':{x: 32, y: 96, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/mumcat.png', {
+        'mumcat':{x: 32, y: 32, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/mumcat.png', {
+        'mumcatside':{x: 32, y: 64, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/mumcat.png', {
+        'mumcatup':{x: 32, y: 96, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/mumcat.png', {
+        'mumcatdown':{x: 32, y: 0, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/goldcat.png', {
         'goldcat':{x: 32, y: 5, width: 32, height: 32},
