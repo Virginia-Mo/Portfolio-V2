@@ -1,10 +1,8 @@
-
 kaboom({
     width: 1280,
     height: 720,
    stretch: true
 })
-
 setBackground(Color.fromHex("#065694"))
 
 loadFont("font1", "./fonts/font1.ttf", 8, 8)
