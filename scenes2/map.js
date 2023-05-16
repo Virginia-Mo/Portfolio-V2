@@ -1,4 +1,4 @@
-function setMap(worldState) {
+export function setMap(worldState) {
     add([
         sprite('villagezoom'),
         scale(1.1),

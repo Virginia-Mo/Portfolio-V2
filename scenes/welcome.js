@@ -1,5 +1,6 @@
-function setWelcome(worldState) {
-    setBackground(Color.fromHex("#000000"))
+export function setWelcome(worldState) {
+
+ setBackground(Color.fromHex("#000000"))
     const welcomeText = add([
         text("Bienvenue sur mon Portfolio",{
          font: "title",  

@@ -1,4 +1,4 @@
-function setMyHouse(worldState) {
+export function setMyHouse(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),

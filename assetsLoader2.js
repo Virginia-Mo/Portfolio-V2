@@ -1,4 +1,4 @@
-function loadAssets2(){
+export function loadAssets2(){
     loadSpriteAtlas('/assets/atlas_16x.png', {
         'carpet':{x: 96, y: 48, width:32, height: 16},
     })

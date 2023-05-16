@@ -1,4 +1,4 @@
-function setSkills(worldState) {
+export function setSkills(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),

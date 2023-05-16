@@ -1,4 +1,4 @@
-function setContact(worldState) {
+export function setContact(worldState) {
     add([
         sprite('tea2-background'),
         scale(2.5),

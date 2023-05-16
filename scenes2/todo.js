@@ -1,4 +1,4 @@
-function setTodo(worldState) {
+export function setTodo(worldState) {
     add([
         sprite('todo'),
         scale(0.65),

@@ -1,4 +1,4 @@
-function loadAssets(){
+export function loadAssets(){
     loadSpriteAtlas('/assets/cat.png', {
         'player-down': {x: 0, y: 3, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {

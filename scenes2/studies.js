@@ -1,4 +1,4 @@
-function setStudies(worldState) {
+export function setStudies(worldState) {
     add([
         sprite('tea1-background'),
         scale(2.5),

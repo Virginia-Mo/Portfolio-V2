@@ -1,4 +1,4 @@
-function setPokedex(worldState) {
+export function setPokedex(worldState) {
     add([
         sprite('pokedex'),
         scale(0.65),

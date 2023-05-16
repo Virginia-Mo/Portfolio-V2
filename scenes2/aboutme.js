@@ -1,4 +1,4 @@
-function setAboutMe(worldState) {
+export function setAboutMe(worldState) {
     add([
         sprite('tea1-background'),
         scale(2.5),

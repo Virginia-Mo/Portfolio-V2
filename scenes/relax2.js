@@ -1,4 +1,4 @@
-function setRelax2(worldState) {
+export function setRelax2(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),

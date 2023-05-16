@@ -1,4 +1,4 @@
-function setProjects(worldState) {
+export function setProjects(worldState) {
     function makeTile(type) {
         return [
             sprite('tile2'),

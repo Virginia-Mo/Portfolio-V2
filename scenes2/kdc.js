@@ -1,4 +1,4 @@
-function setKDC(worldState) {
+export function setKDC(worldState) {
     add([
         sprite('kdc'),
         scale(0.65),

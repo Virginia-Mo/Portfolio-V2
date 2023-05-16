@@ -1,4 +1,4 @@
-function setTech(worldState) {
+export function setTech(worldState) {
     add([
         sprite('tea3-background'),
         scale(2.5),

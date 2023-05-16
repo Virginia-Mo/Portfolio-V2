@@ -1,4 +1,4 @@
-function setWorld(worldState) {
+export function setWorld(worldState) {
     function makeTile(type) {
         return [
             sprite('tile'),

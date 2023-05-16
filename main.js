@@ -1,14 +1,27 @@
+// import font1 from "./fonts/font1.ttf";
+// import titlefont from "./fonts/upheavtt.ttf"
+import {loadAssets} from "./assetsLoader.js";
+import {loadAssets2} from "./assetsLoader2.js";
+import { setWelcome } from "./scenes/welcome.js";
+import { setWorld } from "./scenes/world.js";
+import { setMyHouse } from "./scenes/myhouse.js";
+import { setSkills } from "./scenes/skills.js";
+import { setSchool } from "./scenes/school.js";
+import { setProjects } from "./scenes/projects.js";
+import { setAboutMe } from "./scenes2/aboutme.js";
+import { setContact } from "./scenes2/contact.js";
+
 kaboom({
     width: 1280,
     height: 720,
    stretch: true
 })
-setBackground(Color.fromHex("#065694"))
+
 
 loadFont("font1", "./fonts/font1.ttf", 8, 8)
 loadFont("unscii", "./fonts/Pixellari.ttf", 8, 8)
 loadFont("title", "./fonts/upheavtt.ttf", 14, 14)
-loadSound("banana", "/audio/putABanana.mp3")
+loadSound("banana", "./audio/putABanana.mp3")
 loadAssets()
 loadAssets2()
 

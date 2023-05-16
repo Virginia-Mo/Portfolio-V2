@@ -1,4 +1,4 @@
-function setMadji(worldState) {
+export function setMadji(worldState) {
     add([
         sprite('madji'),
         scale(0.65),

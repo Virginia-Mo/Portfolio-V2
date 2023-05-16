@@ -1,4 +1,4 @@
-function setCopyrights(worldState) {
+export function setCopyrights(worldState) {
     add([
         sprite('tea3-background'),
         scale(2.5),

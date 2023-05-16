@@ -1,4 +1,4 @@
-function setSoft(worldState) {
+export function setSoft(worldState) {
     add([
         sprite('tea3-background'),
         scale(2.5),

@@ -1,4 +1,4 @@
-function setWork(worldState) {
+export function setWork(worldState) {
     add([
         sprite('tea2-background'),
         scale(2.5),
