@@ -228,8 +228,8 @@ export function setMyHouse(worldState) {
     add([sprite('board'), scale(2.5), pos(480, 200), area({scale:0.6}), 'board'])
     add([sprite('board'), scale(2.5), pos(720, 200), area({scale:0.6}), 'board2'])
 
-    let spookybananas = new Audio("/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("/audio/doorclose.wav")
+    let spookybananas = new Audio("dist/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("dist/audio/doorclose.wav")
     doorclose.volume = 0.1
     spookybananas.play()
     spookybananas.volume = 0.1

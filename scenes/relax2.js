@@ -223,8 +223,8 @@ export function setRelax2(worldState) {
         isStatic: true
     }), 'map'])
 
-    const badjoke = new Audio("/audio/badjoke.wav")
-    let spookybananas = new Audio("/audio/SpookyBananas.mp3")
+    const badjoke = new Audio("dist/audio/badjoke.wav")
+    let spookybananas = new Audio("dist/audio/SpookyBananas.mp3")
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
@@ -441,7 +441,7 @@ export function setRelax2(worldState) {
         dialog(textbed)
     })
     player.onCollide('computer', () => {
-        const audioCompter = new Audio("audio/keyboard.wav")
+        const audioCompter = new Audio("dist/audio/keyboard.wav")
         const textbed = [
             ["Historique de recherche: 'Comment gagner à tous les coups à pierre feuille ciseaux'..Intéressant.."]
         ]

@@ -1,4 +1,4 @@
-function setPnb(worldState) {
+export function setPnb(worldState) {
     add([
         sprite('pnb'),
         scale(0.65),

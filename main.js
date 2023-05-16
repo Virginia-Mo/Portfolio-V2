@@ -10,6 +10,19 @@ import { setSchool } from "./scenes/school.js";
 import { setProjects } from "./scenes/projects.js";
 import { setAboutMe } from "./scenes2/aboutme.js";
 import { setContact } from "./scenes2/contact.js";
+import { setTech } from "./scenes2/tech.js";
+import { setSoft } from "./scenes2/soft.js";
+import { setKDC } from "./scenes2/kdc.js";
+import { setMadji } from "./scenes2/madji.js";
+import { setPnb } from "./scenes2/pnb.js";
+import { setPokedex } from "./scenes2/pokedex.js";
+import { setTodo } from "./scenes2/todo.js";
+import { setStudies } from "./scenes2/studies.js";
+import { setWork } from "./scenes2/work.js";
+import { setRelax } from "./scenes/relax.js";
+import { setRelax2 } from "./scenes/relax2.js";
+import { setCopyrights } from "./scenes2/copyrights.js";
+import { setMap } from "./scenes2/map.js";
 
 kaboom({
     width: 1280,
@@ -18,10 +31,10 @@ kaboom({
 })
 
 
-loadFont("font1", "./fonts/font1.ttf", 8, 8)
-loadFont("unscii", "./fonts/Pixellari.ttf", 8, 8)
-loadFont("title", "./fonts/upheavtt.ttf", 14, 14)
-loadSound("banana", "./audio/putABanana.mp3")
+loadFont("font1", "dist/fonts/font1.ttf", 8, 8)
+loadFont("unscii", "dist/fonts/Pixellari.ttf", 8, 8)
+loadFont("title", "dist/fonts/upheavtt.ttf", 14, 14)
+loadSound("banana", "dist/audio/putABanana.mp3")
 loadAssets()
 loadAssets2()
 

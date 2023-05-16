@@ -10,7 +10,7 @@ export function loadAssets(){
         },
         'player-side': {x: 0, y:32, width: 96, height: 32, sliceX : 3, sliceY:1, 
             anims: {
-            'walk': {from: 0, to: 1, speed:7}}
+            'walk': {from: 0, to: 1, speed:6}}
         },
     })
     loadSprite('tea1-background', './assets/teastain38.png')
