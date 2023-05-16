@@ -31,10 +31,10 @@ kaboom({
 })
 
 
-loadFont("font1", "dist/fonts/font1.ttf", 8, 8)
-loadFont("unscii", "dist/fonts/Pixellari.ttf", 8, 8)
-loadFont("title", "dist/fonts/upheavtt.ttf", 14, 14)
-loadSound("banana", "dist/audio/putABanana.mp3")
+loadFont("font1", "assets/fonts/font1.ttf", 8, 8)
+loadFont("unscii", "assets/fonts/Pixellari.ttf", 8, 8)
+loadFont("title", "assets/fonts/upheavtt.ttf", 14, 14)
+loadSound("banana", "assets/audio/putABanana.mp3")
 loadAssets()
 loadAssets2()
 

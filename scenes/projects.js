@@ -236,8 +236,8 @@ export function setProjects(worldState) {
     }), 'meloncat'])
     
 
-    let spookybananas = new Audio("dist/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("dist/audio/doorclose.wav")
+    let spookybananas = new Audio("assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("assets/audio/doorclose.wav")
     doorclose.volume = 0.1
     spookybananas.play()
     spookybananas.volume = 0.1

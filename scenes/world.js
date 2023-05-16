@@ -684,9 +684,9 @@ add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 
 add([ sprite('tank2'), scale(2.5), pos(1440,1200), area(), body({isStatic: true}), 'tank2'])
 add([ sprite('tank3'), scale(2.5), pos(1400,1200), area(), body({isStatic: true}), 'tank3'])
 
-const audio = new Audio("dist/audio/putABanana.mp3")
-const houseopen = new Audio("dist/audio/dooropen.wav")
-const relaxdoor = new Audio("dist/audio/relaxdoor.mp3")
+const audio = new Audio("assets/audio/putABanana.mp3")
+const houseopen = new Audio("assets/audio/dooropen.wav")
+const relaxdoor = new Audio("assets/audio/relaxdoor.mp3")
 
 let playAudio = true
 audio.volume = 0.1

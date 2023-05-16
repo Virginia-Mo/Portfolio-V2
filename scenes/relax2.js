@@ -441,7 +441,7 @@ export function setRelax2(worldState) {
         dialog(textbed)
     })
     player.onCollide('computer', () => {
-        const audioCompter = new Audio("dist/audio/keyboard.wav")
+        const audioCompter = new Audio("assets/audio/keyboard.wav")
         const textbed = [
             ["Historique de recherche: 'Comment gagner à tous les coups à pierre feuille ciseaux'..Intéressant.."]
         ]
