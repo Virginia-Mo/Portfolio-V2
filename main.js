@@ -1,5 +1,3 @@
-// import font1 from "./fonts/font1.ttf";
-// import titlefont from "./fonts/upheavtt.ttf"
 import {loadAssets} from "./assetsLoader.js";
 import {loadAssets2} from "./assetsLoader2.js";
 import { setWelcome } from "./scenes/welcome.js";
@@ -23,7 +21,6 @@ import { setRelax } from "./scenes/relax.js";
 import { setRelax2 } from "./scenes/relax2.js";
 import { setCopyrights } from "./scenes2/copyrights.js";
 import { setMap } from "./scenes2/map.js";
-
 kaboom({
     width: 1280,
     height: 720,
@@ -60,5 +57,5 @@ scene('relax2', (worldState) => setRelax2(worldState))
 scene('copyrights', (worldState) => setCopyrights(worldState))
 scene('map', (worldState) => setMap(worldState))
 
-go('welcome')
+go('world')
 

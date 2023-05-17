@@ -1,3 +1,5 @@
+import { playerMove } from "../utils/playerMove";
+import { flashScreen } from "../utils/flashScreen";
 export function setRelax2(worldState) {
     function makeTile(type) {
         return [
@@ -223,12 +225,13 @@ export function setRelax2(worldState) {
         isStatic: true
     }), 'map'])
 
-    const badjoke = new Audio("dist/audio/badjoke.wav")
-    let spookybananas = new Audio("dist/audio/SpookyBananas.mp3")
+    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
 
+    let playMusic = true
+    const badjoke = new Audio("public/assets/audio/badjoke.wav")
     const textMusic = add([
         text("Volume ON",{
          font: "title",  
@@ -239,13 +242,14 @@ export function setRelax2(worldState) {
         fixed(),
         area()
     ])
+
     textMusic.onClick(() => {
-        spookybananas = !spookybananas
-        if (spookybananas){
-        audio.play()
+        playMusic = !playMusic
+        if (playMusic){
+        spookybananas.play()
         textMusic.text = "Volume ON"
         } else {
-            audio.pause()
+            spookybananas.pause()
             textMusic.text = "Volume OFF"
         }
     })
@@ -261,7 +265,7 @@ export function setRelax2(worldState) {
         area()
     ])
     const arrow2 = add([
-        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
          font: "unscii",  
          width: 400, 
          size: 22,
@@ -270,8 +274,7 @@ export function setRelax2(worldState) {
         color(255,255,255),
         fixed(),
         area()
-    ])
-
+    ]) 
     const player = add([
         sprite('player-up'),
         scale(2.2),
@@ -284,73 +287,8 @@ export function setRelax2(worldState) {
         }
     ])
 
-    onUpdate(() => {
-        camPos(player.pos)
-    })
+playerMove(player)
 
-    function setSprite(player, spriteName) {
-        if (player.currentSprite !== spriteName) {
-            player.use(sprite(spriteName))
-            player.currentSprite = spriteName
-        }
-    }
-
-    onKeyDown('down', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'godown') {
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0, player.speed)
-    })
-    onKeyDown('up', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'goup') {
-            setSprite(player, 'player-up')
-            player.play('goup')
-        }
-        player.move(0, -player.speed)
-    })
-
-    onKeyDown('left', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = false
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(-player.speed, 0)
-    })
-    onKeyDown('right', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = true
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(player.speed, 0)
-    })
-
-    onKeyRelease('left', () => {
-        player.stop()
-    })
-    onKeyRelease('right', () => {
-        player.stop()
-    })
-    onKeyRelease('up', () => {
-        player.stop()
-    })
-    onKeyRelease('down', () => {
-        player.stop()
-    })
     if (!worldState) {
         worldState = {
             playerPos: vec2(450, 500),
@@ -358,6 +296,7 @@ export function setRelax2(worldState) {
     }
     player.pos = worldState.playerPos
     player.sprite = worldState.playerSprite
+    
     player.onCollide('catglassesdown', () => {
         if (player.currentSprite === 'player-side') {
             glassescat.use(sprite("catglassesside"))
@@ -374,9 +313,9 @@ export function setRelax2(worldState) {
             ["..."],
         ]
 
-        let curDialog = 0
-        const dialogueBoxFixedContainer = add([fixed()])
-        const dialogueBox = dialogueBoxFixedContainer.add([
+        let curDialog1 = 0
+        const dialogueBoxFixedContainer1 = add([fixed()])
+        const dialogueBox1 = dialogueBoxFixedContainer1.add([
             rect(1000, 190, {
                 radius: 32
             }),
@@ -386,7 +325,7 @@ export function setRelax2(worldState) {
             color(237, 221, 187),
         ])
 
-        const content = dialogueBox.add([
+        const content1 = dialogueBox1.add([
             text('', {
                 size: 42,
                 width: 900,
@@ -398,27 +337,46 @@ export function setRelax2(worldState) {
         ])
 
         onKeyPress("enter", () => {
-            curDialog = (curDialog + 1) % dialogs.length
+            curDialog1 = (curDialog1 + 1) % dialogs.length
             updateDialog()
-            if (curDialog === 3) {
+            if (curDialog1 === 3) {
                 badjoke.volume = 0.1
                 badjoke.play()
             }
-            if (curDialog === 0) {
-                destroy(dialogueBox)
+            if (curDialog1 === 0) {
+                destroy(dialogueBox1)
                 player.isInDialogue = false
+                badjoke.pause()
+                badjoke.currentTime = 0
+                glassescat.use(sprite("catglassesdown"))
+            }
+        })
+        onKeyPress("space", () => {
+            curDialog1 = (curDialog1 + 1) % dialogs.length
+            updateDialog()
+            if (curDialog1 === 3) {
+                badjoke.volume = 0.1
+                badjoke.play()
+            }
+            if (curDialog1 === 0) {
+                destroy(dialogueBox1)
+                player.isInDialogue = false
+                badjoke.pause()
+                badjoke.currentTime = 0
                 glassescat.use(sprite("catglassesdown"))
             }
         })
         onKeyPress("escape", () => {
-            destroy(dialogueBox)
+            destroy(dialogueBox1)
             player.isInDialogue = false
+            badjoke.pause()
+            badjoke.currentTime = 0
             glassescat.use(sprite("catglassesdown"))
         })
 
         function updateDialog() {
-            const [dialog] = dialogs[curDialog]
-            content.text = dialog
+            const [dialog] = dialogs[curDialog1]
+            content1.text = dialog
         }
         updateDialog()
     })
@@ -428,6 +386,8 @@ export function setRelax2(worldState) {
         ]
         flashScreen()
         dialog(textbed)
+        spookybananas.pause()
+        spookybananas.currentTime = 0
         setTimeout(() => {
             worldState.playerPos = vec2(390, 545)
             go("relax2", worldState)
@@ -441,7 +401,7 @@ export function setRelax2(worldState) {
         dialog(textbed)
     })
     player.onCollide('computer', () => {
-        const audioCompter = new Audio("assets/audio/keyboard.wav")
+        const audioCompter = new Audio("public/assets/audio/keyboard.wav")
         const textbed = [
             ["Historique de recherche: 'Comment gagner à tous les coups à pierre feuille ciseaux'..Intéressant.."]
         ]
@@ -477,15 +437,10 @@ export function setRelax2(worldState) {
         }, 500)
     })
 
-    function flashScreen() {
-        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
-    }
-
     function dialog(dialogs) {
         player.isInDialogue = true
-        const dialogueBoxFixedContainer = add([fixed()])
-        const dialogueBox = dialogueBoxFixedContainer.add([
+        const box = add([fixed()])
+        const speechbox = box.add([
             rect(1000, 190, {
                 radius: 32
             }),
@@ -495,7 +450,7 @@ export function setRelax2(worldState) {
             color(237, 221, 187),
         ])
 
-        const content = dialogueBox.add([
+        const speech = speechbox.add([
             text('', {
                 size: 42,
                 width: 900,
@@ -505,15 +460,18 @@ export function setRelax2(worldState) {
             pos(40, 30),
             fixed()
         ])
-
-        onKeyPress("enter", () => {
-            destroy(dialogueBox)
+          speech.text = dialogs
+        handleSpeech("enter", speechbox)
+        handleSpeech("space",speechbox)
+        handleSpeech("escape",speechbox)
+    }
+    function handleSpeech(key, speechbox) {
+        onKeyPress(key, () => {
+            destroy(speechbox)
+            badjoke.pause()
+            badjoke.currentTime = 0
             player.isInDialogue = false
         })
-        onKeyPress("escape", () => {
-            destroy(dialogueBox)
-            player.isInDialogue = false
-        })
-        content.text = dialogs
+      
     }
 }

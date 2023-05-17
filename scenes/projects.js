@@ -1,3 +1,6 @@
+import { playerMove } from "../utils/playerMove";
+import { flashScreen } from "../utils/flashScreen";
+import { dialogObjects } from "../utils/dialogObjects";
 export function setProjects(worldState) {
     function makeTile(type) {
         return [
@@ -234,15 +237,19 @@ export function setProjects(worldState) {
     const meloncat = add([sprite('meloncat'), scale(2.2), pos(300, 370), area({scale:0.7}), body({
         isStatic: true
     }), 'meloncat'])
+   const bookProjects = add([sprite('books'), scale(2.5), pos(520, 480), area(), body({
+        isStatic: true
+    }), 'books'])
     
+    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("public/assets/audio/doorclose.wav")
 
-    let spookybananas = new Audio("assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("assets/audio/doorclose.wav")
-    doorclose.volume = 0.1
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
+    doorclose.volume = 0.1
 
+    let playMusic = true
     const textMusic = add([
         text("Volume ON",{
          font: "title",  
@@ -254,12 +261,12 @@ export function setProjects(worldState) {
         area()
     ])
     textMusic.onClick(() => {
-        spookybananas = !spookybananas
-        if (spookybananas){
-        audio.play()
+        playMusic = !playMusic
+        if (playMusic){
+        spookybananas.play()
         textMusic.text = "Volume ON"
         } else {
-            audio.pause()
+            spookybananas.pause()
             textMusic.text = "Volume OFF"
         }
     })
@@ -275,7 +282,7 @@ export function setProjects(worldState) {
         area()
     ])
     const arrow2 = add([
-        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
          font: "unscii",  
          width: 400, 
          size: 22,
@@ -284,7 +291,7 @@ export function setProjects(worldState) {
         color(255,255,255),
         fixed(),
         area()
-    ])
+    ]) 
     const player = add([
         sprite('player-up'),
         scale(2.2),
@@ -297,73 +304,7 @@ export function setProjects(worldState) {
         }
     ])
 
-    onUpdate(() => {
-        camPos(player.pos)
-    })
-
-    function setSprite(player, spriteName) {
-        if (player.currentSprite !== spriteName) {
-            player.use(sprite(spriteName))
-            player.currentSprite = spriteName
-        }
-    }
-
-    onKeyDown('down', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'godown') {
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0, player.speed)
-    })
-    onKeyDown('up', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'goup') {
-            setSprite(player, 'player-up')
-            player.play('goup')
-        }
-        player.move(0, -player.speed)
-    })
-
-    onKeyDown('left', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = false
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(-player.speed, 0)
-    })
-    onKeyDown('right', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = true
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(player.speed, 0)
-    })
-
-    onKeyRelease('left', () => {
-        player.stop()
-    })
-    onKeyRelease('right', () => {
-        player.stop()
-    })
-    onKeyRelease('up', () => {
-        player.stop()
-    })
-    onKeyRelease('down', () => {
-        player.stop()
-    })
+playerMove(player)
     if (!worldState) {
         worldState = {
             playerPos: vec2(400, 420),
@@ -392,8 +333,8 @@ export function setProjects(worldState) {
         player.isInDialogue = true
         let dialogs = [
             [ "Bonjour! Bienvenue dans la maison des projets!" ],
-            [ "Vous pouvez consulter les différents projets crées sur le mur." ],
-            [ "Ces derniers sont classés par niveau de difficulté (du projet fullstack à la simple todo liste!)" ],
+            [ "Vous pouvez consulter les différents projets créés sur le mur." ],
+            [ "Ces derniers sont classés par niveau de difficulté (du projet fullstack à la simple 'todo' liste!)" ],
             [ "Merci pour votre attention, bonne lecture!" ],
         ]
         
@@ -428,6 +369,15 @@ export function setProjects(worldState) {
                 meloncat.use(sprite("meloncat"))
             }
         })
+        onKeyPress("space", () => {
+            curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+                meloncat.use(sprite("meloncat"))
+            }
+        })
         onKeyPress("escape", () => {
             destroy(dialogueBox)
             player.isInDialogue = false
@@ -440,7 +390,10 @@ export function setProjects(worldState) {
         updateDialog()
 
     })
-
+    player.onCollide("books", () => {
+        let dialog = ["La permière webcam créée surveillait le niveau du café ! Ce logiciel était nommé le 'XCoffee'."]
+        dialogObjects(player, dialog)
+    })
 collideBoards('board1', 'kdc')
 collideBoards('board2', 'madji')
 collideBoards('board3', 'pnb')
@@ -457,8 +410,4 @@ function collideBoards(boardname, project){
         }, 1000)
     })    
 }
-    function flashScreen() {
-        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInOutQuad)
-    }
 }

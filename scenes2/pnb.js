@@ -1,3 +1,5 @@
+import { handleQuit } from "../utils/handleQuit"
+
 export function setPnb(worldState) {
     add([
         sprite('pnb'),
@@ -19,9 +21,8 @@ export function setPnb(worldState) {
         pos(60, 90),
         color(10, 10, 10),
         text("Projet fullstack : ", {
-            font: "unscii",
             width: 900,
-            size: 36,
+            size: 30,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -31,9 +32,8 @@ export function setPnb(worldState) {
         pos(60, 140),
         color(10, 10, 10),
         text("Front-end : Vue 3 (option API), Pinia, Vue Routeur.", {
-            font: "unscii",
             width: 900,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -43,9 +43,8 @@ export function setPnb(worldState) {
         pos(60, 190),
         color(10, 10, 10),
         text("Back-end : CMS -> Strapi, avec Cloudinary pour le stockage des photos, base de données PostgreSQL.", {
-            font: "unscii",
             width: 1200,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -55,9 +54,8 @@ export function setPnb(worldState) {
         pos(60, 280),
         color(10, 10, 10),
         text("Bibliothèque d'animations : AOS, Animate.css, Swiper.", {
-            font: "unscii",
             width: 900,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -67,10 +65,9 @@ export function setPnb(worldState) {
         pos(60, 350),
         color(10, 10, 10),
         text("Site présentant une boutique de Bubble Tea fictive. L'utilisateur peut accéder à diverses informations concernant la boutique et commander des produits en Click'n'Collect. Le propriétaire de la boutique a accès à un back-office créé avec Strapi. Il peut donc consulter les commandes passées, les messages des clients et aussi modifier le menu facilement grâce à cette plateforme.", {
-            font: "unscii",
             width: 950,
-            size: 32,
-            lineSpacing: 10,
+            size: 25,
+            lineSpacing: 11,
             letterSpacing: 2,
         })
     ])
@@ -83,7 +80,7 @@ export function setPnb(worldState) {
             letterSpacing: 2,
         }),
         color(245, 67, 54),
-        pos(800, 670),
+        pos(800, 650),
         scale(1),
         area({ cursor: "pointer"})
     ])
@@ -96,7 +93,7 @@ export function setPnb(worldState) {
             letterSpacing: 2,
         }),
         color(245, 67, 54),
-        pos(400, 670),
+        pos(400, 650),
         scale(1),
         area({ cursor: "pointer"})
     ])
@@ -109,51 +106,28 @@ export function setPnb(worldState) {
             letterSpacing: 2,
         }),
         color(245, 67, 54),
-        pos(80, 670),
+        pos(80, 650),
         scale(1),
         area({ cursor: "pointer"})
     ])
-    const details = add([
-        pos(20, 30),
-        color(245, 67, 54),
-        text("ESC pour quitter", {
-            font: "unscii",
-            width: 900,
-            size: 26,
-            lineSpacing: 8,
-            letterSpacing: 2,
+    handleQuit(worldState, 440, 250, 'projects')
 
-        })
-    ])
     btn2.onClick( () => {
-        console.log("click")
         window.open(
             'https://github.com/Virginia-Mo/Pop-n-Bubble',
             '_blank'
         );
     })
     btn3.onClick( () => {
-        console.log("click")
         window.open(
             'https://github.com/Virginia-Mo/backend_popnbubble',
             '_blank'
         );
     })
     btn.onClick( () => {
-        console.log("click")
         window.open(
             'https://popnbubble.netlify.app/',
             '_blank'
         );
     })
-    if (!worldState) {
-        worldState = {
-            playerPos: (850, 500),
-        }
-    }
-    onKeyPress("escape", () => {
-        worldState.playerPos = vec2(440, 250)
-        go("projects", worldState)
-    })
-
 }

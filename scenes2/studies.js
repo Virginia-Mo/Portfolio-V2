@@ -1,3 +1,5 @@
+import { handleQuit } from "../utils/handleQuit"
+
 export function setStudies(worldState) {
     add([
         sprite('tea1-background'),
@@ -11,11 +13,6 @@ export function setStudies(worldState) {
             size: 40,
             lineSpacing: 8,
             letterSpacing: 2,
-            transform: (idx, ch) => ({
-                pos: vec2(0, wave(-2, 2, time() * 4 + idx * 0.5)),
-                scale: wave(1, 1.2, time() * 3 + idx),
-            }),
-
         }),
         pos(450, 30),
         color(10, 10, 10)
@@ -36,7 +33,6 @@ export function setStudies(worldState) {
         pos(60, 190),
         color(10, 10, 10),
         text("Octobre 22 à Décembre 22, École O'Clock - Labélisée Grande École du Numérique.", {
-            font: "font1",
             width: 1200,
             size: 29,
             lineSpacing: 10,
@@ -60,7 +56,6 @@ export function setStudies(worldState) {
         pos(60, 370),
         color(10, 10, 10),
         text("Mai 22 à Août 22, École O'Clock - Labélisée Grande École du Numérique.", {
-            font: "font1",
             width: 1200,
             size: 29,
             lineSpacing: 10,
@@ -84,7 +79,6 @@ export function setStudies(worldState) {
         pos(60, 530),
         color(10, 10, 10),
         text("2010-2013 : IFSI Ambroise Paré, Boulogne Billancourt", {
-            font: "font1",
             width: 1200,
             size: 29,
             lineSpacing: 10,
@@ -92,27 +86,5 @@ export function setStudies(worldState) {
 
         })
     ])
- 
-    const details = add([
-        pos(20, 10),
-        color(245, 67, 54),
-        text("ESC pour quitter", {
-            font: "unscii",
-            width: 900,
-            size: 26,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    if (!worldState){
-        worldState = {
-            playerPos : (850,500),
-        }
-    }
-    onKeyPress("escape", () => {
-        worldState.playerPos = vec2(400, 270)
-        go("school", worldState)
-    })
-
+ handleQuit(worldState, 400, 270, 'school')
 }

@@ -1,3 +1,7 @@
+import { dialogCats } from "../utils/dialogCats"
+import { flashScreen } from "../utils/flashScreen"
+import { playerMove } from "../utils/playerMove"
+
 export function setMyHouse(worldState) {
     function makeTile(type) {
         return [
@@ -227,13 +231,14 @@ export function setMyHouse(worldState) {
     add([sprite('happycat'), scale(2.2), pos(600, 220), area({scale: 0.6}), 'happycat'])
     add([sprite('board'), scale(2.5), pos(480, 200), area({scale:0.6}), 'board'])
     add([sprite('board'), scale(2.5), pos(720, 200), area({scale:0.6}), 'board2'])
-
-    let spookybananas = new Audio("assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("assets/audio/doorclose.wav")
-    doorclose.volume = 0.1
+    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("public/assets/audio/doorclose.wav")
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
+    doorclose.volume = 0.1
+
+    let playMusic = true
 
     const textMusic = add([
         text("Volume ON",{
@@ -246,12 +251,12 @@ export function setMyHouse(worldState) {
         area()
     ])
     textMusic.onClick(() => {
-        spookybananas = !spookybananas
-        if (spookybananas){
-        audio.play()
+        playMusic = !playMusic
+        if (playMusic){
+        spookybananas.play()
         textMusic.text = "Volume ON"
         } else {
-            audio.pause()
+            spookybananas.pause()
             textMusic.text = "Volume OFF"
         }
     })
@@ -267,7 +272,7 @@ export function setMyHouse(worldState) {
         area()
     ])
     const arrow2 = add([
-        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
          font: "unscii",  
          width: 400, 
          size: 22,
@@ -289,78 +294,14 @@ export function setMyHouse(worldState) {
             isInDialogue: false,
         }
     ])
-
-    onUpdate(() => {
-        camPos(player.pos)
-    })
-
-    function setSprite(player, spriteName) {
-        if (player.currentSprite !== spriteName) {
-            player.use(sprite(spriteName))
-            player.currentSprite = spriteName
-        }
-    }
-
-    onKeyDown('up', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'goup') {
-            setSprite(player, 'player-up')
-            player.play('goup')
-        }
-        player.move(0, -player.speed)
-    })
-
-    onKeyDown('left', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = false
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(-player.speed, 0)
-    })
-    onKeyDown('right', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = true
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(player.speed, 0)
-    })
-    onKeyDown('down', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'godown') {
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0, player.speed)
-    })
-    onKeyRelease('left', () => {
-        player.stop()
-    })
-    onKeyRelease('right', () => {
-        player.stop()
-    })
-    onKeyRelease('up', () => {
-        player.stop()
-    })
-    onKeyRelease('down', () => {
-        player.stop()
-    })
+    
+    playerMove(player)
     if (!worldState) {
         worldState = {
             playerPos: player.pos,
         }
     }
+
     player.pos = worldState.playerPos
     player.onCollide('carpet', () => {
         spookybananas.pause()
@@ -373,56 +314,71 @@ export function setMyHouse(worldState) {
         }, 1000)
     })
 
-    player.onCollide('happycat', () => {
-        player.isInDialogue = true
-        let dialogs = [
-            ["Bonjour! Vous trouverez à gauche une description succinte de Virginia."],
-            ["Et à droite, les différentes informations de contact."],
-            ["Bonne lecture!"],
-        ]
+    // player.onCollide('happycat', () => {
+    //     player.isInDialogue = true
+    //     let dialogs = [
+    //         ["Bonjour! Vous trouverez à gauche une description succinte de Virginia."],
+    //         ["Et à droite, les différentes informations de contact."],
+    //         ["Bonne lecture!"],
+    //     ]
 
-        let curDialog = 0
-        const dialogueBoxFixedContainer = add([fixed()])
-        const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 170, {
-                radius: 32
-            }),
-            outline(4),
-            pos(150, 500),
-            fixed(),
-            color(237, 221, 187),
-        ])
+    //     let curDialog = 0
+    //     const dialogueBoxFixedContainer = add([fixed()])
+    //     const dialogueBox = dialogueBoxFixedContainer.add([
+    //         rect(1000, 170, {
+    //             radius: 32
+    //         }),
+    //         outline(4),
+    //         pos(150, 500),
+    //         fixed(),
+    //         color(237, 221, 187),
+    //     ])
 
-        const content = dialogueBox.add([
-            text('', {
-                size: 42,
-                width: 900,
-                lineSpacing: 15,
-            }),
-            color(10, 10, 10),
-            pos(40, 30),
-            fixed()
-        ])
+    //     const content = dialogueBox.add([
+    //         text('', {
+    //             size: 42,
+    //             width: 900,
+    //             lineSpacing: 15,
+    //         }),
+    //         color(10, 10, 10),
+    //         pos(40, 30),
+    //         fixed()
+    //     ])
 
-        onKeyPress("enter", () => {
-            curDialog = (curDialog + 1) % dialogs.length
-            updateDialog()
-            if (curDialog === 0) {
-                destroy(dialogueBox)
-                player.isInDialogue = false
-            }
-        })
-        onKeyPress("escape", () => {
-            destroy(dialogueBox)
-            player.isInDialogue = false
-        })
+    //     onKeyPress("enter", () => {
+    //         curDialog = (curDialog + 1) % dialogs.length
+    //         updateDialog()
+    //         if (curDialog === 0) {
+    //             destroy(dialogueBox)
+    //             player.isInDialogue = false
+    //         }
+    //     })
+    //     onKeyPress("space", () => {
+    //         curDialog = (curDialog + 1) % dialogs.length
+    //         updateDialog()
+    //         if (curDialog === 0) {
+    //             destroy(dialogueBox)
+    //             player.isInDialogue = false
+    //         }
+    //     })
+    //     onKeyPress("escape", () => {
+    //         destroy(dialogueBox)
+    //         player.isInDialogue = false
+    //     })
 
-        function updateDialog() {
-            const [dialog] = dialogs[curDialog]
-            content.text = dialog
-        }
-        updateDialog()
-    })
+    //     function updateDialog() {
+    //         const [dialog] = dialogs[curDialog]
+    //         content.text = dialog
+    //     }
+    //     updateDialog()
+    // })
+    let dialogs = [
+        ["Bonjour! Vous trouverez à gauche une description succinte de Virginia."],
+        ["Et à droite, les différentes informations de contact."],
+        ["Bonne lecture!"],
+    ]
+dialogCats(player, 'happycat', dialogs)
+
     player.onCollide('board', () => {
         flashScreen()
         spookybananas.pause()
@@ -439,10 +395,7 @@ export function setMyHouse(worldState) {
             go("contact", worldState)
         }, 500)
     })
-    function flashScreen() {
-        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
-    }
+
 
 
 }

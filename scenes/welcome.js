@@ -15,8 +15,7 @@ export function setWelcome(worldState) {
         fixed(),
     ])
     const welcomeText2 = add([
-        text("Quelle version souhaitez-vous visiter ?",{
-         font: "title",  
+        text("Quelle version souhaitez-vous visiter ?",{ 
          width: 900, 
          size: 26,
         }),

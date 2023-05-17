@@ -1,3 +1,7 @@
+import { playerMove } from "../utils/playerMove"
+import { flashScreen } from "../utils/flashScreen"
+import { dialogCats } from "../utils/dialogCats"
+import { dialogObjects } from "../utils/dialogObjects"
 export function setSkills(worldState) {
     function makeTile(type) {
         return [
@@ -184,7 +188,7 @@ export function setSkills(worldState) {
             '       0            0                 ',
             '       0            0                 ',
             '       0           00                 ',
-            '       0000        00                 ',
+            '       000         00                 ',
             '       0           00                 ',
             '       0            0                 ',
             '       0            0                 ',
@@ -236,14 +240,19 @@ export function setSkills(worldState) {
     add([sprite('library'), scale(2.5), pos(720, 160), area(), body({
         isStatic: true
     }), 'library4'])
+    add([sprite('books'), scale(2.5), pos(400, 400), area(), body({
+        isStatic: true
+    }), 'books'])
 
-    let spookybananas = new Audio("assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("assets/audio/doorclose.wav")
-    doorclose.volume = 0.1
+    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("public/assets/audio/doorclose.wav")
+
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
+    doorclose.volume = 0.1
 
+    let playMusic = true
     const textMusic = add([
         text("Volume ON",{
          font: "title",  
@@ -255,12 +264,12 @@ export function setSkills(worldState) {
         area()
     ])
     textMusic.onClick(() => {
-        spookybananas = !spookybananas
-        if (spookybananas){
-        audio.play()
+        playMusic = !playMusic
+        if (playMusic){
+        spookybananas.play()
         textMusic.text = "Volume ON"
         } else {
-            audio.pause()
+            spookybananas.pause()
             textMusic.text = "Volume OFF"
         }
     })
@@ -276,7 +285,7 @@ export function setSkills(worldState) {
         area()
     ])
     const arrow2 = add([
-        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
          font: "unscii",  
          width: 400, 
          size: 22,
@@ -298,76 +307,10 @@ export function setSkills(worldState) {
         }
     ])
 
-    onUpdate(() => {
-        camPos(player.pos)
-    })
-
-    function setSprite(player, spriteName) {
-        if (player.currentSprite !== spriteName) {
-            player.use(sprite(spriteName))
-            player.currentSprite = spriteName
-        }
-    }
-
-    onKeyDown('down', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'godown') {
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0, player.speed)
-    })
-    onKeyDown('up', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'goup') {
-            setSprite(player, 'player-up')
-            player.play('goup')
-        }
-        player.move(0, -player.speed)
-    })
-
-    onKeyDown('left', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = false
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(-player.speed, 0)
-    })
-    onKeyDown('right', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = true
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(player.speed, 0)
-    })
-
-    onKeyRelease('left', () => {
-        player.stop()
-    })
-    onKeyRelease('right', () => {
-        player.stop()
-    })
-    onKeyRelease('up', () => {
-        player.stop()
-    })
-    onKeyRelease('down', () => {
-        player.stop()
-    })
+playerMove(player)
     if (!worldState) {
         worldState = {
-            playerPos: vec2(850, 500),
+            playerPos: vec2(550, 500),
         }
     }
     player.pos = worldState.playerPos
@@ -381,75 +324,28 @@ export function setSkills(worldState) {
             go("world", worldState)
         }, 1000)
     })
-    player.onCollide('seriouscat', () => {
-        player.isInDialogue = true
         let dialogs = [
             ["Bonjour! Pour avoir plus d'informations sur les compétences techniques maitrisées"],
             ["dirigez vous vers les bibliothèques à droite."],
             ["Les soft skills et compétences de gestion de projet se trouvent à gauche."],
             ["Bonne lecture!"],
         ]
+    dialogCats(player, 'seriouscat', dialogs)
 
-        let curDialog = 0
-        const dialogueBoxFixedContainer = add([fixed()])
-        const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 190, {
-                radius: 32
-            }),
-            outline(4),
-            pos(150, 500),
-            fixed(),
-            color(237, 221, 187),
-        ])
-
-        const content = dialogueBox.add([
-            text('', {
-                size: 42,
-                width: 900,
-                lineSpacing: 15,
-            }),
-            color(10, 10, 10),
-            pos(40, 30),
-            fixed()
-        ])
-
-        onKeyPress("enter", () => {
-            curDialog = (curDialog + 1) % dialogs.length
-            updateDialog()
-            if (curDialog === 0) {
-                destroy(dialogueBox)
-                player.isInDialogue = false
-            }
-        })
-        onKeyPress("escape", () => {
-            destroy(dialogueBox)
-            player.isInDialogue = false
-        })
-
-        function updateDialog() {
-            const [dialog] = dialogs[curDialog]
-            content.text = dialog
-        }
-        updateDialog()
+    player.onCollide('books', () => {
+        let dialog = ['La première page Web a été créée en 1990 par Tim Berners-Lee. Elle contenait un titre, un texte et un lien.']
+        dialogObjects(player, dialog) }
+    )
+    libraryCollides('library3', "tech")
+    libraryCollides('library2', "soft")
+    function libraryCollides(name, place){
+        player.onCollide(name, () => {
+            flashScreen()
+            spookybananas.pause()
+            spookybananas.currentTime = 0
+            setTimeout(() => {
+                go(place, worldState)
+            }, 500)
     })
-    player.onCollide('library3', () => {
-        flashScreen()
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        setTimeout(() => {
-            go("tech", worldState)
-        }, 500)
-    })
-    player.onCollide('library2', () => {
-        flashScreen()
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        setTimeout(() => {
-            go("soft", worldState)
-        }, 500)
-    })
-    function flashScreen() {
-        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
     }
 }

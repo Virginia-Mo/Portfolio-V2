@@ -1,3 +1,5 @@
+import { handleQuit } from "../utils/handleQuit"
+
 export function setWork(worldState) {
     add([
         sprite('tea2-background'),
@@ -11,11 +13,6 @@ export function setWork(worldState) {
             size: 40,
             lineSpacing: 8,
             letterSpacing: 2,
-            transform: (idx, ch) => ({
-                pos: vec2(0, wave(-2, 2, time() * 4 + idx * 0.5)),
-                scale: wave(1, 1.2, time() * 3 + idx),
-            }),
-
         }),
         pos(300, 30),
         color(10, 10, 10)
@@ -48,9 +45,8 @@ export function setWork(worldState) {
         pos(60, 230),
         color(10, 10, 10),
         text(" ~> Projet de fin d'études : Développement front-end en React, equipe de 5 développeurs, site de e-commerce.", {
-            font: "unscii",
             width: 1200,
-            size: 30,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -84,9 +80,8 @@ export function setWork(worldState) {
         pos(60, 430),
         color(10, 10, 10),
         text(" ~> Prélèvements sanguins, bactériologiques et mycologiques. Aide techique", {
-            font: "unscii",
             width: 1200,
-            size: 30,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -120,34 +115,12 @@ export function setWork(worldState) {
         pos(60, 600),
         color(10, 10, 10),
         text(" ~> Service de pédiatrie hospitalisations bébés/enfants, urgences pédiatriques et psychiatrie adolescents.", {
-            font: "unscii",
             width: 1200,
-            size: 30,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
         })
     ])
-    const details = add([
-        pos(20, 20),
-        color(245, 67, 54),
-        text("ESC pour quitter", {
-            font: "unscii",
-            width: 900,
-            size: 26,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    if (!worldState){
-        worldState = {
-            playerPos : (850,500),
-        }
-    }
-    onKeyPress("escape", () => {
-        worldState.playerPos = vec2(640, 260)
-        go("school", worldState)
-    })
-
+    handleQuit(worldState, 640, 260, 'school')
 }

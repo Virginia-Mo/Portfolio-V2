@@ -1,3 +1,5 @@
+import { handleQuit } from "../utils/handleQuit"
+
 export function setPokedex(worldState) {
     add([
         sprite('pokedex'),
@@ -19,9 +21,8 @@ export function setPokedex(worldState) {
         pos(60, 90),
         color(10, 10, 10),
         text("Projet front-end : ", {
-            font: "unscii",
             width: 900,
-            size: 36,
+            size: 30,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -31,9 +32,8 @@ export function setPokedex(worldState) {
         pos(60, 140),
         color(10, 10, 10),
         text("Front-end : HTML, CSS, Vanilla Javascript.", {
-            font: "unscii",
             width: 900,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -43,9 +43,8 @@ export function setPokedex(worldState) {
         pos(60, 190),
         color(10, 10, 10),
         text("API: PokéAPI", {
-            font: "unscii",
             width: 1200,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -54,10 +53,9 @@ export function setPokedex(worldState) {
     const input13 = add([
         pos(60, 280),
         color(10, 10, 10),
-        text("Voici un petit projet que j'ai fait afin de m'entraîner  aux appels API. Le bien connu Pokedex ! ", {
-            font: "unscii",
+        text("Voici un petit projet que j'ai fait afin de m'entraîner aux appels API. Le bien connu Pokedex ! ", {
             width: 900,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -67,9 +65,8 @@ export function setPokedex(worldState) {
         pos(60, 370),
         color(10, 10, 10),
         text("Les utilisateurs, après avoir ouvert la pokeball, peuvent accéder aux informations de différents pokemons en tapant leur numéro ou nom en anglais. Ils peuvent aussi voir les pokemons de façon random en cliquant sur le bouton prévu à cet effet.", {
-            font: "unscii",
             width: 900,
-            size: 32,
+            size: 25,
             lineSpacing: 10,
             letterSpacing: 2,
         })
@@ -100,40 +97,18 @@ export function setPokedex(worldState) {
         scale(1),
         area({ cursor: "pointer"})
     ])
-    const details = add([
-        pos(20, 30),
-        color(245, 67, 54),
-        text("ESC pour quitter", {
-            font: "unscii",
-            width: 900,
-            size: 26,
-            lineSpacing: 8,
-            letterSpacing: 2,
+    handleQuit(worldState, 520, 250, 'projects')
 
-        })
-    ])
     btn3.onClick( () => {
-        console.log("click")
         window.open(
             'https://github.com/Virginia-Mo/Pokedex',
             '_blank'
         );
     })
     btn2.onClick( () => {
-        console.log("click")
         window.open(
             'https://thepokedexvm.netlify.app/',
             '_blank'
         );
     })
-    if (!worldState) {
-        worldState = {
-            playerPos: (850, 500),
-        }
-    }
-    onKeyPress("escape", () => {
-        worldState.playerPos = vec2(520, 250)
-        go("projects", worldState)
-    })
-
 }

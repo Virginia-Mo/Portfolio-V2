@@ -1,3 +1,6 @@
+import { playerMove } from "../utils/playerMove";
+import { flashScreen } from "../utils/flashScreen";
+import { dialogCats } from "../utils/dialogCats";
 export function setRelax(worldState) {
     function makeTile(type) {
         return [
@@ -220,14 +223,15 @@ const library =  add([sprite('library'), scale(2.5), pos(320, 160), area(), body
 const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body({
         isStatic: true
     }), 'library4'])
+    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("public/assets/audio/doorclose.wav")
 
-    let spookybananas = new Audio("assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("assets/audio/doorclose.wav")
-    doorclose.volume = 0.1
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
+    doorclose.volume = 0.1
 
+    let playMusic = true
     const textMusic = add([
         text("Volume ON",{
          font: "title",  
@@ -239,12 +243,12 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         area()
     ])
     textMusic.onClick(() => {
-        spookybananas = !spookybananas
-        if (spookybananas){
-        audio.play()
+        playMusic = !playMusic
+        if (playMusic){
+        spookybananas.play()
         textMusic.text = "Volume ON"
         } else {
-            audio.pause()
+            spookybananas.pause()
             textMusic.text = "Volume OFF"
         }
     })
@@ -260,7 +264,7 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         area()
     ])
     const arrow2 = add([
-        text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
          font: "unscii",  
          width: 400, 
          size: 22,
@@ -282,73 +286,8 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         }
     ])
 
-    onUpdate(() => {
-        camPos(player.pos)
-    })
+playerMove(player)
 
-    function setSprite(player, spriteName) {
-        if (player.currentSprite !== spriteName) {
-            player.use(sprite(spriteName))
-            player.currentSprite = spriteName
-        }
-    }
-
-    onKeyDown('down', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'godown') {
-            setSprite(player, 'player-down')
-            player.play('godown')
-        }
-        player.move(0, player.speed)
-    })
-    onKeyDown('up', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        if (player.curAnim() !== 'goup') {
-            setSprite(player, 'player-up')
-            player.play('goup')
-        }
-        player.move(0, -player.speed)
-    })
-
-    onKeyDown('left', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = false
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(-player.speed, 0)
-    })
-    onKeyDown('right', () => {
-        if (player.isInDialogue) {
-            return
-        }
-        player.flipX = true
-        if (player.curAnim() !== 'walk') {
-            setSprite(player, 'player-side')
-            player.play('walk')
-        }
-        player.move(player.speed, 0)
-    })
-
-    onKeyRelease('left', () => {
-        player.stop()
-    })
-    onKeyRelease('right', () => {
-        player.stop()
-    })
-    onKeyRelease('up', () => {
-        player.stop()
-    })
-    onKeyRelease('down', () => {
-        player.stop()
-    })
     if (!worldState) {
         worldState = {
             playerPos: vec2(550, 500),
@@ -358,16 +297,6 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
     player.pos = worldState.playerPos
     player.sprite = worldState.playerSprite
     
-    player.onCollide('carpet2', () => {
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        flashScreen()
-        doorclose.play()
-        setTimeout(() => {
-            worldState.playerPos = vec2(420, 1300)
-            go("world", worldState)
-        }, 1000)
-    })
     player.onCollide('mumcat', () => {
         if (player.currentSprite === 'player-side') {
             mumcat.use(sprite("mumcatside"))
@@ -415,6 +344,15 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
                 mumcat.use(sprite("mumcat"))
             }
         })
+        onKeyPress("space", () => {
+            curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+                mumcat.use(sprite("mumcat"))
+            }
+        })
         onKeyPress("escape", () => {
             destroy(dialogueBox)
             player.isInDialogue = false
@@ -427,6 +365,18 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         }
         updateDialog()
     })
+
+    player.onCollide('carpet2', () => {
+        spookybananas.pause()
+        spookybananas.currentTime = 0
+        flashScreen()
+        doorclose.play()
+        setTimeout(() => {
+            worldState.playerPos = vec2(420, 1300)
+            go("world", worldState)
+        }, 1000)
+    })
+
     player.onCollide('stairsup', () => {
         flashScreen()
         spookybananas.pause()
@@ -436,24 +386,32 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
             go("relax2", worldState)
         }, 500)
     })
-    player.onCollide('library', () => {
-        flashScreen()
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        setTimeout(() => {
-            go("copyrights", worldState)
-        }, 500)
-    })
-    player.onCollide('library2', () => {
-        flashScreen()
-        spookybananas.pause()
-        spookybananas.currentTime = 0
-        setTimeout(() => {
-            go("copyrights", worldState)
-        }, 500)
-    })
-    function flashScreen() {
-        const flash = add([rect(1280, 720), color(10, 10, 10), fixed(), opacity(0)])
-        tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeOutCubic)
+    // player.onCollide('library', () => {
+    //     flashScreen()
+    //     spookybananas.pause()
+    //     spookybananas.currentTime = 0
+    //     setTimeout(() => {
+    //         go("copyrights", worldState)
+    //     }, 500)
+    // })
+    // player.onCollide('library2', () => {
+    //     flashScreen()
+    //     spookybananas.pause()
+    //     spookybananas.currentTime = 0
+    //     setTimeout(() => {
+    //         go("copyrights", worldState)
+    //     }, 500)
+    // })
+    collides('library')
+    collides('library2')
+    function collides(boardname){
+        player.onCollide(boardname, () => {
+            flashScreen()
+            spookybananas.pause()
+            spookybananas.currentTime = 0
+            setTimeout(() => {
+                go('copyrights', worldState)
+            }, 500)
+        })    
     }
 }

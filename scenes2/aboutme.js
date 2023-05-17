@@ -1,3 +1,4 @@
+import { handleQuit } from "../utils/handleQuit"
 export function setAboutMe(worldState) {
     add([
         sprite('tea1-background'),
@@ -11,11 +12,6 @@ export function setAboutMe(worldState) {
             size: 35,
             lineSpacing: 8,
             letterSpacing: 2,
-            transform: (idx, ch) => ({
-                pos: vec2(0, wave(-2, 2, time() * 4 + idx * 0.5)),
-                scale: wave(1, 1.2, time() * 3 + idx),
-            }),
-
         }),
         pos(450, 30),
         color(10, 10, 10)
@@ -24,7 +20,6 @@ export function setAboutMe(worldState) {
         pos(100, 130),
         color(10, 10, 10),
         text("Bonjour! Je suis Virginia Mo et je viens d'une petite ville près de Versailles.Après avoir travaillé près de 8 ans en tant qu'infirmière, principalement en pédiatrie, j'ai décidé de changer de voie.", {
-            font: "unscii",
             width: 900,
             size: 26,
             lineSpacing: 10,
@@ -36,7 +31,6 @@ export function setAboutMe(worldState) {
         pos(100, 290),
         color(10, 10, 10),
         text("Je suis désormais développeuse web fullstack avec une spécialisation en ReactJS.", {
-            font: "unscii",
             width: 900,
             size: 26,
             lineSpacing: 10,
@@ -45,10 +39,9 @@ export function setAboutMe(worldState) {
         })
     ])
     const input3 = add([
-        pos(100, 390),
+        pos(100, 370),
         color(10, 10, 10),
-        text("Mes expériences professionnelles m'ont permis de développer des soft skills telles que la rigueur, la gestion du stress et l'esprit d'équipe. J'ai pour habitude de m'investir pleinement dans les tâches qui me sont confiées afin de rendre un travail sérieux et bien fait.Je  Si vous voulez en savoir plus sur mes compétences, je vous invite à visiter les différentes maisons.", {
-            font: "unscii",
+        text("Mes expériences professionnelles m'ont permis de développer des soft skills telles que la rigueur, la gestion du stress et l'esprit d'équipe. J'ai pour habitude de m'investir pleinement dans les tâches qui me sont confiées afin de rendre un travail sérieux et appliqué. Si vous voulez en savoir plus sur mes compétences, je vous invite à visiter les différentes maisons.", {
             width: 900,
             size: 26,
             lineSpacing: 10,
@@ -57,10 +50,9 @@ export function setAboutMe(worldState) {
         })
     ])
     const input4 = add([
-        pos(100, 630),
+        pos(100, 660),
         color(10, 10, 10),
         text("A bientôt!", {
-            font: "unscii",
             width: 900,
             size: 26,
             lineSpacing: 8,
@@ -68,31 +60,5 @@ export function setAboutMe(worldState) {
 
         })
     ])
-    const details = add([
-        pos(0, 10),
-        color(245, 67, 54),
-        text("ESC pour quitter", {
-            font: "unscii",
-            width: 900,
-            size: 26,
-            lineSpacing: 8,
-            letterSpacing: 2,
-
-        })
-    ])
-    if (!worldState){
-        worldState = {
-            playerPos : (850,500),
-        }
-    }
-    onKeyPress("enter", () => {
-        worldState.playerPos = vec2(500, 300)
-        go("myhouse", worldState)
-    })
-
-    onKeyPress("escape", () => {
-        worldState.playerPos = vec2(500, 300)
-        go("myhouse", worldState)
-    })
-
+    handleQuit(worldState, 500, 300, "myhouse")
 }

@@ -1,3 +1,5 @@
+import { playerMove } from "../utils/playerMove"
+import { flashScreen } from "../utils/flashScreen"
 export function setWorld(worldState) {
     function makeTile(type) {
         return [
@@ -684,9 +686,9 @@ add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 
 add([ sprite('tank2'), scale(2.5), pos(1440,1200), area(), body({isStatic: true}), 'tank2'])
 add([ sprite('tank3'), scale(2.5), pos(1400,1200), area(), body({isStatic: true}), 'tank3'])
 
-const audio = new Audio("assets/audio/putABanana.mp3")
-const houseopen = new Audio("assets/audio/dooropen.wav")
-const relaxdoor = new Audio("assets/audio/relaxdoor.mp3")
+const audio = new Audio("public/assets/audio/putABanana.mp3")
+const houseopen = new Audio("public/assets/audio/dooropen.wav")
+const relaxdoor = new Audio("public/assets/audio/relaxdoor.mp3")
 
 let playAudio = true
 audio.volume = 0.1
@@ -727,7 +729,7 @@ const arrow = add([
     area()
 ])
 const arrow2 = add([
-    text("Cliquez sur 'ENTRER' pour faire défiler les dialogues",{
+    text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
      font: "unscii",  
      width: 400, 
      size: 22,
@@ -750,74 +752,7 @@ const player = add([
     }
 ])
 
-onUpdate(() => {
-    camPos(player.pos)
-})
-
-function setSprite(player, spriteName){
-    if (player.currentSprite !== spriteName){
-        player.use(sprite(spriteName))
-        player.currentSprite = spriteName
-    }
-}
-
-onKeyDown('down', () => {
-    if (player.isInDialogue){ 
-        return
-    }
-    if (player.curAnim() !== 'godown'){
-        setSprite(player, 'player-down')
-        player.play('godown')
-    }
-    player.move(0,player.speed)
-})
-onKeyDown('up', () => {
-    if (player.isInDialogue){ 
-        return
-    }
-    if (player.curAnim() !== 'goup'){
-        setSprite(player, 'player-up')
-        player.play('goup')
-    }
-    player.move(0,-player.speed)
-})
-
-onKeyDown('left', () => {
-    if (player.isInDialogue){ 
-        return
-    }
-    player.flipX = false
-    if (player.curAnim() !== 'walk'){
-        setSprite(player, 'player-side')
-        player.play('walk')
-    }
-    player.move(-player.speed, 0)
-})
-onKeyDown('right', () => {
-    if (player.isInDialogue){ 
-        return
-    }
-    player.flipX = true
-    if (player.curAnim() !== 'walk'){
-        setSprite(player, 'player-side')
-        player.play('walk')
-    }
-    player.move(player.speed, 0)
-})
-
-onKeyRelease('left', () => {
-    player.stop()
-})
-onKeyRelease('right', () => {
-    player.stop()
-})
-onKeyRelease('up', () => {
-    player.stop()
-})
-onKeyRelease('down', () => {
-    player.stop()
-})
-
+playerMove(player)
 
 if (!worldState){
     worldState = {
@@ -830,11 +765,11 @@ player.onCollide('me', () => {
     me.use(sprite("meside"))
     player.isInDialogue = true
     let dialogs = [
-        [ "Bonjour! Bienvenue sur mon Portfolio!" ],
-        [ "Je suis Virginia Mo, developpeuse web." ],
-        [ "Voici mon petit monde dans lequel chaque maison represente une partie de mon portfolio." ],
-        [ "N'hesitez pas a vous promener et admirez le paysage :) !" ],
-        [ "PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit! Bon voyage~" ],
+        [ "Bonjour! Je suis Virginia Mo, developpeuse web." ],
+        [ "Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)." ],
+        [ "Vous pouvez, si vous le voulez, mettre la musique en pause en cliquant sur 'ON'.  " ],
+        [ "N'hesitez pas à vous promener et admirez le paysage :) !" ],
+        [ "PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit!~" ],
     ]
     
     let curDialog = 0
@@ -870,6 +805,15 @@ player.onCollide('me', () => {
             me.use(sprite("me"))
         }
     })
+    onKeyPress("space", () => {
+        curDialog = (curDialog + 1) % dialogs.length
+        updateDialog()
+                if (curDialog ===0 ){
+            destroy(dialogueBox)
+            player.isInDialogue = false
+            me.use(sprite("me"))
+        }
+    })
     onKeyPress("escape", () => {
         destroy(dialogueBox)
         player.isInDialogue = false
@@ -881,66 +825,31 @@ player.onCollide('me', () => {
     }
     updateDialog()
 })
-player.onCollide('church42', () => {   
-    audio.pause()
-    audio.currentTime = 0
-    flashScreen()
-    houseopen.play()
-    houseopen.volume = 0.4
-    setTimeout(() => {
-    worldState.playerPos = vec2(600,400) 
-    go("myhouse", worldState)
-    }, 1000)
-})
-player.onCollide('blueh', () => {   
-    audio.pause()
-    audio.currentTime = 0
-    flashScreen()
-    houseopen.play()
-    houseopen.volume = 0.4
-    setTimeout(() => {
-    worldState.playerPos = vec2(550, 500) 
-    go("skills", worldState)
-    }, 1000)
-})
-player.onCollide('blueh1', () => {
-    audio.pause()
-    audio.currentTime = 0   
-    flashScreen()
-    relaxdoor.play()
-    setTimeout(() => {
-        worldState.playerPos = vec2(550, 500) 
-    go("relax", worldState)
-    }, 2000)
-})
-player.onCollide('orangeh', () => { 
-    audio.pause()
-    audio.currentTime = 0  
-    flashScreen()
-    houseopen.play()
-    houseopen.volume = 0.4
-    setTimeout(() => {
-    worldState.playerPos = vec2(520, 420)
-    go("school", worldState)
-    }, 1000)
-})
-player.onCollide('orangeh1', () => {
-    audio.pause()
-    audio.currentTime = 0  
-    flashScreen()
-    houseopen.play()
-    houseopen.volume = 0.4
-    setTimeout(() => {
-    worldState.playerPos = vec2(400, 420)
-    go("projects", worldState)
-    }, 1000)
-})
+function collideHouse(name, x, y, place){
+    player.onCollide(name, () => {   
+        audio.pause()
+        audio.currentTime = 0
+        flashScreen()
+        houseopen.play()
+        houseopen.volume = 0.4
+        setTimeout(() => {
+        worldState.playerPos = vec2(x,y) 
+        go(place, worldState)
+        }, 1000)
+    })
+}
+collideHouse('church42', 600,400,"myhouse")
+collideHouse('blueh', 550,500,"skills")
+collideHouse('blueh1', 550,500,"relax")
+collideHouse('orangeh', 520,420,"school")
+collideHouse('orangeh1', 400,420,"projects")
+
 function collidetank(tankname){
    player.onCollide(tankname, () => {
     player.isInDialogue = true
     let dialogs = [
         [ "Souhaitez-vous quitter ce PortFolio et vous rendre dans la version classique ?" ],
-        [ "Oui : touche 'ENTRER'                Non : touche 'ECHAP'" ],
+        [ "Oui : touche 'SHIFT'                Non : touche 'ECHAP'" ],
     ]
     
     let curDialog = 0
@@ -978,7 +887,7 @@ function collidetank(tankname){
         destroy(dialogueBox)
         player.isInDialogue = false
     })
-    onKeyPress("enter", () => {
+    onKeyPress("shift", () => {
         window.open(
             'https://virginiamo.fr',
         );
@@ -997,10 +906,5 @@ collidetank('tank')
 // onClick(() => {
 //     player.moveTo(mousePos())
 // })
-
-function flashScreen() {
-    const flash = add([rect(1280,720), color(10,10,10), fixed(), opacity(0)])
-    tween(flash.opacity, 1, 1, (val) => flash.opacity = val, easings.easeInOutQuad)
-}
 
 }
