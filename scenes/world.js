@@ -989,7 +989,7 @@ export function setWorld(worldState) {
             })
             onKeyPress("shift", () => {
                 window.open(
-                    'https://virginiamo.fr',
+                    'https://movirginia.netlify.app/',
                 );
             })
 
