@@ -57,5 +57,5 @@ scene('relax2', (worldState) => setRelax2(worldState))
 scene('copyrights', (worldState) => setCopyrights(worldState))
 scene('map', (worldState) => setMap(worldState))
 
-go('world')
+go('relax')
 

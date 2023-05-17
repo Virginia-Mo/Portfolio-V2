@@ -151,7 +151,7 @@ export function setRelax2(worldState) {
             '                                      ',
             '       00000000000000                 ',
             '       00000000000000                 ',
-            '       0000         0                 ',
+            '       000          0                 ',
             '       0            0                 ',
             '       0            0                 ',
             '       0            0                 ',
@@ -224,6 +224,7 @@ export function setRelax2(worldState) {
     add([sprite('map'), scale(2.5), pos(490, 115), area(), body({
         isStatic: true
     }), 'map'])
+
 
     let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
     spookybananas.play()

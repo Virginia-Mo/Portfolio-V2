@@ -141,5 +141,5 @@ export function setSoft(worldState) {
 
         })
     ])
-    handleQuit(worldState, 630, 230, 'skills')
+    handleQuit(worldState, 350, 300, 'skills')
 }

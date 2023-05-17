@@ -24,7 +24,7 @@ export function setWelcome(worldState) {
         fixed(),
         area()
     ])
-    const classique = "Version Classique (recommandée pour les mobiles)"
+    const classique = "Version Classique (pour les mobiles et tablettes)"
     const rpg = "Version RPG"
     const urlClassique = "https://virginiamo.fr/"
 

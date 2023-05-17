@@ -329,7 +329,7 @@ export function setSchool(worldState) {
         ]   
     dialogCats(player, 'goldcat', dialogs)
     player.onCollide('books', () => {
-        let dialog = ["Le premier moteur de recherche a vu le jour en 1994, il s'appelait Yahoo!"]
+        let dialog = ["Le poids de l'Internet entier est de seulement 50 grammes, soit le poids d'un oeuf!"]
         dialogObjects(player, dialog) }
     )
     libraryCollides('library3', "work")

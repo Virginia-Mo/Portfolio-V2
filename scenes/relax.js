@@ -223,6 +223,10 @@ const library =  add([sprite('library'), scale(2.5), pos(320, 160), area(), body
 const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body({
         isStatic: true
     }), 'library4'])
+    add([sprite('flower'), scale(2.5), pos(560, 370), area(), body({
+        isStatic: true
+    }), 'flower'])
+
     let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
     let doorclose = new Audio("public/assets/audio/doorclose.wav")
 
@@ -386,22 +390,6 @@ playerMove(player)
             go("relax2", worldState)
         }, 500)
     })
-    // player.onCollide('library', () => {
-    //     flashScreen()
-    //     spookybananas.pause()
-    //     spookybananas.currentTime = 0
-    //     setTimeout(() => {
-    //         go("copyrights", worldState)
-    //     }, 500)
-    // })
-    // player.onCollide('library2', () => {
-    //     flashScreen()
-    //     spookybananas.pause()
-    //     spookybananas.currentTime = 0
-    //     setTimeout(() => {
-    //         go("copyrights", worldState)
-    //     }, 500)
-    // })
     collides('library')
     collides('library2')
     function collides(boardname){

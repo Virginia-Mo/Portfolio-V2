@@ -41,6 +41,9 @@ export function loadAssets2(){
     loadSpriteAtlas('/assets/atlas_16x.png', {
         'map':{x: 160, y: 128, width: 32, height: 32},
     })
+    loadSpriteAtlas('/assets/atlas_16x.png', {
+        'flower':{x: 288, y: 144, width: 16, height: 16},
+    })
     loadSpriteAtlas('/assets/atlas_16x.png',{
         'tile2': {x: 0, y: 0, width: 768, height: 256, sliceX:48, sliceY:16,
         anims:{
