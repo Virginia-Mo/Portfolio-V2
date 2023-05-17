@@ -726,7 +726,9 @@ export function setWorld(worldState) {
     add([sprite('tank3'), scale(2.5), pos(1400, 1200), area(), body({
         isStatic: true
     }), 'tank3'])
-
+    const pause = add([sprite('pause'), scale(0.85), pos(170, 15), area(), fixed(), body({
+        isStatic: true
+    }), 'pause'])
     const llama = add([
         sprite('llama'),
         scale(1.3),
@@ -740,12 +742,34 @@ export function setWorld(worldState) {
     ])
     const llama1 = add([
         sprite('llama1'),
-        scale(1),
+        scale(1.3),
         pos(1400, 600),
         area(),
         body({
             isStatic: true,
             currentSprite: 'llama1',
+            speed: 600,
+        }),
+    ])
+    const llama2 = add([
+        sprite('llama2'),
+        scale(1.3),
+        pos(1420, 450),
+        area(),
+        body({
+            isStatic: true,
+            currentSprite: 'llama2',
+            speed: 600,
+        }),
+    ])
+    const llama3 = add([
+        sprite('llamawalkside'),
+        scale(1.3),
+        pos(250, 950),
+        area(),
+        body({
+            isStatic: true,
+            currentSprite: 'llamawalkside',
             speed: 600,
         }),
     ])
@@ -757,6 +781,7 @@ export function setWorld(worldState) {
         body({
             isStatic: true,
             currentSprite: 'chickenface',
+            speed: 600,
         }),
     ])
     const chickenside = add([
@@ -774,15 +799,31 @@ export function setWorld(worldState) {
         if (llama.curAnim() !== 'eating') {
             llama.play('eating')
             llama.loop = true
+        }
+        if (llama2.curAnim() !== 'backeating') {
+            llama2.play('backeating')
+        }
             if (chickenface.curAnim() !== 'fronteating') {
                 chickenface.play('fronteating')
             }
             if (chickenside.curAnim() !== 'sideeating') {
                 chickenside.play('sideeating')
             }
-        }
-    })
 
+    })
+    if (llama3.curAnim() !== 'walkside') {
+        llama3.flipX = false
+        llama3.play('walkside')
+        llama3.move(-400, 0)
+    }
+        if (llama3.pos.x > 100 && llama3.pos.x < 250) {
+            llama3.move(-400, 0) 
+        }
+        if (llama3.pos.x <= 100 ) {
+            llama3.flipX = true
+            llama3.move(400, 0)
+        
+}
     const audio = new Audio("/assets/audio/putABanana.mp3")
     const houseopen = new Audio("/assets/audio/dooropen.wav")
     const relaxdoor = new Audio("/assets/audio/relaxdoor.mp3")
@@ -795,7 +836,7 @@ export function setWorld(worldState) {
     audio.loop = true
 
     const textMusic = add([
-        text("Volume ON", {
+        text("Musique", {
             font: "title",
             width: 400,
         }),
@@ -804,14 +845,14 @@ export function setWorld(worldState) {
         fixed(),
         area()
     ])
-    textMusic.onClick(() => {
+    pause.onClick(() => {
         playAudio = !playAudio
         if (playAudio) {
             audio.play()
-            textMusic.text = "Volume ON"
+            pause.use(sprite('pause'))
         } else {
             audio.pause()
-            textMusic.text = "Volume OFF"
+            pause.use(sprite('play'))
         }
     })
     const arrow = add([
@@ -864,7 +905,7 @@ export function setWorld(worldState) {
         let dialogs = [
             ["Bonjour! Je suis Virginia Mo, developpeuse web."],
             ["Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)."],
-            ["Vous pouvez, si vous le voulez, mettre la musique en pause en cliquant sur 'ON'.  "],
+            ["Vous pouvez mettre la musique en pause en cliquant sur le bouton en haut à gauche."],
             ["N'hesitez pas à vous promener et admirez le paysage :) !"],
             ["PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit!~"],
         ]

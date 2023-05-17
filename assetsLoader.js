@@ -22,11 +22,15 @@ export function loadAssets(){
             anims: {
             'fronteating': {from: 0, to: 1, speed:0.4}}
         },
+        'llama2': {x: 48, y:16, width: 512, height: 80, sliceX : 4, sliceY:1, 
+            anims: {
+            'backeating': {from: 0, to: 1, speed:0.7}}
+        },
     })
     loadSpriteAtlas('/assets/llama_walk.png', {
         'llamawalkside': {x: 32, y: 144, width: 464, height: 80, sliceX : 4, sliceY:1, 
             anims: {
-            'walkside': {from: 0, to: 1, speed:1}}, loop: true
+            'walkside': {from: 0, to: 1, speed:2}}, loop: true
         },
 })
 loadSpriteAtlas('/assets/chicken_eat.png', {
@@ -117,6 +121,24 @@ loadSpriteAtlas('/assets/chicken_eat.png', {
     })
     loadSpriteAtlas('/assets/tileset_village.png', {
         'orangeh':{x: 112, y: 192, width: 16, height: 16},
+    })
+    loadSpriteAtlas('/assets/Back.png', {
+        'back':{x: 0, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/Next.png', {
+        'next':{x: 0, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/Up.png', {
+        'up':{x: 0, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/Down.png', {
+        'down':{x: 0, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/Pause.png', {
+        'pause':{x: 0, y: 0, width: 32, height: 32},
+    })
+    loadSpriteAtlas('/assets/Play.png', {
+        'play':{x: 0, y: 0, width: 32, height: 32},
     })
     loadSpriteAtlas('/assets/tileset_village.png',{
         'tile': {x: 0, y: 0, width: 384, height: 400, sliceX:24, sliceY:25,

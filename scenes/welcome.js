@@ -1,5 +1,5 @@
 export function setWelcome(worldState) {
-
+ 
  setBackground(Color.fromHex("#000000"))
     const welcomeText = add([
         text("Bienvenue sur mon Portfolio",{
@@ -24,7 +24,7 @@ export function setWelcome(worldState) {
         fixed(),
         area()
     ])
-    const classique = "Version Classique (pour les mobiles et tablettes)"
+    const classique = "Version Classique (recommandée pour les mobiles et tablettes)"
     const rpg = "Version RPG"
     const urlClassique = "https://movirginia.netlify.app/"
 
