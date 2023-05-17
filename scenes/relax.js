@@ -227,8 +227,8 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         isStatic: true
     }), 'flower'])
 
-    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("public/assets/audio/doorclose.wav")
+    let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("/assets/audio/doorclose.wav")
 
     spookybananas.play()
     spookybananas.volume = 0.1

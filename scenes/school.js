@@ -246,8 +246,8 @@ export function setSchool(worldState) {
         isStatic: true
     }), 'books'])
 
-    let spookybananas = new Audio("public/assets/audio/SpookyBananas.mp3")
-    let doorclose = new Audio("public/assets/audio/doorclose.wav")
+    let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
+    let doorclose = new Audio("/assets/audio/doorclose.wav")
 
     spookybananas.play()
     spookybananas.volume = 0.1
