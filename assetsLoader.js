@@ -32,11 +32,11 @@ export function loadAssets(){
 loadSpriteAtlas('/assets/chicken_eat.png', {
     'chickenface': {x: 0, y: 64, width: 128, height: 32, sliceX : 4, sliceY:1, 
         anims: {
-        'fronteating': {from: 0, to: 1, speed:0.1}}, loop: true,
+        'fronteating': {from: 0, to: 1, speed:1}}, loop: true,
     },
     'chickenside': {x: 0, y:32, width: 128, height: 32, sliceX : 4, sliceY:1, 
         anims: {
-        'sideeating': {from: 0, to: 1, speed:6}}, loop: true
+        'sideeating': {from: 0, to: 1, speed:2}}, loop: true
     },
 })
     loadSprite('tea1-background', './assets/teastain38.png')

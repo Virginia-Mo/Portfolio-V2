@@ -26,7 +26,7 @@ export function setWelcome(worldState) {
     ])
     const classique = "Version Classique (pour les mobiles et tablettes)"
     const rpg = "Version RPG"
-    const urlClassique = "https://virginiamo.fr/"
+    const urlClassique = "https://movirginia.netlify.app/"
 
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([

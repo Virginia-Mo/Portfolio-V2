@@ -727,60 +727,61 @@ export function setWorld(worldState) {
         isStatic: true
     }), 'tank3'])
 
-    // const llama = add([
-    //     sprite('llama'),
-    //     scale(1.3),
-    //     pos(1280, 480),
-    //     area(),
-    //     body({
-    //         isStatic: true,
-    //         currentSprite: 'llama',
-    //         speed: 600,
-    //     }),
-    // ])
-    // const llama1 = add([
-    //     sprite('llama1'),
-    //     scale(1.3),
-    //     pos(1400, 600),
-    //     area(),
-    //     body({
-    //         isStatic: true,
-    //         currentSprite: 'llama1',
-    //         speed: 600,
-    //     }),
-    // ])
-    // const chickenface = add([
-    //     sprite('chickenface'),
-    //     scale(1.3),
-    //     pos(2080, 850),
-    //     area(),
-    //     body({
-    //         isStatic: true,
-    //         currentSprite: 'chickenface',
-    //     }),
-    // ])
-    // const chickenside = add([
-    //     sprite('chickenside'),
-    //     scale(1.3),
-    //     pos(730, 510),
-    //     area(),
-    //     body({
-    //         isStatic: true,
-    //         currentSprite: 'chickenside',
-    //         speed: 600,
-    //     }),
-    // ])
-    // onUpdate(() => {
-    //     if (llama.curAnim() !== 'eating') {
-    //         llama.play('eating')
-    //         if (chickenface.curAnim() !== 'fronteating') {
-    //             chickenface.play('fronteating')
-    //         }
-    //         if (chickenside.curAnim() !== 'sideeating') {
-    //             chickenside.play('sideeating')
-    //         }
-    //     }
-    // })
+    const llama = add([
+        sprite('llama'),
+        scale(1.3),
+        pos(1280, 480),
+        area(),
+        body({
+            isStatic: true,
+            currentSprite: 'llama',
+            speed: 600,
+        }),
+    ])
+    const llama1 = add([
+        sprite('llama1'),
+        scale(1),
+        pos(1400, 600),
+        area(),
+        body({
+            isStatic: true,
+            currentSprite: 'llama1',
+            speed: 600,
+        }),
+    ])
+    const chickenface = add([
+        sprite('chickenface'),
+        scale(1.3),
+        pos(2080, 850),
+        area(),
+        body({
+            isStatic: true,
+            currentSprite: 'chickenface',
+        }),
+    ])
+    const chickenside = add([
+        sprite('chickenside'),
+        scale(1.3),
+        pos(730, 510),
+        area(),
+        body({
+            isStatic: true,
+            speed: 1200,
+        }),
+        
+    ])
+    onUpdate(() => {
+        if (llama.curAnim() !== 'eating') {
+            llama.play('eating')
+            llama.loop = true
+            if (chickenface.curAnim() !== 'fronteating') {
+                chickenface.play('fronteating')
+            }
+            if (chickenside.curAnim() !== 'sideeating') {
+                chickenside.play('sideeating')
+            }
+        }
+    })
 
     const audio = new Audio("/assets/audio/putABanana.mp3")
     const houseopen = new Audio("/assets/audio/dooropen.wav")
