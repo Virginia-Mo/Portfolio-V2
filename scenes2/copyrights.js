@@ -25,9 +25,9 @@ export function setCopyrights(worldState) {
     const input = add([
         pos(100, 130),
         color(10, 10, 10),
-        text("Un petit mot sur la création de ce portfolio..J'ai utilisé la bibliothèque KaboomJS qui permet de créer des jeux en Javascipt.", {
+        text("Un petit mot sur la création de ce portfolio..J'ai utilisé la bibliothèque KaboomJS qui permet de créer des jeux en Javascript.", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -36,9 +36,9 @@ export function setCopyrights(worldState) {
     const input2 = add([
         pos(100, 220),
         color(10, 10, 10),
-        text("Après avoir imaginer la map et les maisons, je les ai codé en utilisant les 'tileset' de Jadson 'PixelJad' : (lien ici) ", {
+        text("Après avoir imaginer la map et les maisons, je les ai codé en utilisant les 'tilesets' de Jadson 'PixelJad' : (lien ici) ", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -46,11 +46,11 @@ export function setCopyrights(worldState) {
         area({cursor: "pointer"}),
     ])
     const input3 = add([
-        pos(100, 310),
+        pos(100, 300),
         color(10, 10, 10),
-        text("et l'interieur des maisons avec les 'tileset' de Gif (lien ici)", {
+        text("et l'interieur des maisons avec les 'tilesets' de Gif (lien ici)", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 10,
             letterSpacing: 2,
 
@@ -58,11 +58,11 @@ export function setCopyrights(worldState) {
         area({cursor: "pointer"}),
     ])
     const input34 = add([
-        pos(100, 370),
+        pos(100, 350),
         color(10, 10, 10),
         text("Les personnages chats sont de Pipoya : ICI", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -70,11 +70,23 @@ export function setCopyrights(worldState) {
         area({cursor: "pointer"}),
     ])
     const input44 = add([
-        pos(100, 430),
+        pos(100, 400),
         color(10, 10, 10),
         text("et le personnage me représentant a été dessiné par Laufeyon et trouvé : ICI", {
             width: 1100,
-            size: 25,
+            size: 22,
+            lineSpacing: 8,
+            letterSpacing: 2,
+
+        }),
+        area({cursor: "pointer"}),
+    ])
+    const input64 = add([
+        pos(100, 470),
+        color(10, 10, 10),
+        text("Les animaux du jardin ont été créés par Daniel Eddeland : ICI", {
+            width: 1100,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -86,7 +98,7 @@ export function setCopyrights(worldState) {
         color(10, 10, 10),
         text("Les musiques viennent du célèbre créateur de Charlie the Unicorn :D  -> FilmCow.com <- ", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -98,7 +110,7 @@ export function setCopyrights(worldState) {
         color(10, 10, 10),
         text("La petite blague de chat : jokes4us.com ", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -110,7 +122,7 @@ export function setCopyrights(worldState) {
         color(10, 10, 10),
         text("Merci pour votre visite ! A bientôt ! 0/", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -121,7 +133,7 @@ export function setCopyrights(worldState) {
         color(10, 10, 10),
         text("Tous autres droits reservés © Virginia Mo", {
             width: 1100,
-            size: 25,
+            size: 22,
             lineSpacing: 8,
             letterSpacing: 2,
 
@@ -156,6 +168,12 @@ export function setCopyrights(worldState) {
     input4.onClick( () => {
         window.open(
             'https://filmcow.itch.io/ctu-soundtrack',
+            '_blank'
+        );
+    })    
+    input64.onClick( () => {
+        window.open(
+            'https://opengameart.org/content/lpc-style-farm-animals',
             '_blank'
         );
     })    

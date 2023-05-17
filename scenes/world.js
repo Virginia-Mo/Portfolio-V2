@@ -1,32 +1,47 @@
-import { playerMove } from "../utils/playerMove"
-import { flashScreen } from "../utils/flashScreen"
+import {
+    playerMove
+} from "../utils/playerMove"
+import {
+    flashScreen
+} from "../utils/flashScreen"
 export function setWorld(worldState) {
     function makeTile(type) {
         return [
             sprite('tile'),
-            {type}
+            {
+                type
+            }
         ]
     }
+
     function makeBigTile(type) {
         return [
             sprite('bigobject'),
-            {type}
+            {
+                type
+            }
         ]
     }
+
     function makeSmallTile(type) {
         return [
             sprite('smalltiles'),
-            {type}
+            {
+                type
+            }
         ]
     }
+
     function makeBoardTile(type) {
         return [
             sprite('boardtiles'),
-            {type}
+            {
+                type
+            }
         ]
     }
     setBackground(Color.fromHex("#065694"))
-const map = [
+    const map = [
         addLevel([
             '                                                         ',
             '                                                         ',
@@ -331,7 +346,7 @@ const map = [
             '                                                         ',
             '                                                         ',
             '                                                         ',
-            '                                                         ', 
+            '                                                         ',
             '                                                         ',
             '                                                         ',
             '                                                         ',
@@ -387,7 +402,7 @@ const map = [
             }
         }),
         addLevel([
-            '                                                         ',       
+            '                                                         ',
             '                                                         ',
             '                                                         ',
             '                                                         ',
@@ -489,9 +504,9 @@ const map = [
             '                4              42324    c4   24 1  c44   ',
             '             cc44 24        20  32     444   34    4c4   ',
             '             cc4  4         43  23                       ',
-            '             444  23        32  4                        ',                                         
+            '             444  23        32  4                        ',
             '             cc4  4444     024 43 4 2cccc     3 44       ',
-            '             cc4  323      444 42 4 4  33    2  44       ',                                      
+            '             cc4  323      444 42 4 4  33    2  44       ',
             '                1 d44d4  4d44d 43   2   2 86 3           ',
             '                                  44  443  7 2  444      ',
             '                                1444 4442  8      44     ',
@@ -537,7 +552,7 @@ const map = [
                 'e': () => makeSmallTile('smallfence'),
             }
         }),
-         addLevel([
+        addLevel([
             '                                                         ',
             '                                                         ',
             '            0000000000000000000000000000000000000000000  ',
@@ -581,8 +596,12 @@ const map = [
             tileHeight: 16,
             tiles: {
                 '0': () => [
-                    area({shape: new Rect(vec2(0), 16, 16)}),
-                    body({isStatic: true})
+                    area({
+                        shape: new Rect(vec2(0), 16, 16)
+                    }),
+                    body({
+                        isStatic: true
+                    })
                 ],
             }
         }),
@@ -629,43 +648,43 @@ const map = [
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                    '*': () => makeBoardTile('skills'),
-                    '+': () => makeBoardTile('skills1'),
-                    '1': () => makeBoardTile('skills2'),
-                    '2': () => makeBoardTile('skills3'),
-                    '3': () => makeBoardTile('skills4'),
-                    '4': () => makeBoardTile('skills5'),
-                    'A': () => makeBoardTile('skills6'),
-                    '5': () => makeBoardTile('relax'),
-                    '6': () => makeBoardTile('relax1'),
-                    '7': () => makeBoardTile('relax2'),
-                    '8': () => makeBoardTile('relax3'),
-                    '9': () => makeBoardTile('relax4'),
-                    'a': () => makeBoardTile('relax5'),
-                    'b': () => makeBoardTile('relax6'),
-                    'c': () => makeBoardTile('contact'),
-                    'd': () => makeBoardTile('contact1'),
-                    'e': () => makeBoardTile('contact2'),
-                    'f': () => makeBoardTile('contact3'),
-                    'g': () => makeBoardTile('contact4'),
-                    'h': () => makeBoardTile('contact5'),
-                    'i': () => makeBoardTile('contact6'),
-                    'j': () => makeBoardTile('exp'),
-                    'k': () => makeBoardTile('exp1'),
-                    'l': () => makeBoardTile('exp2'),
-                    'm': () => makeBoardTile('exp3'),
-                    'n': () => makeBoardTile('exp4'),
-                    'o': () => makeBoardTile('exp5'),
-                    'p': () => makeBoardTile('exp6'),
-                    'q': () => makeBoardTile('exp7'),
-                    'r': () => makeBoardTile('projets'),
-                    's': () => makeBoardTile('projets1'),
-                    't': () => makeBoardTile('projets2'),
-                    'u': () => makeBoardTile('projets3'),
+                '*': () => makeBoardTile('skills'),
+                '+': () => makeBoardTile('skills1'),
+                '1': () => makeBoardTile('skills2'),
+                '2': () => makeBoardTile('skills3'),
+                '3': () => makeBoardTile('skills4'),
+                '4': () => makeBoardTile('skills5'),
+                'A': () => makeBoardTile('skills6'),
+                '5': () => makeBoardTile('relax'),
+                '6': () => makeBoardTile('relax1'),
+                '7': () => makeBoardTile('relax2'),
+                '8': () => makeBoardTile('relax3'),
+                '9': () => makeBoardTile('relax4'),
+                'a': () => makeBoardTile('relax5'),
+                'b': () => makeBoardTile('relax6'),
+                'c': () => makeBoardTile('contact'),
+                'd': () => makeBoardTile('contact1'),
+                'e': () => makeBoardTile('contact2'),
+                'f': () => makeBoardTile('contact3'),
+                'g': () => makeBoardTile('contact4'),
+                'h': () => makeBoardTile('contact5'),
+                'i': () => makeBoardTile('contact6'),
+                'j': () => makeBoardTile('exp'),
+                'k': () => makeBoardTile('exp1'),
+                'l': () => makeBoardTile('exp2'),
+                'm': () => makeBoardTile('exp3'),
+                'n': () => makeBoardTile('exp4'),
+                'o': () => makeBoardTile('exp5'),
+                'p': () => makeBoardTile('exp6'),
+                'q': () => makeBoardTile('exp7'),
+                'r': () => makeBoardTile('projets'),
+                's': () => makeBoardTile('projets1'),
+                't': () => makeBoardTile('projets2'),
+                'u': () => makeBoardTile('projets3'),
             }
         })
-    
-]
+
+    ]
     for (const layer of map) {
         layer.use(scale(2.5))
         for (const tile of layer.children) {
@@ -674,237 +693,319 @@ const map = [
             }
         }
     }
-const me = add([ sprite('me'), scale(1.4), pos(1030,480), area({scale:0.7}), body({isStatic: true}), 'me'])
+    const me = add([sprite('me'), scale(1.4), pos(1030, 480), area({
+        scale: 0.7
+    }), body({
+        isStatic: true
+    }), 'me'])
 
-add([ sprite('catswim'), scale(1.8), pos(95,1370), area(), body({isStatic: true}), 'npc'])
-add([ sprite('church42'), scale(2.5), pos(920,400), area(), body({isStatic: true}), 'church42'])
-add([ sprite('blueh'), scale(2.5), pos(1720,240), area(), body({isStatic: true}), 'blueh'])
-add([ sprite('blueh'), scale(2.5), pos(280,1280), area(), body({isStatic: true}), 'blueh1'])
-add([ sprite('orangeh'), scale(2.5), pos(480,1080), area(), body({isStatic: true}), 'orangeh'])
-add([ sprite('orangeh'), scale(2.5), pos(1840,840), area(), body({isStatic: true}), 'orangeh1'])
-add([ sprite('tank'), scale(2.5), pos(80,1400), area(), body({isStatic: true}), 'tank'])
-add([ sprite('tank2'), scale(2.5), pos(1440,1200), area(), body({isStatic: true}), 'tank2'])
-add([ sprite('tank3'), scale(2.5), pos(1400,1200), area(), body({isStatic: true}), 'tank3'])
+    add([sprite('catswim'), scale(1.8), pos(95, 1370), area(), body({
+        isStatic: true
+    }), 'npc'])
+    add([sprite('church42'), scale(2.5), pos(920, 400), area(), body({
+        isStatic: true
+    }), 'church42'])
+    add([sprite('blueh'), scale(2.5), pos(1720, 240), area(), body({
+        isStatic: true
+    }), 'blueh'])
+    add([sprite('blueh'), scale(2.5), pos(280, 1280), area(), body({
+        isStatic: true
+    }), 'blueh1'])
+    add([sprite('orangeh'), scale(2.5), pos(480, 1080), area(), body({
+        isStatic: true
+    }), 'orangeh'])
+    add([sprite('orangeh'), scale(2.5), pos(1840, 840), area(), body({
+        isStatic: true
+    }), 'orangeh1'])
+    add([sprite('tank'), scale(2.5), pos(80, 1400), area(), body({
+        isStatic: true
+    }), 'tank'])
+    add([sprite('tank2'), scale(2.5), pos(1440, 1200), area(), body({
+        isStatic: true
+    }), 'tank2'])
+    add([sprite('tank3'), scale(2.5), pos(1400, 1200), area(), body({
+        isStatic: true
+    }), 'tank3'])
 
-const audio = new Audio("/assets/audio/putABanana.mp3")
-const houseopen = new Audio("/assets/audio/dooropen.wav")
-const relaxdoor = new Audio("/assets/audio/relaxdoor.mp3")
+    // const llama = add([
+    //     sprite('llama'),
+    //     scale(1.3),
+    //     pos(1280, 480),
+    //     area(),
+    //     body({
+    //         isStatic: true,
+    //         currentSprite: 'llama',
+    //         speed: 600,
+    //     }),
+    // ])
+    // const llama1 = add([
+    //     sprite('llama1'),
+    //     scale(1.3),
+    //     pos(1400, 600),
+    //     area(),
+    //     body({
+    //         isStatic: true,
+    //         currentSprite: 'llama1',
+    //         speed: 600,
+    //     }),
+    // ])
+    // const chickenface = add([
+    //     sprite('chickenface'),
+    //     scale(1.3),
+    //     pos(2080, 850),
+    //     area(),
+    //     body({
+    //         isStatic: true,
+    //         currentSprite: 'chickenface',
+    //     }),
+    // ])
+    // const chickenside = add([
+    //     sprite('chickenside'),
+    //     scale(1.3),
+    //     pos(730, 510),
+    //     area(),
+    //     body({
+    //         isStatic: true,
+    //         currentSprite: 'chickenside',
+    //         speed: 600,
+    //     }),
+    // ])
+    // onUpdate(() => {
+    //     if (llama.curAnim() !== 'eating') {
+    //         llama.play('eating')
+    //         if (chickenface.curAnim() !== 'fronteating') {
+    //             chickenface.play('fronteating')
+    //         }
+    //         if (chickenside.curAnim() !== 'sideeating') {
+    //             chickenside.play('sideeating')
+    //         }
+    //     }
+    // })
 
-let playAudio = true
-audio.volume = 0.1
-houseopen.volume = 0.1
-relaxdoor.volume = 0.1
-audio.play()
-audio.loop = true
+    const audio = new Audio("/assets/audio/putABanana.mp3")
+    const houseopen = new Audio("/assets/audio/dooropen.wav")
+    const relaxdoor = new Audio("/assets/audio/relaxdoor.mp3")
 
-const textMusic = add([
-    text("Volume ON",{
-     font: "title",  
-     width: 400, 
-    }),
-    pos(10 , 10),
-    color(10, 10, 10),
-    fixed(),
-    area()
-])
-textMusic.onClick(() => {
-    playAudio = !playAudio
-    if (playAudio){
+    let playAudio = true
+    audio.volume = 0.1
+    houseopen.volume = 0.1
+    relaxdoor.volume = 0.1
     audio.play()
-    textMusic.text = "Volume ON"
-    } else {
-        audio.pause()
-        textMusic.text = "Volume OFF"
-    }
-})
-const arrow = add([
-    text("Utilisez les flêches du clavier pour vous déplacer",{
-     font: "unscii",  
-     width: 400, 
-     size: 22,
-    }),
-    pos(10 , 50),
-    color(0, 0, 0),
-    fixed(),
-    area()
-])
-const arrow2 = add([
-    text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues",{
-     font: "unscii",  
-     width: 400, 
-     size: 22,
-    }),
-    pos(10 , 90),
-    color(10, 10, 10),
-    fixed(),
-    area()
-])
-const player = add([
-    sprite('player-down'),
-    scale(2.2),
-    pos(950,800),
-    area(),
-    body(),
-    {
-        currentSprite: 'player-down',
-        speed: 500,
-        isInDialogue: false,
-    }
-])
+    audio.loop = true
 
-playerMove(player)
-
-if (!worldState){
-    worldState = {
-        playerPos : player.pos,
-        info : player
-    }
-}
-player.pos = vec2(worldState.playerPos)
-player.onCollide('me', () => {
-    me.use(sprite("meside"))
-    player.isInDialogue = true
-    let dialogs = [
-        [ "Bonjour! Je suis Virginia Mo, developpeuse web." ],
-        [ "Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)." ],
-        [ "Vous pouvez, si vous le voulez, mettre la musique en pause en cliquant sur 'ON'.  " ],
-        [ "N'hesitez pas à vous promener et admirez le paysage :) !" ],
-        [ "PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit!~" ],
-    ]
-    
-    let curDialog = 0
-    let back = 0
-    back ++
-    const dialogueBoxFixedContainer = add([fixed()])
-    const dialogueBox = dialogueBoxFixedContainer.add([
-        rect(1000, 200, { radius: 32 }),
-        outline(4),
-        pos(150,500),
-        color(223,242,206),
-        fixed()
-    ])
-
-    const content = dialogueBox.add([
-        text('',
-        {
-            size : 42,
-            width: 900,
-            lineSpacing: 15,
+    const textMusic = add([
+        text("Volume ON", {
+            font: "title",
+            width: 400,
         }),
-        color(10,10,10),
-        pos(40,30),
-        fixed()
+        pos(10, 10),
+        color(10, 10, 10),
+        fixed(),
+        area()
+    ])
+    textMusic.onClick(() => {
+        playAudio = !playAudio
+        if (playAudio) {
+            audio.play()
+            textMusic.text = "Volume ON"
+        } else {
+            audio.pause()
+            textMusic.text = "Volume OFF"
+        }
+    })
+    const arrow = add([
+        text("Utilisez les flêches du clavier pour vous déplacer", {
+            font: "unscii",
+            width: 400,
+            size: 22,
+        }),
+        pos(10, 50),
+        color(0, 0, 0),
+        fixed(),
+        area()
+    ])
+    const arrow2 = add([
+        text("Cliquez sur 'ENTRER' ou 'ESPACE' pour faire défiler les dialogues", {
+            font: "unscii",
+            width: 400,
+            size: 22,
+        }),
+        pos(10, 90),
+        color(10, 10, 10),
+        fixed(),
+        area()
+    ])
+    const player = add([
+        sprite('player-down'),
+        scale(2.2),
+        pos(950, 800),
+        area(),
+        body(),
+        {
+            currentSprite: 'player-down',
+            speed: 500,
+            isInDialogue: false,
+        }
     ])
 
-    onKeyPress("enter", () => {
-        curDialog = (curDialog + 1) % dialogs.length
-        updateDialog()
-                if (curDialog ===0 ){
+    playerMove(player)
+
+    if (!worldState) {
+        worldState = {
+            playerPos: player.pos,
+            info: player
+        }
+    }
+    player.pos = vec2(worldState.playerPos)
+    player.onCollide('me', () => {
+        me.use(sprite("meside"))
+        player.isInDialogue = true
+        let dialogs = [
+            ["Bonjour! Je suis Virginia Mo, developpeuse web."],
+            ["Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)."],
+            ["Vous pouvez, si vous le voulez, mettre la musique en pause en cliquant sur 'ON'.  "],
+            ["N'hesitez pas à vous promener et admirez le paysage :) !"],
+            ["PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit!~"],
+        ]
+
+        let curDialog = 0
+        let back = 0
+        back++
+        const dialogueBoxFixedContainer = add([fixed()])
+        const dialogueBox = dialogueBoxFixedContainer.add([
+            rect(1000, 200, {
+                radius: 32
+            }),
+            outline(4),
+            pos(150, 500),
+            color(223, 242, 206),
+            fixed()
+        ])
+
+        const content = dialogueBox.add([
+            text('', {
+                size: 42,
+                width: 900,
+                lineSpacing: 15,
+            }),
+            color(10, 10, 10),
+            pos(40, 30),
+            fixed()
+        ])
+
+        onKeyPress("enter", () => {
+            curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+                me.use(sprite("me"))
+            }
+        })
+        onKeyPress("space", () => {
+            curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+                me.use(sprite("me"))
+            }
+        })
+        onKeyPress("escape", () => {
             destroy(dialogueBox)
             player.isInDialogue = false
             me.use(sprite("me"))
+        })
+
+        function updateDialog() {
+            const [dialog] = dialogs[curDialog]
+            content.text = dialog
         }
-    })
-    onKeyPress("space", () => {
-        curDialog = (curDialog + 1) % dialogs.length
         updateDialog()
-                if (curDialog ===0 ){
-            destroy(dialogueBox)
-            player.isInDialogue = false
-            me.use(sprite("me"))
-        }
     })
-    onKeyPress("escape", () => {
-        destroy(dialogueBox)
-        player.isInDialogue = false
-        me.use(sprite("me"))
-    })
-    function updateDialog() {
-        const [ dialog ] = dialogs[curDialog]
-        content.text = dialog
+
+    function collideHouse(name, x, y, place) {
+        player.onCollide(name, () => {
+            audio.pause()
+            audio.currentTime = 0
+            flashScreen()
+            houseopen.play()
+            houseopen.volume = 0.4
+            setTimeout(() => {
+                worldState.playerPos = vec2(x, y)
+                go(place, worldState)
+            }, 1000)
+        })
     }
-    updateDialog()
-})
-function collideHouse(name, x, y, place){
-    player.onCollide(name, () => {   
-        audio.pause()
-        audio.currentTime = 0
-        flashScreen()
-        houseopen.play()
-        houseopen.volume = 0.4
-        setTimeout(() => {
-        worldState.playerPos = vec2(x,y) 
-        go(place, worldState)
-        }, 1000)
-    })
-}
-collideHouse('church42', 600,400,"myhouse")
-collideHouse('blueh', 550,500,"skills")
-collideHouse('blueh1', 550,500,"relax")
-collideHouse('orangeh', 520,420,"school")
-collideHouse('orangeh1', 400,420,"projects")
+    collideHouse('church42', 600, 400, "myhouse")
+    collideHouse('blueh', 550, 500, "skills")
+    collideHouse('blueh1', 550, 500, "relax")
+    collideHouse('orangeh', 520, 420, "school")
+    collideHouse('orangeh1', 400, 420, "projects")
 
-function collidetank(tankname){
-   player.onCollide(tankname, () => {
-    player.isInDialogue = true
-    let dialogs = [
-        [ "Souhaitez-vous quitter ce PortFolio et vous rendre dans la version classique ?" ],
-        [ "Oui : touche 'SHIFT'                Non : touche 'ECHAP'" ],
-    ]
-    
-    let curDialog = 0
-    const dialogueBoxFixedContainer = add([fixed()])
-    const dialogueBox = dialogueBoxFixedContainer.add([
-        rect(1000, 200, { radius: 32 }),
-        outline(4),
-        pos(150,500),
-        color(223,242,206),
-        fixed()
-    ])
+    function collidetank(tankname) {
+        player.onCollide(tankname, () => {
+            player.isInDialogue = true
+            let dialogs = [
+                ["Souhaitez-vous quitter ce PortFolio et vous rendre dans la version classique ?"],
+                ["Oui : touche 'SHIFT'                Non : touche 'ECHAP'"],
+            ]
 
-    const content = dialogueBox.add([
-        text('',
-        {
-            size : 42,
-            width: 900,
-            lineSpacing: 15,
-        }),
-        color(10,10,10),
-        pos(40,30),
-        fixed()
-    ])
+            let curDialog = 0
+            const dialogueBoxFixedContainer = add([fixed()])
+            const dialogueBox = dialogueBoxFixedContainer.add([
+                rect(1000, 200, {
+                    radius: 32
+                }),
+                outline(4),
+                pos(150, 500),
+                color(223, 242, 206),
+                fixed()
+            ])
 
-    onKeyPress("space", () => {
-        curDialog = (curDialog + 1) % dialogs.length
-        updateDialog()
-             console.log(curDialog)
-                if (curDialog ===0 ){
-            destroy(dialogueBox)
-            player.isInDialogue = false
-        }
-    })
-    onKeyPress("escape", () => {
-        destroy(dialogueBox)
-        player.isInDialogue = false
-    })
-    onKeyPress("shift", () => {
-        window.open(
-            'https://virginiamo.fr',
-        );
-    })
-    function updateDialog() {
-        const [ dialog ] = dialogs[curDialog]
-        content.text = dialog
+            const content = dialogueBox.add([
+                text('', {
+                    size: 42,
+                    width: 900,
+                    lineSpacing: 15,
+                }),
+                color(10, 10, 10),
+                pos(40, 30),
+                fixed()
+            ])
+
+            onKeyPress("space", () => {
+                curDialog = (curDialog + 1) % dialogs.length
+                updateDialog()
+                console.log(curDialog)
+                if (curDialog === 0) {
+                    destroy(dialogueBox)
+                    player.isInDialogue = false
+                }
+            })
+            onKeyPress("escape", () => {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+            })
+            onKeyPress("shift", () => {
+                window.open(
+                    'https://virginiamo.fr',
+                );
+            })
+
+            function updateDialog() {
+                const [dialog] = dialogs[curDialog]
+                content.text = dialog
+            }
+            updateDialog()
+
+        })
     }
-    updateDialog()
-
-}) 
-}
-collidetank('tank2')
-collidetank('tank3')
-collidetank('tank')
-// onClick(() => {
-//     player.moveTo(mousePos())
-// })
+    collidetank('tank2')
+    collidetank('tank3')
+    collidetank('tank')
+    // onClick(() => {
+    //     player.moveTo(mousePos())
+    // })
 
 }

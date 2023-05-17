@@ -13,6 +13,32 @@ export function loadAssets(){
             'walk': {from: 0, to: 1, speed:6}}
         },
     })
+    loadSpriteAtlas('/assets/llama_eat.png', {
+        'llama': {x: 32, y: 400, width: 512, height: 80, sliceX : 4, sliceY:1, 
+            anims: {
+            'eating': {from: 0, to: 1, speed:0.4}}, loop: true
+        },
+        'llama1': {x: 48, y:272, width: 512, height: 80, sliceX : 4, sliceY:1, 
+            anims: {
+            'fronteating': {from: 0, to: 1, speed:0.4}}
+        },
+    })
+    loadSpriteAtlas('/assets/llama_walk.png', {
+        'llamawalkside': {x: 32, y: 144, width: 464, height: 80, sliceX : 4, sliceY:1, 
+            anims: {
+            'walkside': {from: 0, to: 1, speed:1}}, loop: true
+        },
+})
+loadSpriteAtlas('/assets/chicken_eat.png', {
+    'chickenface': {x: 0, y: 64, width: 128, height: 32, sliceX : 4, sliceY:1, 
+        anims: {
+        'fronteating': {from: 0, to: 1, speed:0.1}}, loop: true,
+    },
+    'chickenside': {x: 0, y:32, width: 128, height: 32, sliceX : 4, sliceY:1, 
+        anims: {
+        'sideeating': {from: 0, to: 1, speed:6}}, loop: true
+    },
+})
     loadSprite('tea1-background', './assets/teastain38.png')
     loadSprite('tea2-background', './assets/teastain96.png')
     loadSprite('tea3-background', './assets/teastain1.png')

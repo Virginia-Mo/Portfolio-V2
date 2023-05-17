@@ -44,7 +44,7 @@ export function setWork(worldState) {
     const input12 = add([
         pos(60, 230),
         color(10, 10, 10),
-        text(" ~> Projet de fin d'études : Développement front-end en React, equipe de 5 développeurs, site de e-commerce.", {
+        text(" ~> Projet de fin d'études : Développement front-end en React, équipe de 5 développeurs, site de e-commerce.", {
             width: 1200,
             size: 25,
             lineSpacing: 10,
@@ -114,7 +114,7 @@ export function setWork(worldState) {
     const input25 = add([
         pos(60, 600),
         color(10, 10, 10),
-        text(" ~> Service de pédiatrie hospitalisations bébés/enfants, urgences pédiatriques et psychiatrie adolescents.", {
+        text(" ~> Service de pédiatrie - hospitalisations bébés/enfants, urgences pédiatriques et psychiatrie adolescents.", {
             width: 1200,
             size: 25,
             lineSpacing: 10,
