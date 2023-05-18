@@ -26,10 +26,10 @@ kaboom({
     height: 720,
    stretch: true
 })
-if (window.innerWidth < 1280) {
+if (window.screen.width < 1280) {
     kaboom({
-        width : window.innerWidth,
-        height : window.innerHeight,
+        width : window.screen.width,
+        height : window.screen.width,
     })
 }
 
