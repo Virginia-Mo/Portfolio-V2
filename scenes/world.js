@@ -868,8 +868,6 @@ export function setWorld(worldState) {
         ]
 
         let curDialog = 0
-        let back = 0
-        back++
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
             rect(1000, 200, {
@@ -916,11 +914,6 @@ export function setWorld(worldState) {
             me.use(sprite("me"))
         })
 
-        function updateDialog() {
-            const [dialog] = dialogs[curDialog]
-            content.text = dialog
-        }
-        updateDialog()
         if (window.screen.width < 1024) {
             content.onClick(() => {
                 curDialog = (curDialog + 1) % dialogs.length
@@ -932,6 +925,11 @@ export function setWorld(worldState) {
                 }
             })
         }
+        function updateDialog() {
+            const [dialog] = dialogs[curDialog]
+            content.text = dialog
+        }
+        updateDialog()
 
     })
 
