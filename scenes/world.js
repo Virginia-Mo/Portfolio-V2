@@ -515,13 +515,13 @@ export function setWorld(worldState) {
             '                       75       7   6  856               ',
             '                        856  678  5 86   756             ',
             '              9        eee                 7             ',
-            '    eeeeeee                cccccc    ccc 6 5      4442   ',
+            '    ee eeee                cccccc    ccc 6 5      4442   ',
             '      4423        44        4444  68     5   3    44     ',
             '   444  1          2     b   4444 7    567      44 44    ',
             '    34442          3        44440  5 c 6        424      ',
             '     24 3                         67 4 6   5867 343      ',
-            '    444 2                   56     5 2   86  55  44      ',
-            '  4444         20ccc        7  86e    e                  ',
+            '    4   2                   56     5 2   86  55  44      ',
+            '  444          20ccc        7  86e    e                  ',
             '  1 4                             3  234443223           ',
             '   44      756    6         cccc0 2  34 4                ',
             '    2         865           44    2  344         b       ',
@@ -726,75 +726,30 @@ export function setWorld(worldState) {
     add([sprite('tank3'), scale(2.5), pos(1400, 1200), area(), body({
         isStatic: true
     }), 'tank3'])
-    const pause = add([sprite('pause'), scale(0.85), pos(170, 15), area(), fixed(), body({
+    const play = add([sprite('play'), scale(0.85), pos(170, 15), area(), fixed(), body({
         isStatic: true
-    }), 'pause'])
-    const llama = add([
-        sprite('llama'),
-        scale(1.3),
-        pos(1280, 480),
-        area(),
-        body({
-            isStatic: true,
-            currentSprite: 'llama',
-            speed: 600,
-        }),
+    }), 'play'])
+    const llama = add([sprite('llama'),scale(1.3),pos(1280, 480),area(),body({ isStatic: true}),
     ])
-    const llama1 = add([
-        sprite('llama1'),
-        scale(1.3),
-        pos(1400, 600),
-        area(),
-        body({
-            isStatic: true,
-            currentSprite: 'llama1',
-            speed: 600,
-        }),
+
+    const llama1 = add([sprite('llama1'),scale(1.3),pos(1400, 600),area(),body({ isStatic: true}),
     ])
-    const llama2 = add([
-        sprite('llama2'),
-        scale(1.3),
-        pos(1420, 450),
-        area(),
-        body({
-            isStatic: true,
-            currentSprite: 'llama2',
-            speed: 600,
-        }),
+    const llama2 = add([sprite('llama2'),scale(1.3),pos(1420, 450),area(),body({ isStatic: true}),
     ])
-    const llama3 = add([
-        sprite('llamawalkside'),
-        scale(1.3),
-        pos(250, 950),
-        area(),
-        body({
-            isStatic: true,
-            currentSprite: 'llamawalkside',
-            speed: 600,
-        }),
+    const chickenface = add([sprite('chickenface'),scale(1.3),pos(2080, 850),area(),body({ isStatic: true}),
     ])
-    const chickenface = add([
-        sprite('chickenface'),
-        scale(1.3),
-        pos(2080, 850),
-        area(),
-        body({
-            isStatic: true,
-            currentSprite: 'chickenface',
-            speed: 600,
-        }),
+    const chickenside = add([sprite('chickenside'),scale(1.3),pos(730, 510),area(),body({ isStatic: true}),
     ])
-    const chickenside = add([
-        sprite('chickenside'),
-        scale(1.3),
-        pos(730, 510),
-        area(),
-        body({
-            isStatic: true,
-            speed: 1200,
-        }),
-        
+    const chickenside2 = add([sprite('chickenside'),scale(1.3),pos(2050, 870),area(),body({ isStatic: true}),
     ])
+    const cowface = add([sprite('cowface'),scale(1),pos(180, 950),area(),body({ isStatic: true }),
+    ])
+    const cowside = add([sprite('cowside'),scale(1),pos(220, 1020),area(),body({ isStatic: true}),
+    ])
+    const cowside2 = add([sprite('cowside'),scale(1),pos(60, 1080),area(),body({ isStatic: true}),
+    ])
+    const cowback = add([sprite('cowback'),scale(1),pos(240, 870),area(),body({ isStatic: true}),
+])
     onUpdate(() => {
         if (llama.curAnim() !== 'eating') {
             llama.play('eating')
@@ -803,27 +758,30 @@ export function setWorld(worldState) {
         if (llama2.curAnim() !== 'backeating') {
             llama2.play('backeating')
         }
-            if (chickenface.curAnim() !== 'fronteating') {
-                chickenface.play('fronteating')
-            }
-            if (chickenside.curAnim() !== 'sideeating') {
-                chickenside.play('sideeating')
-            }
-
-    })
-    if (llama3.curAnim() !== 'walkside') {
-        llama3.flipX = false
-        llama3.play('walkside')
-        llama3.move(-400, 0)
-    }
-        if (llama3.pos.x > 100 && llama3.pos.x < 250) {
-            llama3.move(-400, 0) 
+        if (chickenface.curAnim() !== 'fronteating') {
+            chickenface.play('fronteating')
         }
-        if (llama3.pos.x <= 100 ) {
-            llama3.flipX = true
-            llama3.move(400, 0)
-        
-}
+        if (chickenside.curAnim() !== 'sideeating') {
+            chickenside.play('sideeating')
+        }
+        if (chickenside2.curAnim() !== 'sideeating') {
+            chickenside2.flipX = true
+            chickenside2.play('sideeating')
+        }
+        if (cowface.curAnim() !== 'cowface') {
+            cowface.play('cowface')
+        }
+        if (cowside.curAnim() !== 'cowside') {
+            cowside.play('cowside')
+        }
+        if (cowside2.curAnim() !== 'cowside') {
+            cowside2.flipX = true
+            cowside2.play('cowside')
+        }
+        if (cowback.curAnim() !== 'cowback') {
+            cowback.play('cowback')
+        }
+    })
     const audio = new Audio("/assets/audio/putABanana.mp3")
     const houseopen = new Audio("/assets/audio/dooropen.wav")
     const relaxdoor = new Audio("/assets/audio/relaxdoor.mp3")
@@ -844,14 +802,14 @@ export function setWorld(worldState) {
         fixed(),
         area()
     ])
-    pause.onClick(() => {
+    play.onClick(() => {
         playAudio = !playAudio
         if (playAudio) {
             audio.play()
-            pause.use(sprite('pause'))
+            play.use(sprite('pause'))
         } else {
             audio.pause()
-            pause.use(sprite('play'))
+            play.use(sprite('play'))
         }
     })
     const arrow = add([
@@ -904,9 +862,9 @@ export function setWorld(worldState) {
         let dialogs = [
             ["Bonjour! Je suis Virginia Mo, developpeuse web."],
             ["Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)."],
-            ["Vous pouvez mettre la musique en pause en cliquant sur le bouton en haut à gauche."],
+            ["Pour écouter la musique de fond, cliquez sur le bouton en haut à gauche."],
             ["N'hesitez pas à vous promener et admirez le paysage :) !"],
-            ["PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puit!~"],
+            ["PS : Si vous voulez voir une version plus classique de mon portfolio, rendez-vous au puits!~"],
         ]
 
         let curDialog = 0
@@ -963,19 +921,20 @@ export function setWorld(worldState) {
             content.text = dialog
         }
         updateDialog()
-        if (/Android|iPhone/i.test(navigator.userAgent)) {
+        if (window.screen.width < 1024) {
             content.onClick(() => {
                 curDialog = (curDialog + 1) % dialogs.length
-            updateDialog()
-            if (curDialog === 0) {
-                destroy(dialogueBox)
-                player.isInDialogue = false
-                me.use(sprite("me"))
-            }
-        })
-    }
-    
+                updateDialog()
+                if (curDialog === 0) {
+                    destroy(dialogueBox)
+                    player.isInDialogue = false
+                    me.use(sprite("me"))
+                }
+            })
+        }
+
     })
+
     function collideHouse(name, x, y, place) {
         player.onCollide(name, () => {
             audio.pause()

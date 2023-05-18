@@ -231,7 +231,10 @@ export function setMyHouse(worldState) {
     add([sprite('happycat'), scale(2.2), pos(600, 220), area({scale: 0.6}), 'happycat'])
     add([sprite('board'), scale(2.5), pos(480, 200), area({scale:0.6}), 'board'])
     add([sprite('board'), scale(2.5), pos(720, 200), area({scale:0.6}), 'board2'])
-    let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
+    const play = add([sprite('play'), scale(0.85), pos(170, 15), area(), fixed(), body({
+        isStatic: true
+    }), 'play'])
+    let spookybananas = new Audio("/assets/audio/spookyBananas.mp3")
     let doorclose = new Audio("/assets/audio/doorclose.wav")
     spookybananas.volume = 0.1
     spookybananas.loop = true
@@ -240,7 +243,7 @@ export function setMyHouse(worldState) {
     let playMusic = false
 
     const textMusic = add([
-        text("Volume ON",{
+        text("Musique ",{
          font: "title",  
          width: 400, 
         }),
@@ -253,10 +256,10 @@ export function setMyHouse(worldState) {
         playMusic = !playMusic
         if (playMusic){
         spookybananas.play()
-        textMusic.text = "Volume ON"
+        play.use(sprite('pause'))
         } else {
             spookybananas.pause()
-            textMusic.text = "Volume OFF"
+            play.use(sprite('play'))
         }
     })
     const arrow = add([

@@ -226,17 +226,19 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
     add([sprite('flower'), scale(2.5), pos(560, 370), area(), body({
         isStatic: true
     }), 'flower'])
-
-    let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
+    const play = add([sprite('play'), scale(0.85), pos(170, 15), area(), fixed(), body({
+        isStatic: true
+    }), 'play'])
+    let spookybananas = new Audio("/assets/audio/spookyBananas.mp3")
     let doorclose = new Audio("/assets/audio/doorclose.wav")
-
     spookybananas.volume = 0.1
     spookybananas.loop = true
     doorclose.volume = 0.1
 
     let playMusic = false
+
     const textMusic = add([
-        text("Volume ON",{
+        text("Musique ",{
          font: "title",  
          width: 400, 
         }),
@@ -249,10 +251,10 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
         playMusic = !playMusic
         if (playMusic){
         spookybananas.play()
-        textMusic.text = "Volume ON"
+        play.use(sprite('pause'))
         } else {
             spookybananas.pause()
-            textMusic.text = "Volume OFF"
+            play.use(sprite('play'))
         }
     })
     const arrow = add([

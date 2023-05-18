@@ -224,9 +224,11 @@ export function setRelax2(worldState) {
     add([sprite('map'), scale(2.5), pos(490, 115), area(), body({
         isStatic: true
     }), 'map'])
+    const play = add([sprite('play'), scale(0.85), pos(170, 15), area(), fixed(), body({
+        isStatic: true
+    }), 'play'])
 
-
-    let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
+    let spookybananas = new Audio("/assets/audio/spookyBananas.mp3")
     spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
@@ -248,10 +250,10 @@ export function setRelax2(worldState) {
         playMusic = !playMusic
         if (playMusic){
         spookybananas.play()
-        textMusic.text = "Volume ON"
+        play.use(sprite('pause'))
         } else {
             spookybananas.pause()
-            textMusic.text = "Volume OFF"
+            play.use(sprite('play'))
         }
     })
     const arrow = add([

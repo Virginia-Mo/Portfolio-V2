@@ -27,12 +27,20 @@ export function loadAssets(){
             'backeating': {from: 0, to: 1, speed:0.7}}
         },
     })
-    loadSpriteAtlas('/assets/llama_walk.png', {
-        'llamawalkside': {x: 32, y: 144, width: 464, height: 80, sliceX : 4, sliceY:1, 
+    loadSpriteAtlas('/assets/cow_eat.png', {
+        'cowface': {x: 48, y: 288, width: 512, height: 80, sliceX :4, sliceY:1, 
             anims: {
-            'walkside': {from: 0, to: 1, speed:2}}, loop: true
+            'cowface': {from: 0, to: 1, speed:0.7}}, loop: true,
         },
-})
+        'cowside': {x: 16, y:160, width: 512, height: 64, sliceX : 4, sliceY:1, 
+            anims: {
+            'cowside': {from: 0, to: 1, speed:0.4}}, loop: true
+        },
+        'cowback': {x: 42, y:32, width: 512, height: 80, sliceX : 4, sliceY:1, 
+            anims: {
+            'cowback': {from: 0, to: 1, speed:0.5}}, loop: true
+        },
+    })
 loadSpriteAtlas('/assets/chicken_eat.png', {
     'chickenface': {x: 0, y: 64, width: 128, height: 32, sliceX : 4, sliceY:1, 
         anims: {

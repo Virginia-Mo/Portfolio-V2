@@ -2,7 +2,7 @@ export function playerMove(player){
     onUpdate(() => {
         camPos(player.pos)
     })
-    if (/Android|iPhone/i.test(navigator.userAgent)) {
+    if (window.screen.width < 1024) {
             const back = add([sprite('back'), scale(2), pos(1055, 600), area(), body({
         isStatic: true
     }), fixed(), 'back'])

@@ -26,7 +26,12 @@ kaboom({
     height: 720,
    stretch: true
 })
-
+if (window.innerWidth < 1280) {
+    kaboom({
+        width : window.innerWidth,
+        height : window.innerHeight,
+    })
+}
 
 loadFont("font1", "assets/fonts/font1.ttf", 8, 8)
 loadFont("unscii", "assets/fonts/Pixellari.ttf", 8, 8)
