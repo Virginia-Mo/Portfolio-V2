@@ -981,13 +981,13 @@ export function setWorld(worldState) {
                 }),
                 color(10, 10, 10),
                 pos(40, 30),
-                fixed()
+                fixed(),
+                area()
             ])
 
             onKeyPress("space", () => {
                 curDialog = (curDialog + 1) % dialogs.length
                 updateDialog()
-                console.log(curDialog)
                 if (curDialog === 0) {
                     destroy(dialogueBox)
                     player.isInDialogue = false
@@ -1002,7 +1002,16 @@ export function setWorld(worldState) {
                     'https://movirginia.netlify.app/',
                 );
             })
-
+            if (window.screen.width < 1024) {
+                content.onClick(() => {
+                    curDialog = (curDialog + 1) % dialogs.length
+                    updateDialog()
+                    if (curDialog === 0) {
+                        destroy(dialogueBox)
+                        player.isInDialogue = false
+                    }
+                })
+            }
             function updateDialog() {
                 const [dialog] = dialogs[curDialog]
                 content.text = dialog

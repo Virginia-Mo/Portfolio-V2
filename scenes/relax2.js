@@ -229,14 +229,13 @@ export function setRelax2(worldState) {
     }), 'play'])
 
     let spookybananas = new Audio("/assets/audio/spookyBananas.mp3")
-    spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
 
     let playMusic = false
     const badjoke = new Audio("/assets/audio/badjoke.wav")
     const textMusic = add([
-        text("Volume ON",{
+        text("Volume",{
          font: "title",  
          width: 400, 
         }),
@@ -369,6 +368,22 @@ playerMove(player)
                 glassescat.use(sprite("catglassesdown"))
             }
         })
+        if (window.screen.width < 1024) {
+            content.onClick(() => {
+                curDialog1 = (curDialog1 + 1) % dialogs.length
+            updateDialog()
+            if (curDialog1 === 3) {
+                badjoke.volume = 0.1
+                badjoke.play()
+            }
+            if (curDialog1 === 0) {
+                destroy(dialogueBox1)
+                player.isInDialogue = false
+                badjoke.pause()
+                badjoke.currentTime = 0
+                glassescat.use(sprite("catglassesdown"))
+            }})}
+        
         onKeyPress("escape", () => {
             destroy(dialogueBox1)
             player.isInDialogue = false

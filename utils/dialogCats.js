@@ -44,7 +44,16 @@ export function dialogCats(player, cat, dialogs){
             destroy(dialogueBox)
             player.isInDialogue = false
         })
-
+        if (window.screen.width < 1024) {
+            content.onClick(() => {
+                curDialog = (curDialog + 1) % dialogs.length
+                updateDialog()
+                if (curDialog === 0) {
+                    destroy(dialogueBox)
+                    player.isInDialogue = false
+                }
+            })
+        }
         function updateDialog() {
             const [dialog] = dialogs[curDialog]
             content.text = dialog

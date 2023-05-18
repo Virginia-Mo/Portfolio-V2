@@ -384,6 +384,16 @@ playerMove(player)
             player.isInDialogue = false
             meloncat.use(sprite("meloncat"))
         })
+        if (window.screen.width < 1024) {
+            content.onClick(() => {
+                curDialog = (curDialog + 1) % dialogs.length
+                updateDialog()
+                if (curDialog === 0) {
+                    destroy(dialogueBox)
+                    player.isInDialogue = false
+                    meloncat.use(sprite("meloncat"))
+                }})
+        }
         function updateDialog() {
             const [ dialog ] = dialogs[curDialog]
             content.text = dialog

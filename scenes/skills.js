@@ -240,7 +240,7 @@ export function setSkills(worldState) {
     add([sprite('library'), scale(2.5), pos(720, 160), area(), body({
         isStatic: true
     }), 'library4'])
-    add([sprite('books'), scale(2.5), pos(400, 400), area(), body({
+    add([sprite('books'), scale(2.5), pos(400, 400), area({scale : 0.7}), body({
         isStatic: true
     }), 'books'])
     const play = add([sprite('play'), scale(0.85), pos(170, 15), area(), fixed(), body({
