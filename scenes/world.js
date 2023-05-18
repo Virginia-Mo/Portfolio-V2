@@ -887,7 +887,8 @@ export function setWorld(worldState) {
             }),
             color(10, 10, 10),
             pos(40, 30),
-            fixed()
+            fixed(), 
+            area()
         ])
 
         onKeyPress("enter", () => {
