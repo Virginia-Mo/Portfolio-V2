@@ -22,24 +22,11 @@ import { setRelax2 } from "./scenes/relax2.js";
 import { setCopyrights } from "./scenes2/copyrights.js";
 import { setMap } from "./scenes2/map.js";
 
-if (window.screen.width < 1280 && window.screen.height > 768) {
-    kaboom({
-        width : 1024,
-        height: 576,
-        stretch: true
-    })
-} else if (window.screen.width < 768) {
-    kaboom({
-        width: 512,
-        height: 288,
-        stretch: true
-    })
-} else {
 kaboom({
     width: 1280,
     height: 720,
    stretch: true
-})    }
+})    
 
 loadFont("font1", "assets/fonts/font1.ttf", 8, 8)
 loadFont("unscii", "assets/fonts/Pixellari.ttf", 8, 8)
