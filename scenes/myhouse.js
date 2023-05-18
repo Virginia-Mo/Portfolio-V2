@@ -233,12 +233,11 @@ export function setMyHouse(worldState) {
     add([sprite('board'), scale(2.5), pos(720, 200), area({scale:0.6}), 'board2'])
     let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
     let doorclose = new Audio("/assets/audio/doorclose.wav")
-    spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
     doorclose.volume = 0.1
 
-    let playMusic = true
+    let playMusic = false
 
     const textMusic = add([
         text("Volume ON",{

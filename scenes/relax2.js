@@ -231,7 +231,7 @@ export function setRelax2(worldState) {
     spookybananas.volume = 0.1
     spookybananas.loop = true
 
-    let playMusic = true
+    let playMusic = false
     const badjoke = new Audio("/assets/audio/badjoke.wav")
     const textMusic = add([
         text("Volume ON",{

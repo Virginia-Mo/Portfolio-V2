@@ -828,11 +828,10 @@ export function setWorld(worldState) {
     const houseopen = new Audio("/assets/audio/dooropen.wav")
     const relaxdoor = new Audio("/assets/audio/relaxdoor.mp3")
 
-    let playAudio = true
+    let playAudio = false
     audio.volume = 0.1
     houseopen.volume = 0.1
     relaxdoor.volume = 0.1
-    audio.play()
     audio.loop = true
 
     const textMusic = add([
@@ -964,8 +963,19 @@ export function setWorld(worldState) {
             content.text = dialog
         }
         updateDialog()
+        if (/Android|iPhone/i.test(navigator.userAgent)) {
+            content.onClick(() => {
+                curDialog = (curDialog + 1) % dialogs.length
+            updateDialog()
+            if (curDialog === 0) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+                me.use(sprite("me"))
+            }
+        })
+    }
+    
     })
-
     function collideHouse(name, x, y, place) {
         player.onCollide(name, () => {
             audio.pause()

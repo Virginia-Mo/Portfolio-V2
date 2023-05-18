@@ -230,12 +230,11 @@ const library2 = add([sprite('library'), scale(2.5), pos(400, 160), area(), body
     let spookybananas = new Audio("/assets/audio/SpookyBananas.mp3")
     let doorclose = new Audio("/assets/audio/doorclose.wav")
 
-    spookybananas.play()
     spookybananas.volume = 0.1
     spookybananas.loop = true
     doorclose.volume = 0.1
 
-    let playMusic = true
+    let playMusic = false
     const textMusic = add([
         text("Volume ON",{
          font: "title",  
