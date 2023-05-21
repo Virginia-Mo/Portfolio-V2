@@ -131,7 +131,7 @@ export function setCopyrights(worldState) {
     const input14 = add([
         pos(100, 690),
         color(10, 10, 10),
-        text("Tous autres droits reservés © Virginia Mo", {
+        text("Tout autres droits reservés © Virginia Mo", {
             width: 1100,
             size: 22,
             lineSpacing: 8,

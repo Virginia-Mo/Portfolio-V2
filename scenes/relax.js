@@ -364,7 +364,7 @@ playerMove(player)
             mumcat.use(sprite("mumcat"))
         })
         if (window.screen.width < 1024) {
-            content.onClick(() => {
+            dialogueBox.onClick(() => {
                 curDialog = (curDialog + 1) % dialogs.length
                 updateDialog()
                 if (curDialog === 0) {

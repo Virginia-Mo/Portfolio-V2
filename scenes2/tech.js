@@ -81,7 +81,6 @@ export function setTech(worldState) {
         pos(230, 438),
         color(10, 10, 10),
         text("React Redux,React Routeur", {
-            font: "font1",
             width: 900,
             size: 25,
             lineSpacing: 10,
@@ -105,7 +104,6 @@ export function setTech(worldState) {
         pos(230, 510),
         color(10, 10, 10),
         text("Pinia,Vue Router", {
-            font: "font1",
             width: 900,
             size: 25,
             lineSpacing: 10,

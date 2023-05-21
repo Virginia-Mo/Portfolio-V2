@@ -25,7 +25,7 @@ export function setWelcome(worldState) {
         area()
     ])
     const classique = "Version Classique (recommandée pour les mobiles et tablettes)"
-    const rpg = "Version RPG"
+    const rpg = "Version Jeu-Exploration"
     const urlClassique = "https://movirginia.netlify.app/"
 
         const dialogueBoxFixedContainer = add([fixed()])
@@ -62,12 +62,12 @@ export function setWelcome(worldState) {
         const content2 = dialogueBox2.add([
             text(rpg, {
                 size: 23,
-                width: 300,
+                width: 200,
                 height: 130,
                 lineSpacing: 15,
             }),
             color(10, 10, 10),
-            pos(70,50),
+            pos(40,40),
             fixed(),
             area({ cursor: "pointer" })
         ])

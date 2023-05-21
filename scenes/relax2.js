@@ -342,7 +342,7 @@ playerMove(player)
             curDialog1 = (curDialog1 + 1) % dialogs.length
             updateDialog()
             if (curDialog1 === 3) {
-                badjoke.volume = 0.1
+                badjoke.volume = 0.01
                 badjoke.play()
             }
             if (curDialog1 === 0) {
@@ -369,7 +369,7 @@ playerMove(player)
             }
         })
         if (window.screen.width < 1024) {
-            content.onClick(() => {
+            dialogueBox1.onClick(() => {
                 curDialog1 = (curDialog1 + 1) % dialogs.length
             updateDialog()
             if (curDialog1 === 3) {

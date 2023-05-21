@@ -860,7 +860,7 @@ export function setWorld(worldState) {
         me.use(sprite("meside"))
         player.isInDialogue = true
         let dialogs = [
-            ["Bonjour! Je suis Virginia Mo, developpeuse web."],
+            ["Bonjour! Je suis Virginia Mo, développeuse web."],
             ["Bienvenue sur mon portfolio où chaque maison représente une catégorie (compétences, projets..)."],
             ["Pour écouter la musique de fond, cliquez sur le bouton en haut à gauche."],
             ["N'hesitez pas à vous promener et admirez le paysage :) !"],

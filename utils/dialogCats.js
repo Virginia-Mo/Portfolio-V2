@@ -21,7 +21,8 @@ export function dialogCats(player, cat, dialogs){
             }),
             color(10, 10, 10),
             pos(40, 30),
-            fixed()
+            fixed(), 
+            area()
         ])
 
         onKeyPress("enter", () => {
