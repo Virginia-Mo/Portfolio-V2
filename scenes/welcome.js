@@ -1,5 +1,10 @@
 export function setWelcome(worldState) {
  
+if (window.screen.width < 1024) {
+    window.location.href = "https://movirginia.netlify.app/"
+    return
+}
+
  setBackground(Color.fromHex("#000000"))
     const welcomeText = add([
         text("Bienvenue sur mon Portfolio",{
