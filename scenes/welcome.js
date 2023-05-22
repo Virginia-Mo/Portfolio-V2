@@ -46,7 +46,7 @@ export function setWelcome(worldState) {
                 lineSpacing: 15,
             }),
             color(10, 10, 10),
-            pos(20, 20),
+            pos(40, 40),
             fixed(),
             area({ cursor: "pointer" })
         ])
