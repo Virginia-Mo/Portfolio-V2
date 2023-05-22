@@ -26,7 +26,7 @@ export function setWelcome(worldState) {
         fixed(),
         area()
     ])
-    const classique = "Version Classique (recommandée pour les mobiles et tablettes)"
+    const classique = "Version Classique"
     const rpg = "Version Jeu-Exploration"
     const urlClassique = "https://movirginia.netlify.app/"
 
