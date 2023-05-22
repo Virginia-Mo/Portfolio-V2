@@ -151,7 +151,7 @@ export function setRelax2(worldState) {
             '                                      ',
             '       00000000000000                 ',
             '       00000000000000                 ',
-            '       000          0                 ',
+            '       0            0                 ',
             '       0            0                 ',
             '       0            0                 ',
             '       0            0                 ',
@@ -217,7 +217,7 @@ export function setRelax2(worldState) {
         isStatic: true
     }), 'bed2'])
     add([sprite('books'), scale(2.5), pos(400, 200), area({
-        scale: 0.5
+        scale: 0.2
     }), body({
         isStatic: true
     }), 'books'])
