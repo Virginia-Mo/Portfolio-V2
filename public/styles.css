@@ -1,0 +1,53 @@
+html {
+    background-color: #000000;
+    font-family: 'Courier', sans-serif;
+}
+h1 {
+    background-image: linear-gradient(to left, rgb(255, 164, 255), rgb(199, 132, 247), rgb(168, 168, 248), rgb(156, 236, 156), rgb(236, 236, 176), rgb(255, 223, 163), rgb(247, 149, 149));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 5rem;
+    text-align: center;
+    margin: 8rem
+}
+h2 {
+    text-align: center;
+    color:#ffffff;
+    font-size: 2rem;
+}
+.btnbox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+    gap: 4rem;
+}
+.btnbox button {
+    font-family: 'Courier', sans-serif;
+    font-weight: bold;
+    background-color: #070707;
+    color: #030000;
+    border-radius: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 3rem;
+    border: 0.1rem solid transparent;
+    border-image: linear-gradient(to bottom right, rgb(247, 149, 149) 0%,  rgb(199, 132, 247) 25%, rgb(156, 236, 156), rgb(236, 236, 176) 75%, rgb(255, 223, 163) 100%);
+    border-image-slice: 1;
+}
+.btnbox button:hover {
+    border: 0.1rem solid #ffffff;
+    color: #000000;   
+    background: linear-gradient(to top right, rgb(255, 164, 255), rgb(199, 132, 247), rgb(168, 168, 248), rgb(156, 236, 156), rgb(236, 236, 176), rgb(255, 223, 163), rgb(247, 149, 149));
+}
+button a {
+    font-family: 'Courier', sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2rem;
+}
+button a:hover {
+    color: #000000;
+
+}

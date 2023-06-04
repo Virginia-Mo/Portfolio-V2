@@ -35,7 +35,7 @@ loadSound("banana", "assets/audio/putABanana.mp3")
 loadAssets()
 loadAssets2()
 
-scene('welcome', (worldState) => setWelcome(worldState))
+// scene('welcome', (worldState) => setWelcome(worldState))
 scene('world', (worldState) => setWorld(worldState))
 scene('myhouse', (worldState) => setMyHouse(worldState))
 scene('skills', (worldState) => setSkills(worldState))
@@ -57,5 +57,5 @@ scene('relax2', (worldState) => setRelax2(worldState))
 scene('copyrights', (worldState) => setCopyrights(worldState))
 scene('map', (worldState) => setMap(worldState))
 
-go('welcome')
+go('world')
 
