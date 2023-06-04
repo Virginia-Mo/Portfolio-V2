@@ -1,12 +1,13 @@
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: 'index.html',
-        game: 'game.html',
-     
-      }
-    }
-  }
+        main: resolve(__dirname, 'index.html'),
+        game: resolve(__dirname, 'game.html'),
+      },
+    },
+  },
 })
